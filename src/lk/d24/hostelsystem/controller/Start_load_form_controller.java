@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class start_load_form_controller {
+public class Start_load_form_controller {
     public ProgressBar pbarLoad;
     public Text txtLoading;
     public Text txtLoadDescribe;

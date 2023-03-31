@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="595.0" maxWidth="1043.0" prefHeight="594.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Login_Form_Controller">
+   <children>
+      <AnchorPane fx:id="loginPane" layoutX="543.0" layoutY="14.0" prefHeight="593.0" prefWidth="486.0" style="-fx-background-color: #d7dbe0; -fx-background-radius: 20;">
+         <children>
+            <ImageView fitHeight="210.0" fitWidth="200.0" layoutX="145.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/login.gif" />
+               </image>
+            </ImageView>
+            <Text layoutX="192.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LogIn" wrappingWidth="127.00000404752791">
+               <font>
+                  <Font name="System Bold Italic" size="38.0" />
+               </font>
+            </Text>
+            <RadioButton fx:id="radioBtnShowPswrd" layoutX="92.0" layoutY="388.0" mnemonicParsing="false" onAction="#actionRadioBtnShowPswrd" text="show password" textFill="#808080">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#ababab" height="30.11" radius="14.555" width="30.11" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </RadioButton>
+            <JFXButton layoutX="166.0" layoutY="442.0" onAction="#loginBtnOnAction" prefHeight="42.0" prefWidth="180.0" style="-fx-background-radius: 25; -fx-background-color: #2b8ac2;" text="login" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField fx:id="txtfldUsername" alignment="CENTER" layoutX="81.0" layoutY="276.0" onAction="#ActionTxtUsername" prefHeight="42.0" prefWidth="350.0" promptText="Username" style="-fx-background-radius: 25; -fx-background-color: #cbdbf7;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pswrdfldPassword" alignment="CENTER" layoutX="81.0" layoutY="346.0" onKeyReleased="#keyReleaseActionTxtfldpswrd" prefHeight="42.0" prefWidth="350.0" promptText="Password" style="-fx-background-radius: 25; -fx-background-color: #cbdbf7;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXPasswordField>
+            <JFXTextField fx:id="txtfldPassword" alignment="CENTER" layoutX="81.0" layoutY="346.0" onMouseClicked="#clickedTxtfldPassword" prefHeight="42.0" prefWidth="350.0" promptText="Password" style="-fx-background-radius: 25; -fx-background-color: #cbdbf7;" visible="false">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="428.0" layoutY="16.0" onMouseClicked="#actionBackBtn" text="Back" textAlignment="CENTER" textFill="#752323" underline="true">
+               <font>
+                  <Font name="Consolas Italic" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Circle fx:id="circle1" fill="#2b8ac2" layoutX="104.0" layoutY="235.0" radius="390.0" stroke="#989eeb" strokeType="INSIDE" />
+      <AnchorPane fx:id="paneWelcome" layoutX="13.0" layoutY="16.0" prefHeight="584.0" prefWidth="469.0">
+         <children>
+            <Text layoutX="46.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Again..." wrappingWidth="362.58251953125">
+               <font>
+                  <Font name="System Italic" size="45.0" />
+               </font>
+            </Text>
+            <Text layoutX="92.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Have A Nice Day..." wrappingWidth="362.58251953125">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Text>
+            <Text layoutX="74.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D24 Hostel System v1.0.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="closeBtnImgView" fitHeight="68.0" fitWidth="58.0" onMouseClicked="#clickedCloseBtn" onMouseEntered="#actionCloseBtnEntered" onMouseExited="#actionCloseBtnExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons/cancelblue.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <JFXButton fx:id="ClickLoginBtn" layoutX="112.0" layoutY="382.0" onAction="#clickLoginBtnOnAction" prefHeight="51.0" prefWidth="190.0" style="-fx-background-radius: 100; -fx-background-color: #0c6611;" text="Click To Login" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="imgpswdSavePane" fitHeight="426.0" fitWidth="398.0" layoutX="505.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../assests/pswdremovebgpreview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgloginPane" fitHeight="426.0" fitWidth="398.0" layoutX="38.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../assests/loginp.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="paneCmpnyDescribeLogin" layoutX="10.0" layoutY="14.0" prefHeight="306.0" prefWidth="422.0" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="4.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our hostel website! We provide budget-friendly accommodations for ">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="4.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="backpackers and travelers seeking affordable yet comfortable lodgings. Our hostels feature">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="4.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="clean and cozy rooms, communal spaces for socializing, and convenient locations in popular ">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="4.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="destinations. Book your stay now and join our global community of adventurous explorers!">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="4.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No: 74/5, Katuwawala Road, Hostel" />
+            <AnchorPane layoutX="2.0" layoutY="7.0" opacity="0.61" prefHeight="74.0" prefWidth="177.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="210.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/d24hotellogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneCmpnyDescribeResetPswd" layoutX="597.0" layoutY="27.0" opacity="0.85" prefHeight="306.0" prefWidth="439.0" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="31.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our hostel website! We provide budget-friendly accommodations for ">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="-17.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="backpackers and travelers seeking affordable yet comfortable lodgings. Our hostels feature">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="-21.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="clean and cozy rooms, communal spaces for socializing, and convenient locations in popular ">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="-16.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="destinations. Book your stay now and join our global community of adventurous explorers!">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="230.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No: 74/5, Katuwawala Road, Hostel" />
+            <AnchorPane layoutX="250.0" opacity="0.61" prefHeight="74.0" prefWidth="177.0" style="-fx-background-color: white;">
+               <children>
+                  <ImageView fitHeight="60.0" fitWidth="210.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assests/d24hotellogo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Text layoutX="912.0" layoutY="633.0" strokeType="OUTSIDE" strokeWidth="0.0" text="©Developed By Kalgu">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="10.0" layoutY="638.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D24 Hostel System v1.0.0" />
+   </children>
+</AnchorPane>
