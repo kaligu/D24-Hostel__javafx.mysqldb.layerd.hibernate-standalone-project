@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Room_form_controller">
+   <children>
+      <Separator layoutX="156.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="744.0" prefWidth="12.0" style="-fx-border-width: 10;" />
+      <Circle fx:id="navCircle1" fill="WHITE" layoutX="81.0" layoutY="120.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle2" fill="WHITE" layoutX="81.0" layoutY="289.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle3" fill="WHITE" layoutX="81.0" layoutY="462.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle4" fill="WHITE" layoutX="81.0" layoutY="634.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <ImageView fitHeight="105.0" fitWidth="108.0" layoutX="29.0" layoutY="68.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/grtorder.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="116.0" layoutX="34.0" layoutY="242.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/paybill.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="46.0" layoutY="426.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/activeordder.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="66.0" layoutX="51.0" layoutY="598.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/allolddata.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <TableView layoutX="168.0" layoutY="330.0" prefHeight="392.0" prefWidth="1119.0">
+         <columns>
+            <TableColumn prefWidth="314.0" text="Room Type ID" />
+            <TableColumn prefWidth="301.0" text="Type" />
+            <TableColumn prefWidth="255.0" text="Key Money (LKR)" />
+            <TableColumn prefWidth="248.0" text="Rooms QTY" />
+         </columns>
+      </TableView>
+      <JFXTextField layoutX="179.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID ..." />
+      <JFXTextField layoutX="497.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ..." />
+      <AnchorPane layoutX="179.0" layoutY="24.0" prefHeight="197.0" prefWidth="1119.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   </children>
+</AnchorPane>

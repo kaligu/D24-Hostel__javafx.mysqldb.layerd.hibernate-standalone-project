@@ -61,7 +61,6 @@ public class Login_Form_Controller {
     }
 
     public void loginBtnOnAction(ActionEvent actionEvent) {
-
     }
 
     public void actionCloseBtnEntered(MouseEvent mouseEvent) {

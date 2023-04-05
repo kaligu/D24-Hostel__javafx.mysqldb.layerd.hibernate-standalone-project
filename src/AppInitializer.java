@@ -16,10 +16,10 @@ public class AppInitializer extends Application {
     public void start(Stage primaryStage) throws IOException {
         primaryStage.setScene(new Scene(
                 FXMLLoader.load(
-                        getClass().getResource("lk/d24/hostelsystem/view/forms/Login_Form.fxml")
+                        getClass().getResource("lk/d24/hostelsystem/view/forms/Dashboard_form.fxml")
                 )
         ));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+       // primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.centerOnScreen();
         primaryStage.show();
     }

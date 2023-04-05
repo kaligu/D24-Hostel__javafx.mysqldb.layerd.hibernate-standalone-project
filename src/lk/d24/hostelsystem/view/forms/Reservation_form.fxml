@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Placeorder_form_controller">
+   <children>
+      <AnchorPane layoutX="17.0" layoutY="486.0" prefHeight="248.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+         <children>
+            <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Room here ..." underline="true">
+               <font>
+                  <Font name="System Italic" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="17.0" layoutY="212.0" prefHeight="248.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+         <children>
+            <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Room here ..." underline="true">
+               <font>
+                  <Font name="System Italic" size="17.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="997.0" layoutY="187.0" prefHeight="43.0" prefWidth="271.0" style="-fx-background-color: #04c911;" text="+ ADD to Cart" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXTextField layoutX="997.0" layoutY="136.0" prefHeight="43.0" prefWidth="271.0" promptText="Type QTY here ..." />
+            <AnchorPane fx:id="paneSearch11" layoutX="997.0" layoutY="34.0" prefHeight="90.0" prefWidth="271.0" style="-fx-background-color: #9B9B9B;">
+               <children>
+                  <Text layoutX="19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="50.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                     <font>
+                        <Font name="Segoe UI Italic" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="105.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                     <font>
+                        <Font name="Segoe UI Italic" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="17.0" layoutY="52.0" prefHeight="137.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+         <children>
+            <JFXComboBox layoutX="14.0" layoutY="32.0" prefHeight="43.0" prefWidth="226.0" promptText="Select Student here ..." />
+            <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Room here ..." underline="true">
+               <font>
+                  <Font name="System Italic" size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneSearch1" layoutX="270.0" layoutY="86.0" prefHeight="90.0" prefWidth="1016.0" style="-fx-background-color: #9B9B9B;">
+         <children>
+            <Text layoutX="19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="667.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="347.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="339.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="671.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="105.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="743.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="441.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="441.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="743.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Text layoutX="17.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve ID :" underline="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#7c7c7c" layoutX="108.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+         <font>
+            <Font name="Segoe UI Italic" size="15.0" />
+         </font>
+      </Text>
+      <TableView layoutX="25.0" layoutY="244.0" prefHeight="204.0" prefWidth="972.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TableView>
+      <TableView layoutX="29.0" layoutY="518.0" prefHeight="204.0" prefWidth="972.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <JFXButton layoutX="1018.0" layoutY="639.0" prefHeight="79.0" prefWidth="267.0" style="-fx-background-color: #01800a;" text="Order Place" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

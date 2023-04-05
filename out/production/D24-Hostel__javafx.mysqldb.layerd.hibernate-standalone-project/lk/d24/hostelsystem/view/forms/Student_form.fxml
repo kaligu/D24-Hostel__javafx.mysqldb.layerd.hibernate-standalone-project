@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Student_form_controller">
+   <children>
+      <Separator layoutX="156.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="744.0" prefWidth="12.0" style="-fx-border-width: 10;" />
+      <Circle fx:id="navCircle1" fill="WHITE" layoutX="81.0" layoutY="120.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Circle>
+      <Circle fx:id="navCircle2" fill="WHITE" layoutX="81.0" layoutY="289.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Circle>
+      <Circle fx:id="navCircle3" fill="WHITE" layoutX="81.0" layoutY="462.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Circle>
+      <Circle fx:id="navCircle4" fill="WHITE" layoutX="81.0" layoutY="634.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Circle>
+      <ImageView fitHeight="91.0" fitWidth="88.0" layoutX="38.0" layoutY="76.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/searchicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="249.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/addicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="422.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/updateicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="594.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/deleteicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Separator layoutX="167.0" layoutY="257.0" prefHeight="0.0" prefWidth="1143.0" />
+      <TableView layoutX="179.0" layoutY="335.0" prefHeight="392.0" prefWidth="1119.0">
+        <columns>
+          <TableColumn prefWidth="146.0" text="Student ID" />
+          <TableColumn prefWidth="275.0" text="Name" />
+            <TableColumn prefWidth="228.0" text="Address" />
+            <TableColumn prefWidth="180.0" text="Contact No." />
+            <TableColumn minWidth="6.0" prefWidth="174.0" text="Date Of Birth" />
+            <TableColumn minWidth="6.0" prefWidth="123.0" text="Gender" />
+        </columns>
+      </TableView>
+      <JFXTextField layoutX="179.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Student ID ..." />
+      <JFXTextField layoutX="497.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Student Name ..." />
+      <AnchorPane fx:id="paneSearch" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #d0d6d1;" visible="false">
+         <children>
+            <Text layoutX="19.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="37.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="385.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="376.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="411.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
+         <children>
+            <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="36.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="428.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="420.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="16.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="94.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;" visible="false">
+         <children>
+            <Text layoutX="19.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="37.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="385.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="376.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="411.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="478.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="840.0" layoutY="85.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #c44f4f;" text="- REMOVE" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;" visible="false">
+         <children>
+            <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="36.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="428.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="420.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="455.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="16.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="94.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fabc4;" text="! UPDATE" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

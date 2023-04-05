@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Home_form_controller">
+   <children>
+      <Text layoutX="27.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's achieve more together.">
+         <font>
+            <Font name="Calibri Italic" size="19.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="box1" layoutX="44.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fill="WHITE" layoutX="68.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="   All Rooms" wrappingWidth="82.26222157478333">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="box2" layoutX="298.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="35.0" layoutY="178.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="147.99998408555984">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fill="WHITE" layoutX="35.0" layoutY="41.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms" wrappingWidth="147.99998408555984">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="box3" layoutX="550.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="48.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Rooms" wrappingWidth="122.71484375">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Text>
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="box4" layoutX="802.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="51.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="Not Paid Rooms" wrappingWidth="114.26222157478333">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Text>
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="box5" layoutX="1052.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fill="WHITE" layoutX="26.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="      Rooms expiring today" wrappingWidth="166.0927730202675">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Text>
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <ImageView fitHeight="229.0" fitWidth="261.0" layoutX="1038.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/call.gif" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="paneallroom" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Rooms">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Text>
+            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+               <effect>
+                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#dae9ff" />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="panelreservedrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Text>
+            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+               <effect>
+                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#dae9ff" />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneavailablerooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Rooms">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Text>
+            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+               <effect>
+                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#dae9ff" />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panenotpaidrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not Paid Rooms">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Text>
+            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+               <effect>
+                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#dae9ff" />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneroomexpiretoday" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+         <children>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms expiring today">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Text>
+            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+               <effect>
+                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant color="#dae9ff" />
+                     </light>
+                  </Lighting>
+               </effect>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

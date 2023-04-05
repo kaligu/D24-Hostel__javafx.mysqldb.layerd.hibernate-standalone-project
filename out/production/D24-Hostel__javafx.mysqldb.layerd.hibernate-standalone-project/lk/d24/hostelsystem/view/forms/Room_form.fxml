@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Room_form_controller">
+   <children>
+      <Separator layoutX="156.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="744.0" prefWidth="12.0" style="-fx-border-width: 10;" />
+      <Circle fx:id="navCircle1" fill="WHITE" layoutX="81.0" layoutY="120.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle2" fill="WHITE" layoutX="81.0" layoutY="289.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle3" fill="WHITE" layoutX="81.0" layoutY="462.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <Circle fx:id="navCircle4" fill="WHITE" layoutX="81.0" layoutY="634.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" radius="71.0" stroke="BLACK" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Circle>
+      <ImageView fitHeight="91.0" fitWidth="88.0" layoutX="38.0" layoutY="76.0" onMouseClicked="#actionMouseClickednavCircle1" onMouseEntered="#actionMouseEnterednavCircle1" onMouseExited="#actionMouseExitednavCircle1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/searchicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="249.0" onMouseClicked="#actionMouseClickednavCircle2" onMouseEntered="#actionMouseEnterednavCircle2" onMouseExited="#actionMouseExitednavCircle2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/addicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="422.0" onMouseClicked="#actionMouseClickednavCircle3" onMouseEntered="#actionMouseEnterednavCircle3" onMouseExited="#actionMouseExitednavCircle3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/updateicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="114.0" layoutX="41.0" layoutY="594.0" onMouseClicked="#actionMouseClickednavCircle4" onMouseEntered="#actionMouseEnterednavCircle4" onMouseExited="#actionMouseExitednavCircle4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons/deleteicon.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Separator layoutX="167.0" layoutY="257.0" prefHeight="0.0" prefWidth="1143.0" />
+      <TableView layoutX="179.0" layoutY="335.0" prefHeight="392.0" prefWidth="1119.0">
+         <columns>
+            <TableColumn prefWidth="314.0" text="Room Type ID" />
+            <TableColumn prefWidth="301.0" text="Type" />
+            <TableColumn prefWidth="255.0" text="Key Money (LKR)" />
+            <TableColumn prefWidth="248.0" text="Rooms QTY" />
+         </columns>
+      </TableView>
+      <JFXTextField layoutX="179.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID ..." />
+      <JFXTextField layoutX="497.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ..." />
+      <AnchorPane fx:id="paneSearch" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #d0d6d1;" visible="false">
+         <children>
+            <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="107.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="350.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="385.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms QTY :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="160.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="160.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="492.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="492.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
+         <children>
+            <Text layoutX="31.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="92.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="419.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :" wrappingWidth="119.0185546875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="454.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms QTY :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="RED" layoutX="139.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="139.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="552.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="552.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;" visible="false">
+         <children>
+            <JFXButton layoutX="840.0" layoutY="85.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #c44f4f;" text="- REMOVE" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="44.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="105.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="348.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="383.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms QTY :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="158.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="158.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="490.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+            <Text fill="#7c7c7c" layoutX="490.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font name="Segoe UI Italic" size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;" visible="false">
+         <children>
+            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fabc4;" text="! UPDATE" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Text layoutX="22.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="410.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :" wrappingWidth="119.0185546875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="445.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms QTY :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField focusColor="RED" layoutX="130.0" layoutY="52.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="130.0" layoutY="135.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="543.0" layoutY="135.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="RED" layoutX="543.0" layoutY="52.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
