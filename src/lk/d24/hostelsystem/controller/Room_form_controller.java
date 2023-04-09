@@ -6,10 +6,30 @@
 */
 package lk.d24.hostelsystem.controller;
 
+import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import lk.d24.hostelsystem.dto.RoomDTO;
+import lk.d24.hostelsystem.dto.StudentDTO;
+import lk.d24.hostelsystem.service.ServiceFactory;
+import lk.d24.hostelsystem.service.ServiceTypes;
+import lk.d24.hostelsystem.service.custom.RoomService;
+import lombok.SneakyThrows;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Room_form_controller {
     public Circle navCircle1;
@@ -20,15 +40,66 @@ public class Room_form_controller {
     public AnchorPane paneAdd;
     public AnchorPane paneRemove;
     public AnchorPane paneUpdate;
+    public TableView tblRoom;
+    public TableColumn collRoomTypeId;
+    public TableColumn colType;
+    public TableColumn colKeyMoney;
+    public TableColumn colRoomsqty;
+    public JFXTextField txtfldRoomTypeIdType;
+    public JFXTextField txtfldAddRoomTypeID;
+    public JFXTextField txtfldAddtype;
+    public JFXTextField txtfldAddKeyMoney;
+    public JFXTextField txtfldAddqty;
+    public AnchorPane panefullLoading;
 
+    RoomService roomService;
+
+    List<RoomDTO> roomDTOList;
+
+    private String searchText;
 
 
     public void initialize(){
+        roomService= ServiceFactory.getInstance().getService(ServiceTypes.ROOM);
+
+        roomDTOList=new ArrayList<>();
+
+        searchText="";
+
         clearAllPanes(); //clear all panes
+
+        collRoomTypeId.setCellValueFactory(new PropertyValueFactory<>("room_type_id"));
+        colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("key_money"));
+        colRoomsqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+        searchRooms(searchText);
 
         paneSearch.setVisible(true);  //load search pane
         navCircle1.setStroke(Paint.valueOf("#027a6c"));
         navCircle1.setFill(Paint.valueOf("#027a6c"));
+    }
+
+    private void searchRooms(String searchText){
+        Thread threadTableRun = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                panefullLoading.setVisible(true);
+                tblRoom.getItems().clear();
+                roomDTOList.clear();
+
+                ObservableList<RoomDTO> roomDTOObservableList = FXCollections.observableArrayList();
+
+                roomDTOList = roomService.searchRoomByText(searchText);
+
+                roomDTOObservableList.addAll(roomDTOList);
+
+                tblRoom.setItems(roomDTOObservableList);
+                panefullLoading.setVisible(false);
+            }
+        });
+        threadTableRun.start();
+
     }
 
     private void clearAllPanes(){ //clear all panes
@@ -128,5 +199,65 @@ public class Room_form_controller {
             navCircle4.setStroke(Paint.valueOf("#ffffff"));
             navCircle4.setFill(Paint.valueOf("#ffffff"));
         }
+    }
+
+    public void actionKeyReleasedSearchRoomByIdandType(KeyEvent keyEvent) {
+    }
+
+    public void ClickedAddRoom(ActionEvent actionEvent) {
+        Alert alert1=new Alert(Alert.AlertType.INFORMATION);
+        alert1.setHeaderText("Room Adding Information");
+        alert1.setContentText("This Room added successfully.");
+
+        Alert alert2=new Alert(Alert.AlertType.ERROR);
+        alert2.setHeaderText("Room Adding Information");
+        alert2.setContentText("This Room added not successfully!");
+
+        RoomDTO roomDTO = new RoomDTO(
+                txtfldAddRoomTypeID.getText(),
+                txtfldAddtype.getText(),
+                txtfldAddKeyMoney.getText(),
+                Integer.parseInt(txtfldAddqty.getText())
+        );
+
+        //persist data using thread
+        Thread threadAdd =  new Thread(new Runnable() {
+            @SneakyThrows
+            @Override
+            public void run() {
+                panefullLoading.setVisible(true); //start show loading ui
+                Thread.sleep(500); //make virtual database accessing time length
+                ;
+
+                if(roomService.saveRoom(roomDTO)){
+                    Platform.runLater(() ->
+                            alert1.show()
+                    );
+                    ClearAllAddPanetxtflds();
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }else{
+                    Platform.runLater(() ->
+                            alert2.show()
+                    );
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }
+            }
+        });
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Room Adding Confirmation");
+        alert.setContentText("Are you sure to want you to add this room?");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                threadAdd.start();  //start thread
+            }
+        });
+
+    }
+
+    private void ClearAllAddPanetxtflds() {
+        txtfldAddRoomTypeID.clear();
+        txtfldAddtype.clear();
+        txtfldAddqty.clear();
+        txtfldAddKeyMoney.clear();
     }
 }
