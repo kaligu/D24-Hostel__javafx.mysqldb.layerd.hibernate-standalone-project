@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -69,16 +70,15 @@
          </cursor>
       </ImageView>
       <Separator layoutX="167.0" layoutY="257.0" prefHeight="0.0" prefWidth="1143.0" />
-      <TableView layoutX="179.0" layoutY="335.0" prefHeight="392.0" prefWidth="1119.0">
+      <TableView fx:id="tblRoom" layoutX="179.0" layoutY="335.0" prefHeight="392.0" prefWidth="1119.0">
          <columns>
-            <TableColumn prefWidth="314.0" text="Room Type ID" />
-            <TableColumn prefWidth="301.0" text="Type" />
-            <TableColumn prefWidth="255.0" text="Key Money (LKR)" />
-            <TableColumn prefWidth="248.0" text="Rooms QTY" />
+            <TableColumn fx:id="collRoomTypeId" prefWidth="314.0" text="Room Type ID" />
+            <TableColumn fx:id="colType" prefWidth="301.0" text="Type" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="255.0" text="Key Money (LKR)" />
+            <TableColumn fx:id="colRoomsqty" prefWidth="248.0" text="Rooms QTY" />
          </columns>
       </TableView>
-      <JFXTextField layoutX="179.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID ..." />
-      <JFXTextField layoutX="497.0" layoutY="275.0" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ..." />
+      <JFXTextField fx:id="txtfldRoomTypeIdType" layoutX="179.0" layoutY="275.0" onKeyReleased="#actionKeyReleasedSearchRoomByIdandType" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID ..." />
       <AnchorPane fx:id="paneSearch" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #d0d6d1;" visible="false">
          <children>
             <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
@@ -123,7 +123,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;">
          <children>
             <Text layoutX="31.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
                <font>
@@ -145,27 +145,27 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="RED" layoutX="139.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddRoomTypeID" focusColor="RED" layoutX="139.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="139.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddtype" focusColor="RED" layoutX="139.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="552.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddKeyMoney" focusColor="RED" layoutX="552.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="552.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddqty" focusColor="RED" layoutX="552.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
+            <JFXButton layoutX="840.0" layoutY="127.0" onAction="#ClickedAddRoom" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font>
@@ -277,6 +277,21 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panefullLoading" layoutX="179.0" layoutY="18.0" opacity="0.7" prefHeight="709.0" prefWidth="1119.0" style="-fx-background-color: #e8e9eb;" visible="false">
+         <children>
+            <ProgressIndicator layoutX="309.0" layoutY="177.0" prefHeight="368.0" prefWidth="502.0" />
+            <Text layoutX="503.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Wait...">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="460.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/d24hotellogo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

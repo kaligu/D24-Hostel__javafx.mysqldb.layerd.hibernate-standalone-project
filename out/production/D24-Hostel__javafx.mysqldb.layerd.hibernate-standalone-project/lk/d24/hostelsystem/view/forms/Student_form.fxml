@@ -110,39 +110,39 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentid" fill="#7c7c7c" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentid" fill="#2b2b2b" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentname" fill="#7c7c7c" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentname" fill="#2b2b2b" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentaddress" fill="#7c7c7c" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentaddress" fill="#2b2b2b" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentcontactno" fill="#7c7c7c" layoutX="476.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentcontactno" fill="#2b2b2b" layoutX="476.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentdob" fill="#7c7c7c" layoutX="476.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentdob" fill="#2b2b2b" layoutX="476.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldSearchStudentgender" fill="#7c7c7c" layoutX="476.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtfldSearchStudentgender" fill="#2b2b2b" layoutX="476.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;">
          <children>
             <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>
@@ -174,32 +174,32 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtfldAddStudentid" focusColor="RED" layoutX="109.0" layoutY="16.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentid" focusColor="BLACK" layoutX="109.0" layoutY="16.0" onKeyPressed="#typeActiontxtfldAddStudentid" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentname" focusColor="RED" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentname" focusColor="BLACK" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentaddress" focusColor="RED" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentaddress" focusColor="BLACK" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentcontactno" focusColor="RED" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentcontactno" focusColor="BLACK" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentgender" focusColor="RED" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentgender" focusColor="BLACK" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton layoutX="840.0" layoutY="127.0" onAction="#clickedActionStudentAdd" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
+            <JFXButton fx:id="btnAdd" layoutX="840.0" layoutY="127.0" onAction="#clickedActionStudentAdd" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fc474;" text="+ ADD" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font>
@@ -208,9 +208,14 @@
                </cursor>
             </JFXButton>
             <JFXDatePicker fx:id="txtfldAddStudentdob" defaultColor="BLACK" layoutX="530.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" />
+            <Text fx:id="txthinttxtfldAddStudentid" layoutX="109.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;">
+      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;" visible="false">
          <children>
             <Text layoutX="19.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>
@@ -242,32 +247,32 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentid" fill="#7c7c7c" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentid" fill="#2b2b2b" layoutX="105.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentname" fill="#7c7c7c" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentname" fill="#2b2b2b" layoutX="105.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentaddress" fill="#7c7c7c" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentaddress" fill="#2b2b2b" layoutX="105.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentcontactno" fill="#7c7c7c" layoutX="478.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentcontactno" fill="#2b2b2b" layoutX="478.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentdob" fill="#7c7c7c" layoutX="478.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentdob" fill="#2b2b2b" layoutX="478.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="txtfldRemoveStudentgender" fill="#7c7c7c" layoutX="478.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveStudentgender" fill="#2b2b2b" layoutX="478.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>

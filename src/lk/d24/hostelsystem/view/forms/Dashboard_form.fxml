@@ -9,29 +9,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="panemain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#ActionMainPaneMouseEntered" prefHeight="822.0" prefWidth="1630.0" style="-fx-background-color: #c2a9d1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Dashboard_form_controller">
+<AnchorPane fx:id="panemain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#ActionMainPaneMouseEntered" prefHeight="822.0" prefWidth="1473.0" style="-fx-background-color: #c2a9d1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Dashboard_form_controller">
    <children>
-      <ScrollPane layoutX="307.0" layoutY="64.0" prefHeight="749.0" prefWidth="1313.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="64.0">
+      <ScrollPane layoutX="149.0" layoutY="59.0" prefHeight="749.0" prefWidth="1313.0" style="-fx-background-color: #f9edff;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="149.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="59.0">
          <content>
-            <AnchorPane fx:id="panecontext" prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: white;">
+            <AnchorPane fx:id="panecontext" prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;">
                <cursor>
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor></AnchorPane>
          </content>
       </ScrollPane>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="820.0" prefWidth="301.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="-2.0" prefHeight="822.0" prefWidth="141.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-2.0">
          <content>
-            <AnchorPane prefHeight="1200.0" prefWidth="299.0" style="-fx-background-color: #a179b9;">
+            <AnchorPane prefHeight="1205.0" prefWidth="139.0" style="-fx-background-color: #a179b9;">
                <children>
-                  <AnchorPane fx:id="box1" layoutX="19.0" layoutY="226.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box1" layoutX="22.0" layoutY="226.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="72.0" fitWidth="79.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/reserveicon.png" />
                            </image>
@@ -39,14 +37,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="44.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="Make Reservation" wrappingWidth="109.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">
@@ -63,12 +53,12 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box2" layoutX="19.0" layoutY="344.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box2" layoutX="22.0" layoutY="344.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="22.0" layoutY="17.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/reservedetailicon.png" />
                            </image>
@@ -76,14 +66,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="45.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Details" wrappingWidth="99.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">
@@ -100,12 +82,12 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box3" layoutX="19.0" layoutY="461.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box3" layoutX="22.0" layoutY="461.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="65.0" fitWidth="69.0" layoutX="27.0" layoutY="16.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/student.png" />
                            </image>
@@ -113,14 +95,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="45.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Manage" wrappingWidth="78.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">
@@ -137,12 +111,12 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box4" layoutX="19.0" layoutY="580.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box4" layoutX="22.0" layoutY="580.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="65.0" fitWidth="69.0" layoutX="25.0" layoutY="16.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/room.png" />
                            </image>
@@ -150,14 +124,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="45.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Manage" wrappingWidth="78.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">
@@ -174,12 +140,12 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box5" layoutX="19.0" layoutY="700.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box5" layoutX="22.0" layoutY="700.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="27.0" layoutY="16.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/setting.png" />
                            </image>
@@ -187,14 +153,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="55.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" wrappingWidth="78.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">
@@ -211,12 +169,12 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="boxHome" layoutX="22.0" layoutY="112.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" prefHeight="99.0" prefWidth="258.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="boxHome" layoutX="22.0" layoutY="112.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <children>
-                        <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="17.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assests/icons/home2.png" />
                            </image>
@@ -224,14 +182,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="129.0" layoutY="55.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="109.88623046875">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Text>
                      </children>
                      <effect>
                         <Bloom threshold="0.07">

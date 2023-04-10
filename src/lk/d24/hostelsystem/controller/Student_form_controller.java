@@ -1,5 +1,6 @@
 package lk.d24.hostelsystem.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
@@ -22,6 +23,8 @@ import lk.d24.hostelsystem.dto.StudentDTO;
 import lk.d24.hostelsystem.service.ServiceFactory;
 import lk.d24.hostelsystem.service.ServiceTypes;
 import lk.d24.hostelsystem.service.custom.StudentService;
+import lk.d24.hostelsystem.view.custom.Validatetxtfld;
+import lk.d24.hostelsystem.view.custom.impl.ValidatetxtfldImpl;
 import lombok.SneakyThrows;
 
 import java.text.ParseException;
@@ -77,6 +80,8 @@ public class Student_form_controller {
     public Text txtfldRemoveStudentcontactno;
     public Text txtfldRemoveStudentdob;
     public Text txtfldRemoveStudentgender;
+    public JFXButton btnAdd;
+    public Text txthinttxtfldAddStudentid;
 
     StudentService studentService;
 
@@ -84,7 +89,11 @@ public class Student_form_controller {
 
     private String searchText;
 
+    Validatetxtfld validatetxtfld;
+
     public void initialize(){
+        validatetxtfld = new ValidatetxtfldImpl(); //text field validation interface
+
         studentService= ServiceFactory.getInstance().getService(ServiceTypes.STUDENT);
 
         studentDTOList=new ArrayList<>();
@@ -475,5 +484,9 @@ public class Student_form_controller {
 
          */
 
+    }
+
+    public void typeActiontxtfldAddStudentid(KeyEvent keyEvent) {
+        validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid);
     }
 }
