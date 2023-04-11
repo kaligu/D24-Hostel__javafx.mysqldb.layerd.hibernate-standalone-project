@@ -90,8 +90,15 @@ public class Student_form_controller {
     public Text txthinttxtfldAddStudentcontactno;
     public Text txthinttxtfldAddStudentgender;
     public Text txthinttxtfldAddStudentdob;
+    public Text txthinttxtfldUpdateStudentdob1;
+    public Text txthinttxtfldUpdateStudentgender1;
+    public Text txthinttxtfldUpdateStudentcontactno1;
+    public Text txthinttxtfldUpdateStudentaddress1;
+    public Text txthinttxtfldUpdateStudentname1;
+    public Text txthinttxtfldUpdateStudentid1;
 
-    boolean isValidatingOn;
+    boolean isValidatingOnAdd;
+    boolean isValidatingOnUpdate;
 
     StudentService studentService;
 
@@ -102,7 +109,9 @@ public class Student_form_controller {
     Validatetxtfld validatetxtfld;
 
     public void initialize(){
-        isValidatingOn = false;
+        isValidatingOnAdd = false;
+
+        isValidatingOnUpdate = false;
 
         validatetxtfld = new ValidatetxtfldImpl(); //text field validation interface
 
@@ -251,12 +260,12 @@ public class Student_form_controller {
     public void clickedActionStudentAdd(ActionEvent actionEvent) throws ParseException {
 
         Alert alert1=new Alert(Alert.AlertType.INFORMATION);
-        alert1.setHeaderText("Room Adding Information");
-        alert1.setContentText("This Room added successfully.");
+        alert1.setHeaderText("Student Adding Information");
+        alert1.setContentText("This Student added successfully.");
 
         Alert alert2=new Alert(Alert.AlertType.ERROR);
-        alert2.setHeaderText("Room Adding Information");
-        alert2.setContentText("This Room added not successfully!");
+        alert2.setHeaderText("Student Adding Information");
+        alert2.setContentText("This Student added not successfully!");
 
         //persist data using thread
         Thread threadAdd =  new Thread(new Runnable() {
@@ -278,12 +287,13 @@ public class Student_form_controller {
                 );
 
                 if(studentService.saveStudent(studentDTO)){
+                    clearAllPanetxtflds();
+                    txtfldStudentIDName.clear();
+                    searchStudent("");
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
                     Platform.runLater(() ->
                             alert1.show()
                     );
-                    clearAllAddPanetxtflds();
-                    searchStudent(searchText);
-                    panefullLoading.setVisible(false); //after task completed hide loading pane
                 }else{
                     Platform.runLater(() ->
                             alert2.show()
@@ -292,6 +302,7 @@ public class Student_form_controller {
                 }
             }
         });
+
         if((validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid))&
                 (validatetxtfld.validateTxtfldStudentName(txtfldAddStudentname , txthinttxtfldAddStudentname))&
                 (validatetxtfld.validateTxtfldStudentAddress(txtfldAddStudentaddress , txthinttxtfldAddStudentaddress))&
@@ -299,9 +310,10 @@ public class Student_form_controller {
                 (validatetxtfld.validateTxtfldStudentGender(txtfldAddStudentgender , txthinttxtfldAddStudentgender))&
                 (validatetxtfld.validateTxtfldStudentdob(txtfldAddStudentdob , txthinttxtfldAddStudentdob)) ){
 
+            isValidatingOnAdd=false;
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Room Adding Confirmation");
-            alert.setContentText("Are you sure to want you to add this room?");
+            alert.setHeaderText("Student Adding Confirmation");
+            alert.setContentText("Are you sure to want you to add this Student?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                    threadAdd.start();  //start thread
@@ -309,7 +321,7 @@ public class Student_form_controller {
             });
 
         }else{
-            isValidatingOn=true;
+            isValidatingOnAdd=true;
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Invalid data entered!");
             alert.setContentText("You have entered invalid data.Please retype and try again. ");
@@ -317,13 +329,31 @@ public class Student_form_controller {
         }
 
     }
-    private void clearAllAddPanetxtflds(){
-        txtfldAddStudentid.clear();
-        txtfldAddStudentname.clear();
-        txtfldAddStudentaddress.clear();
-        txtfldAddStudentcontactno.clear();
-        txtfldAddStudentgender.clear();
-        txtfldAddStudentdob.getEditor().clear(); //clear date picker
+    private void clearAllPanetxtflds(){
+        if(paneRemove.isVisible()) {
+            txtfldRemoveStudentid.setText("");
+            txtfldRemoveStudentname.setText("");
+            txtfldRemoveStudentaddress.setText("");
+            txtfldRemoveStudentcontactno.setText("");
+            txtfldRemoveStudentgender.setText("");
+            txtfldRemoveStudentdob.setText(""); //clear date picker
+        }
+        if(paneAdd.isVisible()) {
+            txtfldAddStudentid.clear();
+            txtfldAddStudentname.clear();
+            txtfldAddStudentaddress.clear();
+            txtfldAddStudentcontactno.clear();
+            txtfldAddStudentgender.clear();
+            txtfldAddStudentdob.getEditor().clear(); //clear date picker
+        }
+        if(paneUpdate.isVisible()) {
+            txtfldUpdateStudentid.clear();
+            txtfldUpdateStudentname.clear();
+            txtfldUpdateStudentaddress.clear();
+            txtfldUpdateStudentcontactno.clear();
+            txtfldUpdateStudentcontactno.clear();
+            txtfldUpdateStudentdob.getEditor().clear(); //clear date picker
+        }
     }
 
     public void actionKeyReleasedSearchStudentIDOrName(KeyEvent keyEvent) {
@@ -374,50 +404,71 @@ public class Student_form_controller {
     }
 
     public void clickedActionStudentUpdate(ActionEvent actionEvent) throws ParseException {
-        StudentDTO studentDTO = new StudentDTO(
-                txtfldUpdateStudentid.getText(),
-                txtfldUpdateStudentname.getText(),
-                txtfldUpdateStudentaddress.getText(),
-                txtfldUpdateStudentcontactno.getText(),
-                txtfldUpdateStudentdob.getValue(),
-                txtfldUpdateStudentgender.getText()
-        );
+        Alert alert1=new Alert(Alert.AlertType.INFORMATION);
+        alert1.setHeaderText("Student Updating Information");
+        alert1.setContentText("This Room Updated successfully.");
 
-        Task<Void> taskUpdate = new Task<Void>() {
+        Alert alert2=new Alert(Alert.AlertType.ERROR);
+        alert2.setHeaderText("Student Updating Information");
+        alert2.setContentText("This Student updated not successfully!");
+
+        //persist data using thread
+        Thread threadAdd =  new Thread(new Runnable() {
+            @SneakyThrows
             @Override
-            protected Void call() throws Exception {
+            public void run() {
+                panefullLoading.setVisible(true); //start show loading ui
+                Thread.sleep(500); //make virtual database accessing time length
 
-                panefullLoading.setVisible(true);
-                Thread.sleep(500);
-                studentService.updateStudent(studentDTO);
-                clearAllUpdatePanetxtflds();
-                searchStudent(searchText);
-                return null;
-            }
+                StudentDTO studentDTO = new StudentDTO(
+                        txtfldUpdateStudentid.getText(),
+                        txtfldUpdateStudentname.getText(),
+                        txtfldUpdateStudentaddress.getText(),
+                        txtfldUpdateStudentcontactno.getText(),
+                        txtfldUpdateStudentdob.getValue(),
+                        txtfldUpdateStudentgender.getText()
+                );
 
-            @Override
-            protected void succeeded() {
-                panefullLoading.setVisible(false);
-            }
-        };
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Student Updating Confirmation");
-        alert.setContentText("Are you sure to want you to Update this student?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                Thread threadUpdate = new Thread(taskUpdate);
-                threadUpdate.start();  //start thread
+                if(studentService.updateStudent(studentDTO)){
+                    clearAllPanetxtflds();
+                    txtfldStudentIDName.clear();
+                    isValidatingOnUpdate=false;
+                    searchStudent("");
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                    Platform.runLater(() ->
+                            alert1.show()
+                    );
+                }else{
+                    Platform.runLater(() ->
+                            alert2.show()
+                    );
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }
             }
         });
-    }
+        if((validatetxtfld.validateTxtfldStudentId(txtfldUpdateStudentid , txthinttxtfldUpdateStudentid1))&
+                (validatetxtfld.validateTxtfldStudentName(txtfldUpdateStudentname , txthinttxtfldUpdateStudentname1))&
+                (validatetxtfld.validateTxtfldStudentAddress(txtfldUpdateStudentaddress , txthinttxtfldUpdateStudentaddress1))&
+                (validatetxtfld.validateTxtfldStudentContactNo(txtfldUpdateStudentcontactno , txthinttxtfldUpdateStudentcontactno1))&
+                (validatetxtfld.validateTxtfldStudentGender(txtfldUpdateStudentgender , txthinttxtfldUpdateStudentgender1))&
+                (validatetxtfld.validateTxtfldStudentdob(txtfldUpdateStudentdob , txthinttxtfldUpdateStudentdob1)) ){
 
-    private void clearAllUpdatePanetxtflds() {
-        txtfldUpdateStudentid.clear();
-        txtfldUpdateStudentname.clear();
-        txtfldUpdateStudentaddress.clear();
-        txtfldUpdateStudentcontactno.clear();
-        txtfldUpdateStudentgender.clear();
-        txtfldUpdateStudentdob.getEditor().clear(); //clear date picker
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Student Updating Confirmation");
+            alert.setContentText("Are you sure to want you to Update this student?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    threadAdd.start();  //start thread
+                }
+            });
+
+        }else{
+            isValidatingOnUpdate=true;
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid data entered!");
+            alert.setContentText("You have entered invalid data.Please retype and try again. ");
+            alert.show();
+        }
     }
 
     public void clickedActionStudentRemove(ActionEvent actionEvent) {
@@ -429,17 +480,6 @@ public class Student_form_controller {
                 LocalDate.parse(txtfldRemoveStudentdob.getText()),
                 txtfldRemoveStudentgender.getText()
         );
-
-        Thread threadRemove = new Thread(new Runnable() {
-            @SneakyThrows
-            @Override
-            public void run() {
-                System.out.println("next");
-                Thread.sleep(4000);
-
-            }
-
-        });
         Alert alert1=new Alert(Alert.AlertType.INFORMATION);
         alert1.setHeaderText("Student Removed");
         alert1.setContentText("This Student removed successfully.");
@@ -455,16 +495,14 @@ public class Student_form_controller {
                 panefullLoading.setVisible(true);
                 Thread.sleep(500);
                 if(studentService.deleteStudent(studentDTO)){
-                    System.out.println("t");
+                    clearAllPanetxtflds();
+                    txtfldStudentIDName.clear();
+                    searchStudent("");
+                    panefullLoading.setVisible(false);
                     Platform.runLater(() ->
                             alert1.show()
                     );
-                    clearAllUpdatePanetxtflds();
-                    searchStudent(searchText);
-                    panefullLoading.setVisible(false);
                 }else{
-                    System.out.println("f");
-
                     Platform.runLater(() ->
                             alert2.show()
                     );
@@ -480,83 +518,79 @@ public class Student_form_controller {
                 threadBack.start();  //start thread
             }
         });
-
-
-        /*
-        Task<Void> taskRemove = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                System.out.println("start");
-                panefullLoading.setVisible(true);
-                Thread.sleep(500);
-                if(studentService.deleteStudent(studentDTO)){
-                    System.out.println("t");
-                    Alert alert1=new Alert(Alert.AlertType.INFORMATION);
-                    alert1.setHeaderText("Student Removed");
-                    alert1.setContentText("This Student removed successfully.");
-                    alert1.show();
-                    clearAllUpdatePanetxtflds();
-                    searchStudent(searchText);
-                    panefullLoading.setVisible(false);
-                }else{
-                    System.out.println("f");
-                    Alert alert2=new Alert(Alert.AlertType.ERROR);
-                    alert2.setHeaderText("Student Removing Confirmation");
-                    alert2.setContentText("This Student removed not successfully!");
-                    alert2.show();
-                    panefullLoading.setVisible(false);
-                }
-                return null;
-            }
-        };
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Student Removing Confirmation");
-        alert.setContentText("Are you sure to want you to Remove this student?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                Thread threadRemove = new Thread(taskRemove);
-                threadRemove.start();  //start thread
-            }
-        });
-
-         */
-
     }
 
 
     public void typeActiontxtfldAddStudentid(KeyEvent keyEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid);
+            System.out.println(validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid));
         }
     }
 
     public void typeActiontxtfldAddStudentname(KeyEvent keyEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentName(txtfldAddStudentname , txthinttxtfldAddStudentname);
         }
     }
 
     public void typeActiontxtfldAddStudentAddress(KeyEvent keyEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentAddress(txtfldAddStudentaddress , txthinttxtfldAddStudentaddress);
         }
     }
 
     public void typeActiontxtfldAddStudentContactno(KeyEvent keyEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentContactNo(txtfldAddStudentcontactno , txthinttxtfldAddStudentcontactno);
         }
     }
 
     public void typeActiontxtfldAddStudentGender(KeyEvent keyEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentGender(txtfldAddStudentgender , txthinttxtfldAddStudentgender);
         }
     }
 
     public void typeActiontxtfldAddStudentdob(ActionEvent actionEvent) {
-        if(isValidatingOn) {
+        if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentdob(txtfldAddStudentdob , txthinttxtfldAddStudentdob);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentdob(ActionEvent actionEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentdob(txtfldAddStudentdob , txthinttxtfldUpdateStudentdob1);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentgender(KeyEvent keyEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentGender(txtfldUpdateStudentgender , txthinttxtfldUpdateStudentgender1);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentcontactno(KeyEvent keyEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentContactNo(txtfldUpdateStudentcontactno , txthinttxtfldUpdateStudentcontactno1);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentaddress(KeyEvent keyEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentAddress(txtfldUpdateStudentaddress , txthinttxtfldUpdateStudentaddress1);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentname(KeyEvent keyEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentName(txtfldUpdateStudentname , txthinttxtfldUpdateStudentname1);
+        }
+    }
+
+    public void typeActiontxtfldUpdateStudentid1(KeyEvent keyEvent) {
+        if(isValidatingOnUpdate) {
+            validatetxtfld.validateTxtfldStudentId(txtfldUpdateStudentid , txthinttxtfldUpdateStudentid1);
         }
     }
 }

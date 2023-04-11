@@ -67,7 +67,7 @@ public class StudentDAOImpl implements StudentDAO {
     public List<Student> searchStudentByText(String text, Session session) {
         List<Student> studentList = new ArrayList<>();
 
-        String hql = "FROM Student E WHERE E.id like '%"+text+"%'";
+        String hql = "FROM Student E WHERE E.id like '%"+text+"%' or E.name like '%"+text+"%'";
         Query query = session.createQuery(hql);
         studentList=query.list();
         return studentList;

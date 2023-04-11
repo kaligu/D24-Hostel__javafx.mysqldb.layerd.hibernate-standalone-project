@@ -77,7 +77,7 @@
             <TableColumn fx:id="colGender" minWidth="6.0" prefWidth="123.0" text="Gender" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtfldStudentIDName" layoutX="179.0" layoutY="275.0" onKeyReleased="#actionKeyReleasedSearchStudentIDOrName" prefHeight="29.0" prefWidth="270.0" promptText="Search by Student ID ..." />
+      <JFXTextField fx:id="txtfldStudentIDName" layoutX="179.0" layoutY="275.0" onKeyReleased="#actionKeyReleasedSearchStudentIDOrName" prefHeight="29.0" prefWidth="270.0" promptText="Search by Student ID or Name ..." />
       <AnchorPane fx:id="paneSearch" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #d0d6d1;" visible="false">
          <children>
             <Text layoutX="19.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
@@ -142,7 +142,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;">
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
          <children>
             <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>
@@ -312,7 +312,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;" visible="false">
+      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="232.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;">
          <children>
             <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>
@@ -344,27 +344,27 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtfldUpdateStudentid" focusColor="RED" layoutX="109.0" layoutY="16.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateStudentid" focusColor="BLACK" layoutX="109.0" layoutY="16.0" onKeyReleased="#typeActiontxtfldUpdateStudentid1" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldUpdateStudentname" focusColor="RED" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateStudentname" focusColor="BLACK" layoutX="109.0" layoutY="93.0" onKeyReleased="#typeActiontxtfldUpdateStudentname" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldUpdateStudentaddress" focusColor="RED" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateStudentaddress" focusColor="BLACK" layoutX="109.0" layoutY="166.0" onKeyReleased="#typeActiontxtfldUpdateStudentaddress" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldUpdateStudentcontactno" focusColor="RED" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateStudentcontactno" focusColor="BLACK" layoutX="530.0" layoutY="25.0" onKeyReleased="#typeActiontxtfldUpdateStudentcontactno" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldUpdateStudentgender" focusColor="RED" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateStudentgender" focusColor="BLACK" layoutX="530.0" layoutY="166.0" onKeyReleased="#typeActiontxtfldUpdateStudentgender" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
@@ -377,7 +377,37 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXDatePicker fx:id="txtfldUpdateStudentdob" defaultColor="BLACK" layoutX="530.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" />
+            <JFXDatePicker fx:id="txtfldUpdateStudentdob" defaultColor="BLACK" layoutX="530.0" layoutY="93.0" onAction="#typeActiontxtfldUpdateStudentdob" prefHeight="37.0" prefWidth="270.0" />
+            <Text fx:id="txthinttxtfldUpdateStudentid1" layoutX="109.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldUpdateStudentname1" layoutX="109.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldUpdateStudentaddress1" layoutX="109.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldUpdateStudentcontactno1" layoutX="530.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldUpdateStudentgender1" layoutX="530.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldUpdateStudentdob1" layoutX="530.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneLoading" layoutX="180.0" layoutY="359.0" prefHeight="368.0" prefWidth="1119.0" style="-fx-background-color: #e8e9eb;" visible="false">
