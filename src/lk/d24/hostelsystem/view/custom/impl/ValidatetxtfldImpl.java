@@ -114,4 +114,72 @@ public class ValidatetxtfldImpl implements Validatetxtfld {
             return false;
         }
     }
+
+    @Override
+    public boolean validateTxtfldRoomTypeId(JFXTextField textField, Text text) {
+        if (textField.getText().matches("^RM-[0-9]{4}$")) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Type a Valid Room Type ID.Such as 'RM-xxxx'.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateTxtfldRoomType(JFXTextField textField, Text text) {
+        if (textField.getText().matches("(?:AC|Non-AC|AC/Food|Non_AC/Food)$")) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Type a Valid Room Type.Valid Room types are 'AC', 'Non-AC', 'AC/Food', 'Non_AC/Food'.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateTxtfldRoomQty(JFXTextField textField, Text text) {
+        if (textField.getText().matches("^[0-9]*$") & textField.getText().length()>0) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Type a Valid Room Qty.Only natural numbers.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateTxtfldRoomKeymoney(JFXTextField textField, Text text) {
+        if (textField.getText().matches("^(0|[1-9]\\d*)(\\.\\d+)?$")) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Type a Valid Room Qty.natural values or decimal values.");
+            text.setVisible(true);
+            return false;
+        }
+    }
 }

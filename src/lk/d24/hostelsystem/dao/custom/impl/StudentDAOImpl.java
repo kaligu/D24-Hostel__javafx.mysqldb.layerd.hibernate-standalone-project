@@ -44,11 +44,9 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean delete(Student entity, Session session) {
         try {
             session.delete(entity);
-            System.out.println("done");
             return true;
 
         } catch (HibernateException e) {
-            System.out.println("not");
             return false;
         }
     }

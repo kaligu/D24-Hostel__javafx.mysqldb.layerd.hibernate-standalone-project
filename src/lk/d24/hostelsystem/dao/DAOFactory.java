@@ -6,6 +6,7 @@
 */
 package lk.d24.hostelsystem.dao;
 
+import lk.d24.hostelsystem.dao.custom.impl.ReserveDAOImpl;
 import lk.d24.hostelsystem.dao.custom.impl.RoomDAOImpl;
 import lk.d24.hostelsystem.dao.custom.impl.StudentDAOImpl;
 import net.bytebuddy.asm.Advice;
@@ -24,6 +25,8 @@ public class DAOFactory {
                 return (T)new StudentDAOImpl();
             case ROOM:
                 return (T)new RoomDAOImpl();
+            case RESERVE:
+                return (T)new ReserveDAOImpl();
             default:
                 return null;
         }

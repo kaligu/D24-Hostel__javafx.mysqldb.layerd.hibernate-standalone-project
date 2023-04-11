@@ -9,6 +9,7 @@ package lk.d24.hostelsystem.dao.custom.impl;
 import lk.d24.hostelsystem.dao.custom.RoomDAO;
 import lk.d24.hostelsystem.entity.Room;
 import lk.d24.hostelsystem.entity.Student;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -27,12 +28,23 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public boolean update(Room entity, Session session) {
-        return false;
+        try {
+            session.update(entity);
+            return true;
+        } catch (HibernateException e) {
+            return false;
+        }
     }
 
     @Override
     public boolean delete(Room entity, Session session) {
-        return false;
+        try {
+            session.delete(entity);
+            return true;
+
+        } catch (HibernateException e) {
+            return false;
+        }
     }
 
     @Override
@@ -48,8 +60,7 @@ public class RoomDAOImpl implements RoomDAO {
     @Override
     public List<Room> searchRoomByText(String text, Session session) {
         List<Room> roomList = new ArrayList<>();
-
-        String hql = "FROM Room E WHERE E.room_type_id like '%"+text+"%'";
+        String hql = "FROM Room E WHERE E.room_type_id like '%"+text+"%' or E.type like '%"+text+"%'";
         Query query = session.createQuery(hql);
         roomList=query.list();
         return roomList;

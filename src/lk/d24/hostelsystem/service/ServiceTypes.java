@@ -8,5 +8,6 @@ package lk.d24.hostelsystem.service;
 
 public enum ServiceTypes {
     STUDENT,
-    ROOM
+    ROOM,
+    RESERVE
 }

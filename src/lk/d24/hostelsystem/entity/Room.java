@@ -32,7 +32,7 @@ public class Room implements SuperEntity, Serializable {
     private String type;
 
     @Column(name="key_money",columnDefinition = "VARCHAR(255)")
-    private String key_money;
+    private double key_money;
 
     @Column(name="qty",columnDefinition = "INT")
     private int qty;

@@ -35,6 +35,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean saveRoom(RoomDTO roomDTO) {
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
@@ -56,7 +58,53 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public boolean updateRoom(RoomDTO roomDTO) {
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
+            try{
+                roomDAO.update(convertor.toRoom(roomDTO) , session);
+                transaction.commit();
+                return true;
+            }catch (HibernateException e){
+                if(session!=null) {
+                    transaction.rollback();
+                }
+                return false;
+            }finally {
+                session.close();
+            }
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteRoom(RoomDTO roomDTO) {
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        try{
+            roomDAO.delete(convertor.toRoom(roomDTO) , session);
+            transaction.commit();
+            return true;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
     public List<RoomDTO> searchRoomByText(String text) {
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 

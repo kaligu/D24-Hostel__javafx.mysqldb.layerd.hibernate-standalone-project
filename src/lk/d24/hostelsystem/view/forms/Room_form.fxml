@@ -70,7 +70,7 @@
          </cursor>
       </ImageView>
       <Separator layoutX="167.0" layoutY="257.0" prefHeight="0.0" prefWidth="1143.0" />
-      <TableView fx:id="tblRoom" layoutX="179.0" layoutY="335.0" prefHeight="392.0" prefWidth="1119.0">
+      <TableView fx:id="tblRoom" layoutX="179.0" layoutY="335.0" onMouseClicked="#clickedTableRow" prefHeight="392.0" prefWidth="1119.0">
          <columns>
             <TableColumn fx:id="collRoomTypeId" prefWidth="314.0" text="Room Type ID" />
             <TableColumn fx:id="colType" prefWidth="301.0" text="Type" />
@@ -78,7 +78,7 @@
             <TableColumn fx:id="colRoomsqty" prefWidth="248.0" text="Rooms QTY" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtfldRoomTypeIdType" layoutX="179.0" layoutY="275.0" onKeyReleased="#actionKeyReleasedSearchRoomByIdandType" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID ..." />
+      <JFXTextField fx:id="txtfldRoomTypeIdType" layoutX="179.0" layoutY="275.0" onKeyReleased="#actionKeyReleasedSearchRoomByIdandType" prefHeight="29.0" prefWidth="270.0" promptText="Search by Room Type ID or Type..." />
       <AnchorPane fx:id="paneSearch" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #d0d6d1;" visible="false">
          <children>
             <Text layoutX="46.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
@@ -86,7 +86,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="107.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
+            <Text layoutX="107.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type :">
                <font>
                   <Font size="15.0" />
                </font>
@@ -101,29 +101,29 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="160.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldSearchRoomTypeID" fill="#2b2b2b" layoutX="160.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="160.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldSearchRoomType" fill="#2b2b2b" layoutX="160.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="492.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldSearchRoomqty" fill="#2b2b2b" layoutX="492.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="492.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldSearchroomkeymoney" fill="#2b2b2b" layoutX="492.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;">
+      <AnchorPane fx:id="paneAdd" layoutX="179.0" layoutY="22.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cffcdb;" visible="false">
          <children>
             <Text layoutX="31.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID :">
                <font>
@@ -145,22 +145,22 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtfldAddRoomTypeID" focusColor="RED" layoutX="139.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddRoomTypeID" focusColor="BLACK" layoutX="139.0" layoutY="46.0" onKeyReleased="#typeActiontxtfldAddRoomTypeID" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddtype" focusColor="RED" layoutX="139.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddRoomtype" focusColor="BLACK" layoutX="139.0" layoutY="129.0" onKeyReleased="#typeActiontxtfldAddRoomtype" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddKeyMoney" focusColor="RED" layoutX="552.0" layoutY="129.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddKeyMoney" focusColor="BLACK" layoutX="552.0" layoutY="129.0" onKeyReleased="#typeActiontxtfldAddKeyMoney" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddqty" focusColor="RED" layoutX="552.0" layoutY="46.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddRoomqty" focusColor="BLACK" layoutX="552.0" layoutY="45.0" onKeyReleased="#typeActiontxtfldAddRoomqty" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
@@ -173,11 +173,33 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Text fx:id="txthinttxtfldAddRoomTypeId" layoutX="139.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldAddRoomType" layoutX="139.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldUpdateRoomqty1" layoutX="552.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldAddKeyMoney" layoutX="555.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#787878" layoutX="139.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="'AC', 'Non-AC', 'AC/Food', 'Non_AC/Food'" />
+            <Text fill="#575757" layoutX="139.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RM-xxxx" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;" visible="false">
          <children>
-            <JFXButton layoutX="840.0" layoutY="85.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #c44f4f;" text="- REMOVE" textFill="WHITE">
+            <JFXButton layoutX="840.0" layoutY="85.0" onAction="#ClickedRemoveRoom" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #c44f4f;" text="- REMOVE" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font>
@@ -205,31 +227,31 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="158.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveRoomTypeID" fill="#2b2b2b" layoutX="158.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="158.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveRoomType" fill="#2b2b2b" layoutX="158.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="490.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveRoomqty" fill="#2b2b2b" layoutX="490.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="#7c7c7c" layoutX="490.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="txtfldRemoveroomkeymoney" fill="#2b2b2b" layoutX="490.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;" visible="false">
+      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="224.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;">
          <children>
-            <JFXButton layoutX="840.0" layoutY="127.0" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fabc4;" text="! UPDATE" textFill="WHITE">
+            <JFXButton layoutX="848.0" layoutY="122.0" onAction="#ClickedUpdateRoom" prefHeight="81.0" prefWidth="257.0" style="-fx-background-color: #4fabc4;" text="! UPDATE" textFill="WHITE">
                <font>
                   <Font size="32.0" />
                </font>
@@ -247,7 +269,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="410.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :" wrappingWidth="119.0185546875">
+            <Text layoutX="427.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money (LKR) :" wrappingWidth="119.0185546875">
                <font>
                   <Font size="15.0" />
                </font>
@@ -257,26 +279,48 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField focusColor="RED" layoutX="130.0" layoutY="52.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateRoomTypeID" editable="false" focusColor="BLACK" layoutX="130.0" layoutY="52.0" onKeyReleased="#typeActiontxtfldUpdateRoomTypeId" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="130.0" layoutY="135.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateRoomType" focusColor="BLACK" layoutX="130.0" layoutY="135.0" onKeyReleased="#typeActiontxtfldUpdateRoomType" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="543.0" layoutY="135.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateroomkeymoney" focusColor="BLACK" layoutX="546.0" layoutY="134.0" onKeyReleased="#typeActiontxtfldUpdateKeyMoney" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField focusColor="RED" layoutX="543.0" layoutY="52.0" prefHeight="37.0" prefWidth="214.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldUpdateRoomqty" focusColor="BLACK" layoutX="543.0" layoutY="52.0" onKeyReleased="#typeActiontxtfldUpdateRoomqty" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
+            <Text fx:id="txthinttxtfldUpdateRoomTypeId" layoutX="130.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldUpdateRoomType" layoutX="130.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldUpdateRoomqty" layoutX="546.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txhinttxtfldUpdateKeyMoney" layoutX="546.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#787878" layoutX="133.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="'AC', 'Non-AC', 'AC/Food', 'Non_AC/Food'" />
+            <Text fill="#575757" layoutX="133.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RM-xxxx" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panefullLoading" layoutX="179.0" layoutY="18.0" opacity="0.7" prefHeight="709.0" prefWidth="1119.0" style="-fx-background-color: #e8e9eb;" visible="false">

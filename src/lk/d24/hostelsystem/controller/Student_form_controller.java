@@ -274,8 +274,6 @@ public class Student_form_controller {
             public void run() {
                 panefullLoading.setVisible(true); //start show loading ui
                 Thread.sleep(500); //make virtual database accessing time length
-                SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
-                Date dob=formatter.parse(txtfldAddStudentdob.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
                 StudentDTO studentDTO = new StudentDTO(
                         txtfldAddStudentid.getText(),
@@ -285,7 +283,6 @@ public class Student_form_controller {
                         txtfldAddStudentdob.getValue(),
                         txtfldAddStudentgender.getText()
                 );
-
                 if(studentService.saveStudent(studentDTO)){
                     clearAllPanetxtflds();
                     txtfldStudentIDName.clear();
@@ -406,7 +403,7 @@ public class Student_form_controller {
     public void clickedActionStudentUpdate(ActionEvent actionEvent) throws ParseException {
         Alert alert1=new Alert(Alert.AlertType.INFORMATION);
         alert1.setHeaderText("Student Updating Information");
-        alert1.setContentText("This Room Updated successfully.");
+        alert1.setContentText("This Student Updated successfully.");
 
         Alert alert2=new Alert(Alert.AlertType.ERROR);
         alert2.setHeaderText("Student Updating Information");
@@ -524,7 +521,6 @@ public class Student_form_controller {
     public void typeActiontxtfldAddStudentid(KeyEvent keyEvent) {
         if(isValidatingOnAdd) {
             validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid);
-            System.out.println(validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid));
         }
     }
 

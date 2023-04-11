@@ -11,10 +11,15 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.scene.text.Text;
 
 public interface Validatetxtfld {
-    boolean validateTxtfldStudentId(JFXTextField textField , Text text);   //NicCheckRegax new and old
-    boolean validateTxtfldStudentName(JFXTextField textField , Text text);   //NicCheckRegax name
-    boolean validateTxtfldStudentAddress(JFXTextField textField , Text text);   //NicCheckRegax Address
+    boolean validateTxtfldStudentId(JFXTextField textField , Text text);   //CheckRegax new and old
+    boolean validateTxtfldStudentName(JFXTextField textField , Text text);   //CheckRegax name
+    boolean validateTxtfldStudentAddress(JFXTextField textField , Text text);   //CheckRegax Address
     boolean validateTxtfldStudentContactNo(JFXTextField textField , Text text);   //NicCheckRegax ContactNo
     boolean validateTxtfldStudentGender(JFXTextField textField , Text text);   //NicCheckRegax Gender
-    boolean validateTxtfldStudentdob(JFXDatePicker textField , Text text);   //NicCheckRegax dob
+    boolean validateTxtfldStudentdob(JFXDatePicker textField , Text text);   //CheckRegax dob
+
+    boolean validateTxtfldRoomTypeId(JFXTextField textField , Text text);   //CheckRegax RoomTypeId
+    boolean validateTxtfldRoomType(JFXTextField textField , Text text);   //CheckRegax RoomType
+    boolean validateTxtfldRoomQty(JFXTextField textField , Text text);   //CheckRegax RoomQty
+    boolean validateTxtfldRoomKeymoney(JFXTextField textField , Text text);   //CheckRegax RoomKeymoney
 }

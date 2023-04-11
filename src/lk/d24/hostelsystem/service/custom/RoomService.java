@@ -14,5 +14,9 @@ import java.util.List;
 public interface RoomService {
     boolean saveRoom(RoomDTO roomDTO);
 
+    boolean updateRoom(RoomDTO roomDTO);
+
+    boolean deleteRoom(RoomDTO roomDTO);
+
     List<RoomDTO> searchRoomByText(String text);
 }

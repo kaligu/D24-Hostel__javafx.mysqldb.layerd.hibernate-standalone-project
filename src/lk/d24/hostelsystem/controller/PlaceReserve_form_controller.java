@@ -6,5 +6,12 @@
 */
 package lk.d24.hostelsystem.controller;
 
-public class Placeorder_form_controller {
+import com.jfoenix.controls.JFXComboBox;
+
+public class PlaceReserve_form_controller {
+    public JFXComboBox cmbboxStudentIds;
+
+    public void initialize(){
+        
+    }
 }

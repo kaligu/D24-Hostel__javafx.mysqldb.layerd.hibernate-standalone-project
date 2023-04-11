@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -21,7 +22,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="Reservation")
-public class Reservation implements SuperEntity{
+public class Reservation implements SuperEntity, Serializable {
     @Id
     @Column(name="res_id",columnDefinition = "VARCHAR(255)")
     private String res_id;

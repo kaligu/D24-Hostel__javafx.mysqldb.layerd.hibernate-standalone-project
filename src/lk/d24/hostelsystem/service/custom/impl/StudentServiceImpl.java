@@ -36,6 +36,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean saveStudent(StudentDTO studentDTO) {
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
@@ -58,6 +60,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean updateStudent(StudentDTO studentDTO) {
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
@@ -80,7 +84,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean deleteStudent(StudentDTO studentDTO) {
-        System.out.println("service");
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -99,6 +104,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> searchStudentByText(String text) {
+        session=null;
+        transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
