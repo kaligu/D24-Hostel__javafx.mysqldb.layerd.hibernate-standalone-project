@@ -3,6 +3,7 @@ package lk.d24.hostelsystem.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +28,7 @@ import lk.d24.hostelsystem.service.custom.StudentService;
 import lk.d24.hostelsystem.view.custom.Validatetxtfld;
 import lk.d24.hostelsystem.view.custom.impl.ValidatetxtfldImpl;
 import lombok.SneakyThrows;
+import org.hibernate.dialect.function.StandardAnsiSqlAggregationFunctions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,6 +85,13 @@ public class Student_form_controller {
     public Text txtfldRemoveStudentgender;
     public JFXButton btnAdd;
     public Text txthinttxtfldAddStudentid;
+    public Text txthinttxtfldAddStudentname;
+    public Text txthinttxtfldAddStudentaddress;
+    public Text txthinttxtfldAddStudentcontactno;
+    public Text txthinttxtfldAddStudentgender;
+    public Text txthinttxtfldAddStudentdob;
+
+    boolean isValidatingOn;
 
     StudentService studentService;
 
@@ -92,6 +102,8 @@ public class Student_form_controller {
     Validatetxtfld validatetxtfld;
 
     public void initialize(){
+        isValidatingOn = false;
+
         validatetxtfld = new ValidatetxtfldImpl(); //text field validation interface
 
         studentService= ServiceFactory.getInstance().getService(ServiceTypes.STUDENT);
@@ -236,48 +248,73 @@ public class Student_form_controller {
             navCircle4.setFill(Paint.valueOf("#ffffff"));
         }
     }
-
     public void clickedActionStudentAdd(ActionEvent actionEvent) throws ParseException {
 
-        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
-        Date dob=formatter.parse(txtfldAddStudentdob.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        Alert alert1=new Alert(Alert.AlertType.INFORMATION);
+        alert1.setHeaderText("Room Adding Information");
+        alert1.setContentText("This Room added successfully.");
 
-        StudentDTO studentDTO = new StudentDTO(
-                txtfldAddStudentid.getText(),
-                txtfldAddStudentname.getText(),
-                txtfldAddStudentaddress.getText(),
-                txtfldAddStudentcontactno.getText(),
-                txtfldAddStudentdob.getValue(),
-                txtfldAddStudentgender.getText()
-        );
-        Task<Void> taskAdd = new Task<Void>() {
+        Alert alert2=new Alert(Alert.AlertType.ERROR);
+        alert2.setHeaderText("Room Adding Information");
+        alert2.setContentText("This Room added not successfully!");
+
+        //persist data using thread
+        Thread threadAdd =  new Thread(new Runnable() {
+            @SneakyThrows
             @Override
-            protected Void call() throws Exception {
+            public void run() {
+                panefullLoading.setVisible(true); //start show loading ui
+                Thread.sleep(500); //make virtual database accessing time length
+                SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+                Date dob=formatter.parse(txtfldAddStudentdob.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
-                panefullLoading.setVisible(true);
-                Thread.sleep(500);
+                StudentDTO studentDTO = new StudentDTO(
+                        txtfldAddStudentid.getText(),
+                        txtfldAddStudentname.getText(),
+                        txtfldAddStudentaddress.getText(),
+                        txtfldAddStudentcontactno.getText(),
+                        txtfldAddStudentdob.getValue(),
+                        txtfldAddStudentgender.getText()
+                );
 
-                studentService.saveStudent(studentDTO);
-                clearAllAddPanetxtflds();
-                searchStudent(searchText);
-                return null;
-            }
-
-            @Override
-            protected void succeeded() {
-                panefullLoading.setVisible(false);
-            }
-        };
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Student Adding Confirmation");
-        alert.setContentText("Are you sure to want you to add this student?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                Thread threadAdd = new Thread(taskAdd);
-                threadAdd.start();  //start thread
+                if(studentService.saveStudent(studentDTO)){
+                    Platform.runLater(() ->
+                            alert1.show()
+                    );
+                    clearAllAddPanetxtflds();
+                    searchStudent(searchText);
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }else{
+                    Platform.runLater(() ->
+                            alert2.show()
+                    );
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }
             }
         });
+        if((validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid))&
+                (validatetxtfld.validateTxtfldStudentName(txtfldAddStudentname , txthinttxtfldAddStudentname))&
+                (validatetxtfld.validateTxtfldStudentAddress(txtfldAddStudentaddress , txthinttxtfldAddStudentaddress))&
+                (validatetxtfld.validateTxtfldStudentContactNo(txtfldAddStudentcontactno , txthinttxtfldAddStudentcontactno))&
+                (validatetxtfld.validateTxtfldStudentGender(txtfldAddStudentgender , txthinttxtfldAddStudentgender))&
+                (validatetxtfld.validateTxtfldStudentdob(txtfldAddStudentdob , txthinttxtfldAddStudentdob)) ){
 
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Room Adding Confirmation");
+            alert.setContentText("Are you sure to want you to add this room?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                   threadAdd.start();  //start thread
+                }
+            });
+
+        }else{
+            isValidatingOn=true;
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid data entered!");
+            alert.setContentText("You have entered invalid data.Please retype and try again. ");
+            alert.show();
+        }
 
     }
     private void clearAllAddPanetxtflds(){
@@ -486,7 +523,40 @@ public class Student_form_controller {
 
     }
 
+
     public void typeActiontxtfldAddStudentid(KeyEvent keyEvent) {
-        validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid);
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentId(txtfldAddStudentid , txthinttxtfldAddStudentid);
+        }
+    }
+
+    public void typeActiontxtfldAddStudentname(KeyEvent keyEvent) {
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentName(txtfldAddStudentname , txthinttxtfldAddStudentname);
+        }
+    }
+
+    public void typeActiontxtfldAddStudentAddress(KeyEvent keyEvent) {
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentAddress(txtfldAddStudentaddress , txthinttxtfldAddStudentaddress);
+        }
+    }
+
+    public void typeActiontxtfldAddStudentContactno(KeyEvent keyEvent) {
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentContactNo(txtfldAddStudentcontactno , txthinttxtfldAddStudentcontactno);
+        }
+    }
+
+    public void typeActiontxtfldAddStudentGender(KeyEvent keyEvent) {
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentGender(txtfldAddStudentgender , txthinttxtfldAddStudentgender);
+        }
+    }
+
+    public void typeActiontxtfldAddStudentdob(ActionEvent actionEvent) {
+        if(isValidatingOn) {
+            validatetxtfld.validateTxtfldStudentdob(txtfldAddStudentdob , txthinttxtfldAddStudentdob);
+        }
     }
 }

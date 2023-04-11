@@ -174,27 +174,27 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="txtfldAddStudentid" focusColor="BLACK" layoutX="109.0" layoutY="16.0" onKeyPressed="#typeActiontxtfldAddStudentid" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentid" focusColor="BLACK" layoutX="109.0" layoutY="16.0" onKeyReleased="#typeActiontxtfldAddStudentid" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentname" focusColor="BLACK" layoutX="109.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentname" focusColor="BLACK" layoutX="109.0" layoutY="93.0" onKeyReleased="#typeActiontxtfldAddStudentname" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentaddress" focusColor="BLACK" layoutX="109.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentaddress" focusColor="BLACK" layoutX="109.0" layoutY="166.0" onKeyReleased="#typeActiontxtfldAddStudentAddress" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentcontactno" focusColor="BLACK" layoutX="530.0" layoutY="25.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentcontactno" focusColor="BLACK" layoutX="530.0" layoutY="25.0" onKeyReleased="#typeActiontxtfldAddStudentContactno" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="txtfldAddStudentgender" focusColor="BLACK" layoutX="530.0" layoutY="166.0" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
+            <JFXTextField fx:id="txtfldAddStudentgender" focusColor="BLACK" layoutX="530.0" layoutY="166.0" onKeyReleased="#typeActiontxtfldAddStudentGender" prefHeight="37.0" prefWidth="270.0" promptText="Type here" unFocusColor="BLACK">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font>
@@ -207,8 +207,33 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXDatePicker fx:id="txtfldAddStudentdob" defaultColor="BLACK" layoutX="530.0" layoutY="93.0" prefHeight="37.0" prefWidth="270.0" />
+            <JFXDatePicker fx:id="txtfldAddStudentdob" defaultColor="BLACK" editable="false" layoutX="530.0" layoutY="93.0" onAction="#typeActiontxtfldAddStudentdob" prefHeight="37.0" prefWidth="270.0" />
             <Text fx:id="txthinttxtfldAddStudentid" layoutX="109.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldAddStudentname" layoutX="109.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldAddStudentaddress" layoutX="109.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldAddStudentcontactno" layoutX="530.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldAddStudentgender" layoutX="530.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="txthinttxtfldAddStudentdob" layoutX="530.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="269.99998196959496">
                <font>
                   <Font size="12.0" />
                </font>
