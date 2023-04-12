@@ -8,6 +8,7 @@ package lk.d24.hostelsystem.service.custom;
 
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
+import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
 import org.hibernate.Session;
 
@@ -15,4 +16,10 @@ import java.util.List;
 
 public interface ReserveService {
     boolean saveReservation(ReserveDTO reserveDTO);
+
+    List<ReserveDTO> viewAllReservations();
+
+    List<ReserveDTO> viewActiveReservations();
+
+    List<ReserveDTO> viewNotpaidReservations();
 }

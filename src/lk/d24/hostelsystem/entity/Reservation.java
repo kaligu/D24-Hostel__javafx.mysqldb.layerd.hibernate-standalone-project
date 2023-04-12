@@ -28,7 +28,7 @@ public class Reservation implements SuperEntity, Serializable {
     @Column(name="res_id",columnDefinition = "VARCHAR(255)")
     private String res_id;
 
-    @Column(name="dob",columnDefinition = "DATE")
+    @Column(name="date",columnDefinition = "DATE")
     private LocalDate date;
 
     @ManyToOne(targetEntity = Student.class, fetch = FetchType.EAGER)

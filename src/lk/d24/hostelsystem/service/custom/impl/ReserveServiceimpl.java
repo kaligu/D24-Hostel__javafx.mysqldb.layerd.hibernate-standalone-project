@@ -12,6 +12,7 @@ import lk.d24.hostelsystem.dao.QueryDAO;
 import lk.d24.hostelsystem.dao.custom.ReserveDAO;
 import lk.d24.hostelsystem.dao.custom.RoomDAO;
 import lk.d24.hostelsystem.dao.custom.StudentDAO;
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.entity.Reservation;
@@ -69,6 +70,72 @@ public class ReserveServiceimpl implements ReserveService {
                 transaction.rollback();
             }
             return false;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<ReserveDTO> viewAllReservations() {
+        List<ReserveDTO> reserveDTOS=new ArrayList<>();
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        try{
+            for(Reservation reservation:reserveDAO.viewAllReservations(session))
+            reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
+            transaction.commit();
+            return reserveDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return reserveDTOS;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<ReserveDTO> viewActiveReservations() {
+        List<ReserveDTO> reserveDTOS=new ArrayList<>();
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        try{
+            for(Reservation reservation:reserveDAO.viewActiveReservations(session))
+                reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
+            transaction.commit();
+            return reserveDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return reserveDTOS;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<ReserveDTO> viewNotpaidReservations() {
+        List<ReserveDTO> reserveDTOS=new ArrayList<>();
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        try{
+            for(Reservation reservation:reserveDAO.viewNotpaidReservations(session))
+                reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
+            transaction.commit();
+            return reserveDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return reserveDTOS;
         }finally {
             session.close();
         }

@@ -7,9 +7,15 @@
 package lk.d24.hostelsystem.dao.custom.impl;
 
 import lk.d24.hostelsystem.dao.custom.ReserveDAO;
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.entity.Reservation;
+import lk.d24.hostelsystem.entity.Room;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReserveDAOImpl implements ReserveDAO {
 
@@ -39,4 +45,30 @@ public class ReserveDAOImpl implements ReserveDAO {
         return false;
     }
 
+    @Override
+    public List<Reservation> viewAllReservations(Session session) {
+        List<Reservation>  reservations= new ArrayList<>();
+        String hql = "FROM Reservation";
+        Query query = session.createQuery(hql);
+        reservations=query.list();
+        return reservations;
+    }
+
+    @Override
+    public List<Reservation> viewActiveReservations(Session session) {
+        List<Reservation> reservations = new ArrayList<>();
+        String hql = "SELECT res FROM Reservation res WHERE res.date >= CURRENT_DATE";
+        Query query = session.createQuery(hql);
+        reservations = query.list();
+        return reservations;
+    }
+
+    @Override
+    public List<Reservation> viewNotpaidReservations(Session session) {
+        List<Reservation> reservations = new ArrayList<>();
+        String hql = "SELECT res FROM Reservation res WHERE res.status NOT LIKE '%Status:not paid%'";
+        Query query = session.createQuery(hql);
+        reservations = query.list();
+        return reservations;
+    }
 }

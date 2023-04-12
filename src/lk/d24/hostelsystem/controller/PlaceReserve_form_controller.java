@@ -6,6 +6,7 @@
 */
 package lk.d24.hostelsystem.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -34,6 +35,7 @@ import lk.d24.hostelsystem.service.custom.StudentService;
 import lk.d24.hostelsystem.service.custom.impl.StudentServiceImpl;
 import lombok.SneakyThrows;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +57,7 @@ public class PlaceReserve_form_controller {
     public JFXTextField txtfldKeymoney;
     public JFXDatePicker txtfldperiodDate;
     public JFXTextField txtfldReserveID;
+    public JFXButton btnCreateReservation;
 
     StudentService studentService;
 
@@ -107,6 +110,16 @@ public class PlaceReserve_form_controller {
                 qaRoomDTOObservableList.addAll(qaRoomDTOS);
                 tblSelectRoom.setItems(qaRoomDTOObservableList);
 
+                int count =0;
+                for(qaRoomDTO qaRoomDTO : qaRoomDTOS){  //when not any available rooms disable reservation button
+                    count+=qaRoomDTO.getAvailableRoomsQty();
+                }
+                if(count==0){
+                    btnCreateReservation.setDisable(true);
+                }else{
+                    btnCreateReservation.setDisable(false);
+                }
+
                 queryService.findAllAvailableRooms();
                 panefullLoading.setVisible(false);
             }
@@ -156,12 +169,13 @@ public class PlaceReserve_form_controller {
                 panefullLoading.setVisible(true); //start show loading ui
                 Thread.sleep(500); //make virtual database accessing time length
 
+                LocalDate localDate = LocalDate.now();
                 ReserveDTO reserveDTO = new ReserveDTO(
                         txtfldReserveID.getText(),
                         txtfldperiodDate.getValue(),
                         resStudentID.getText(),
                         lblSelectRoomTypeID.getText(),
-                        txtfldKeymoney.getText()
+                        "Status:"+txtfldKeymoney.getText()+" , Reserved Date:"+localDate
                 );
                 if(reserveService.saveReservation(reserveDTO)){
                 //    clearAllPanetxtflds();
