@@ -13,6 +13,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -28,7 +29,7 @@ public class Reservation implements SuperEntity, Serializable {
     private String res_id;
 
     @Column(name="dob",columnDefinition = "DATE")
-    private Date date;
+    private LocalDate date;
 
     @ManyToOne(targetEntity = Student.class, fetch = FetchType.EAGER)
     @JoinColumn(

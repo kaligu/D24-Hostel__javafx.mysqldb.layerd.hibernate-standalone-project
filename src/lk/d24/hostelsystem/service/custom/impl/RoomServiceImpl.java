@@ -115,4 +115,25 @@ public class RoomServiceImpl implements RoomService {
         }
         return null;
     }
+
+    @Override
+    public RoomDTO findByPk(String pk) {
+        RoomDTO roomDTO = null;
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+
+        try{
+            roomDTO = convertor.fromRoom(roomDAO.findByPk(pk,session));
+            return roomDTO;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return  roomDTO;
+        }finally {
+            session.close();
+        }
+    }
 }

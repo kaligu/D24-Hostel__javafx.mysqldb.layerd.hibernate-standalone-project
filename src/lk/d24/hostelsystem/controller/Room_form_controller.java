@@ -141,7 +141,7 @@ public class Room_form_controller {
     }
 
     private void clearAllPanes(){ //clear all panes
-        paneSearch.setVisible(false);
+       // paneSearch.setVisible(false);
         paneAdd.setVisible(false);
         paneRemove.setVisible(false);
         paneUpdate.setVisible(false);

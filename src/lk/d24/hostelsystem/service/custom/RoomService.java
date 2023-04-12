@@ -19,4 +19,6 @@ public interface RoomService {
     boolean deleteRoom(RoomDTO roomDTO);
 
     List<RoomDTO> searchRoomByText(String text);
+
+    RoomDTO findByPk(String pk);
 }

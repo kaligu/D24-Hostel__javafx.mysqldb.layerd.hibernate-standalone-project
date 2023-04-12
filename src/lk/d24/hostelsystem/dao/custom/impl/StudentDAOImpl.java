@@ -6,8 +6,8 @@
 */
 package lk.d24.hostelsystem.dao.custom.impl;
 
-import javafx.scene.control.Alert;
 import lk.d24.hostelsystem.dao.custom.StudentDAO;
+import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.entity.Student;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -53,7 +53,12 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public Student findByPk(String pk, Session session) {
-        return null;
+        try {
+            return session.get(Student.class,pk);
+
+        } catch (HibernateException e) {
+            return  null;
+        }
     }
 
     @Override
@@ -69,5 +74,14 @@ public class StudentDAOImpl implements StudentDAO {
         Query query = session.createQuery(hql);
         studentList=query.list();
         return studentList;
+    }
+
+    @Override
+    public List<String> getAllStudentIds(Session session) {
+        List<String> idList = new ArrayList<>();
+        String hql = "SELECT s.student_id FROM Student s";
+        Query query = session.createQuery(hql);
+        idList = query.list();
+        return idList;
     }
 }

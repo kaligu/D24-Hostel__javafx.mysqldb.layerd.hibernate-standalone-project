@@ -9,5 +9,6 @@ package lk.d24.hostelsystem.dao;
 public enum DAOTypes {
     STUDENT,
     ROOM,
-    RESERVE
+    RESERVE,
+    QUERY
 }

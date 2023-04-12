@@ -10,6 +10,7 @@ import lk.d24.hostelsystem.dao.DAOFactory;
 import lk.d24.hostelsystem.dao.DAOTypes;
 import lk.d24.hostelsystem.dao.custom.StudentDAO;
 import lk.d24.hostelsystem.dto.StudentDTO;
+import lk.d24.hostelsystem.entity.Student;
 import lk.d24.hostelsystem.service.custom.StudentService;
 import lk.d24.hostelsystem.service.util.Convertor;
 import lk.d24.hostelsystem.util.HbFactoryConfiguration;
@@ -104,17 +105,62 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> searchStudentByText(String text) {
+        List<StudentDTO> studentDTOList =new ArrayList<>();
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        try{
+            studentDTOList = studentDAO.searchStudentByText(text,session).stream().map(student -> convertor.fromStudent(student)).collect(Collectors.toList());
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+        }finally {
+            session.close();
+        }
+        return studentDTOList;
+    }
+
+    @Override
+    public List<String> getAllStudentIds() {
+        List<String> stringList = new ArrayList<>();
         session=null;
         transaction=null;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
         try{
-            return studentDAO.searchStudentByText(text,session).stream().map(student -> convertor.fromStudent(student)).collect(Collectors.toList());
-        } catch (HibernateException e){
-
+            stringList =  studentDAO.getAllStudentIds(session);
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+        }finally {
+            session.close();
         }
-        return null;
+        return stringList;
+    }
+
+    @Override
+    public StudentDTO findByPk(String pk) {
+        StudentDTO studentDTO = null;
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+
+        try{
+            studentDTO = convertor.fromStudent(studentDAO.findByPk(pk,session));
+            return studentDTO;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return  studentDTO;
+        }finally {
+            session.close();
+        }
     }
 
 

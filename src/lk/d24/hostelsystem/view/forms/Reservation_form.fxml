@@ -2,59 +2,69 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.PlaceReserve_form_controller">
+<AnchorPane maxHeight="744.0" prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.PlaceReserve_form_controller">
    <children>
-      <AnchorPane layoutX="17.0" layoutY="486.0" prefHeight="248.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+      <AnchorPane layoutX="17.0" layoutY="603.0" prefHeight="118.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
          <children>
-            <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cart List ..." underline="true">
+            <JFXTextField fx:id="txtfldKeymoney" focusColor="BLACK" layoutX="392.0" layoutY="56.0" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
+            <Text layoutX="392.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type &quot; paid&quot;  or &quot; not paid&quot;  Keymoney ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="17.0" layoutY="212.0" prefHeight="248.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
-         <children>
-            <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Room here ..." underline="true">
+            <JFXDatePicker fx:id="txtfldperiodDate" defaultColor="BLACK" editable="false" layoutX="36.0" layoutY="56.0" prefHeight="43.0" prefWidth="271.0" promptText="Select Date here..." />
+            <Text layoutX="36.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Time Period here ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-            <JFXButton layoutX="997.0" layoutY="187.0" prefHeight="43.0" prefWidth="271.0" style="-fx-background-color: #04c911;" text="+ ADD to Cart" textFill="WHITE">
+            <JFXButton layoutX="897.0" layoutY="20.0" onAction="#clickedbtncreateReservation" prefHeight="79.0" prefWidth="364.0" style="-fx-background-color: #01800a;" text="Create Reservation" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="25.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXTextField layoutX="997.0" layoutY="136.0" prefHeight="43.0" prefWidth="271.0" promptText="Type QTY here ..." />
-            <AnchorPane fx:id="paneSearch11" layoutX="997.0" layoutY="34.0" prefHeight="90.0" prefWidth="271.0" style="-fx-background-color: #9B9B9B;">
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="17.0" layoutY="231.0" prefHeight="349.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+         <children>
+            <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Room here ..." underline="true">
+               <font>
+                  <Font name="System Italic" size="17.0" />
+               </font>
+            </Text>
+            <AnchorPane fx:id="paneSearch11" layoutX="10.0" layoutY="302.0" prefHeight="33.0" prefWidth="429.0" style="-fx-background-color: #9B9B9B;">
                <children>
-                  <Text layoutX="19.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
+                  <Text layoutX="20.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text layoutX="50.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+                  <Text layoutX="215.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve Qty:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                  <Text fx:id="lblSelectRoomTypeID" fill="WHITE" layoutX="125.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                      <font>
                         <Font name="Segoe UI Italic" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="105.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                  <Text fx:id="resStudentName1" fill="WHITE" layoutX="305.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
                      <font>
                         <Font name="Segoe UI Italic" size="15.0" />
                      </font>
@@ -63,9 +73,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="17.0" layoutY="52.0" prefHeight="137.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+      <AnchorPane layoutX="17.0" layoutY="65.0" prefHeight="146.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
          <children>
-            <JFXComboBox fx:id="cmbboxStudentIds" layoutX="14.0" layoutY="32.0" prefHeight="43.0" prefWidth="226.0" promptText="Select Student here ..." />
+            <JFXComboBox fx:id="cmbboxStudentIds" layoutX="14.0" layoutY="32.0" onAction="#actionCmbox" prefHeight="43.0" prefWidth="226.0" promptText="Select Student here ..." />
             <Text layoutX="6.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Student here ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
@@ -105,70 +115,69 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentID" fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="105.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentName" fill="WHITE" layoutX="105.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="743.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentAddress" fill="WHITE" layoutX="743.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="441.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentContactno" fill="WHITE" layoutX="441.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="441.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentDob" fill="WHITE" layoutX="441.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="743.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentGender" fill="WHITE" layoutX="743.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <Text layoutX="17.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve ID :" underline="true">
+      <Text layoutX="17.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve ID :" underline="true">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="#7c7c7c" layoutX="108.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
-         <font>
-            <Font name="Segoe UI Italic" size="15.0" />
-         </font>
-      </Text>
-      <TableView layoutX="25.0" layoutY="244.0" prefHeight="204.0" prefWidth="972.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
+      <TableView fx:id="tblSelectRoom" layoutX="25.0" layoutY="265.0" onMouseClicked="#clickedActiontblSelectRoom" prefHeight="257.0" prefWidth="1259.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </TableView>
-      <TableView layoutX="29.0" layoutY="518.0" prefHeight="204.0" prefWidth="972.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn fx:id="collRoomTypeIdroom" prefWidth="244.99996948242188" text="Room Type ID" />
+            <TableColumn fx:id="colTyperoom" prefWidth="430.0" text="Type" />
+            <TableColumn fx:id="colKeyMoneyroom" prefWidth="296.0" text="Key Money (LKR)" />
+            <TableColumn fx:id="colavailableRoomsqtyroom" prefWidth="287.0" text="Available Rooms QTY" />
          </columns>
       </TableView>
-      <JFXButton layoutX="1018.0" layoutY="639.0" prefHeight="79.0" prefWidth="267.0" style="-fx-background-color: #01800a;" text="Order Place" textFill="WHITE">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
+      <AnchorPane fx:id="panefullLoading" layoutX="2.0" layoutY="7.0" opacity="0.7" prefHeight="728.0" prefWidth="1299.0" style="-fx-background-color: #e8e9eb;" visible="false">
+         <children>
+            <ProgressIndicator layoutX="356.0" layoutY="156.0" prefHeight="416.0" prefWidth="524.0" />
+            <Text layoutX="561.0" layoutY="618.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Wait...">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="100.0" fitWidth="247.0" layoutX="495.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/d24hotellogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="txtfldReserveID" focusColor="BLACK" layoutX="102.0" layoutY="19.0" prefHeight="33.0" prefWidth="91.0" promptText="Type here..." />
    </children>
 </AnchorPane>

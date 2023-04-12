@@ -42,6 +42,17 @@ public class Room implements SuperEntity, Serializable {
     })
     private List<Reservation> reservationList= new ArrayList<>();
 
+    public Room(String room_type_id, String type, double key_money, int qty) {
+        this.room_type_id = room_type_id;
+        this.type = type;
+        this.key_money = key_money;
+        this.qty = qty;
+    }
+
+    public Room(String roomTypeId, String type, Double keyMoney, Integer availableRoomsQty) {
+    }
+
+
     @Override
     public String toString() {
         return "Room{" +

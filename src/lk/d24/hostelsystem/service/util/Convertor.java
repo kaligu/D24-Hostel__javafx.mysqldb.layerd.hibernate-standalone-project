@@ -6,8 +6,10 @@
 */
 package lk.d24.hostelsystem.service.util;
 
+import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.dto.StudentDTO;
+import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
 import lk.d24.hostelsystem.entity.Student;
 
@@ -27,4 +29,7 @@ public class Convertor {
     public Room toRoom(RoomDTO roomDTO){
         return new Room(roomDTO.getRoom_type_id(), roomDTO.getType(), roomDTO.getKey_money(), roomDTO.getQty(), roomDTO.getReservationList());
     }
+
+
+
 }

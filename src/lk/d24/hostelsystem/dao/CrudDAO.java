@@ -6,6 +6,7 @@
 */
 package lk.d24.hostelsystem.dao;
 
+import lk.d24.hostelsystem.dto.ReserveDTO;
 import org.hibernate.Session;
 
 import java.io.Serializable;

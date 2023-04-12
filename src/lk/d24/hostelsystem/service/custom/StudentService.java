@@ -7,7 +7,9 @@
 package lk.d24.hostelsystem.service.custom;
 
 import lk.d24.hostelsystem.dto.StudentDTO;
+import lk.d24.hostelsystem.entity.Student;
 import lk.d24.hostelsystem.service.SuperService;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -19,4 +21,9 @@ public interface StudentService extends SuperService {
     boolean deleteStudent(StudentDTO studentDTO);
 
     List<StudentDTO> searchStudentByText(String text);
+
+    List<String> getAllStudentIds();
+
+    StudentDTO findByPk(String pk);
+
 }
