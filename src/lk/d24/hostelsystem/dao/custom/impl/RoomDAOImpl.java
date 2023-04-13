@@ -71,4 +71,20 @@ public class RoomDAOImpl implements RoomDAO {
         roomList=query.list();
         return roomList;
     }
+
+    @Override
+    public List<Room> getAll(Session session) {
+        List<Room> roomList = new ArrayList<>();
+        String hql = "FROM Room";
+        Query query = session.createQuery(hql);
+        roomList=query.list();
+        return roomList;
+    }
+
+    @Override
+    public int getAllRoomCount(Session session) {
+        Query query = session.createQuery("SELECT SUM(room.qty) FROM Room room");
+        Long result = (Long) query.uniqueResult();
+        return result != null ? result.intValue() : 0;
+    }
 }

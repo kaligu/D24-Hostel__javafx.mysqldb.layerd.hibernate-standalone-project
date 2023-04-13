@@ -7,7 +7,6 @@
 package lk.d24.hostelsystem.service.custom;
 
 import lk.d24.hostelsystem.dto.RoomDTO;
-import lk.d24.hostelsystem.dto.StudentDTO;
 
 import java.util.List;
 
@@ -21,4 +20,8 @@ public interface RoomService {
     List<RoomDTO> searchRoomByText(String text);
 
     RoomDTO findByPk(String pk);
+
+    List<RoomDTO> getAllRooms();
+
+    int getAllRoomCount();
 }

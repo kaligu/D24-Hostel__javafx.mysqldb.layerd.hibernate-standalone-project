@@ -1,13 +1,20 @@
 package lk.d24.hostelsystem.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.d24.hostelsystem.util.Navigation;
 import lk.d24.hostelsystem.util.Route;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Dashboard_form_controller {
     public AnchorPane panemain;
@@ -18,6 +25,8 @@ public class Dashboard_form_controller {
     public AnchorPane box5;
     public AnchorPane panecontext;
     public AnchorPane boxHome;
+    public Text txtDateTime;
+    public Text txtheader;
 
     String isNameofpane="null";
 
@@ -26,6 +35,7 @@ public class Dashboard_form_controller {
         isNameofpane="boxHome";
         boxHome.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
         Navigation.navigate(Route.HOME,panecontext);
+        txtheader.setText("Home");
 
     }
 
@@ -45,6 +55,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavbox1(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Create Reservation");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="box1";
         box1.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -64,6 +75,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavbox2(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Reservation Details");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="box2";
         box2.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -83,6 +95,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavbox3(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Manage Students");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="box3";
         box3.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -102,6 +115,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavbox4(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Manage Rooms");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="box4";
         box4.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -121,6 +135,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavbox5(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Settings");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="box5";
         box5.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -140,6 +155,7 @@ public class Dashboard_form_controller {
     }
 
     public void actionMouseClickednavHome(MouseEvent mouseEvent) throws IOException {
+        txtheader.setText("Home");
         clearAllPanesBoxes(); //clear all panes
         isNameofpane="boxHome";
         boxHome.setStyle("-fx-background-color:  #0f061a; -fx-background-radius: 48");
@@ -168,5 +184,6 @@ public class Dashboard_form_controller {
     }
 
     public void clickedToLogout(MouseEvent mouseEvent) {
+        txtheader.setText("Logout");
     }
 }

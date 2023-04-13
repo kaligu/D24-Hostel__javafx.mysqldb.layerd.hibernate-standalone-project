@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -15,12 +16,7 @@
 
 <AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Home_form_controller">
    <children>
-      <Text layoutX="27.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Let's achieve more together.">
-         <font>
-            <Font name="Calibri Italic" size="19.0" />
-         </font>
-      </Text>
-      <AnchorPane fx:id="box1" layoutX="44.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box1" layoutX="44.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -32,7 +28,7 @@
             </Lighting>
          </effect>
          <children>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+            <Text fx:id="txtallRooms" fill="WHITE" layoutX="54.0" layoutY="175.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -40,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <Text fill="WHITE" layoutX="68.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="   All Rooms" wrappingWidth="82.26222157478333">
+            <Text fill="WHITE" layoutX="54.0" layoutY="41.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" strokeType="OUTSIDE" strokeWidth="0.0" text="   All Rooms" wrappingWidth="82.26222157478333">
                <font>
                   <Font size="25.0" />
                </font>
@@ -53,7 +49,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box2" layoutX="298.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box2" layoutX="298.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -65,7 +61,7 @@
             </Lighting>
          </effect>
          <children>
-            <Text fill="WHITE" layoutX="35.0" layoutY="178.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="100" wrappingWidth="147.99998408555984">
+            <Text fill="WHITE" layoutX="43.0" layoutY="183.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="147.99998408555984">
                <font>
                   <Font size="80.0" />
                </font>
@@ -73,7 +69,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <Text fill="WHITE" layoutX="35.0" layoutY="41.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms" wrappingWidth="147.99998408555984">
+            <Text fill="WHITE" layoutX="43.0" layoutY="41.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms" wrappingWidth="147.99998408555984">
                <font>
                   <Font size="25.0" />
                </font>
@@ -86,7 +82,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box3" layoutX="550.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box3" layoutX="550.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -105,7 +101,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -118,7 +114,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box4" layoutX="802.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box4" layoutX="802.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -137,7 +133,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -150,7 +146,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box5" layoutX="1052.0" layoutY="78.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box5" layoutX="1052.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -169,7 +165,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+            <Text fill="WHITE" layoutX="48.0" layoutY="175.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -182,12 +178,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <ImageView fitHeight="229.0" fitWidth="261.0" layoutX="1038.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/call.gif" />
-         </image>
-      </ImageView>
-      <AnchorPane fx:id="paneallroom" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="paneallroom" layoutX="41.0" layoutY="293.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Rooms">
                <font>
@@ -195,10 +186,12 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+            <TableView fx:id="tbl1" layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="701.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="colroomid1" prefWidth="143.0" text="Room Type ID" />
+                <TableColumn fx:id="colroomtype1" prefWidth="173.0" text="Room Type" />
+                  <TableColumn fx:id="colroomkeymoney1" prefWidth="204.0" text="Room Key Money" />
+                  <TableColumn fx:id="colroomqty" prefWidth="180.0" text="Room Qty" />
               </columns>
                <effect>
                   <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
@@ -314,6 +307,59 @@
                   </Lighting>
                </effect>
             </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="810.0" layoutY="295.0" prefHeight="407.0" prefWidth="456.0" style="-fx-background-color: #73018a; -fx-background-radius: 48;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+         <children>
+            <Text fx:id="txtDate" fill="WHITE" layoutX="161.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDate" wrappingWidth="241.0927730202675">
+               <font>
+                  <Font size="48.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fx:id="txtDay" fill="WHITE" layoutX="161.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31" wrappingWidth="224.99998408555984">
+               <font>
+                  <Font size="200.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fx:id="txttime" fill="WHITE" layoutX="161.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02:25:25" wrappingWidth="196.4941590130329">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="panefullLoading" layoutX="8.0" layoutY="10.0" opacity="0.7" prefHeight="725.0" prefWidth="1294.0" style="-fx-background-color: #e8e9eb;" visible="false">
+         <children>
+            <ProgressIndicator layoutX="370.0" layoutY="153.0" prefHeight="416.0" prefWidth="524.0" />
+            <Text layoutX="575.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Wait...">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="100.0" fitWidth="247.0" layoutX="509.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/d24hotellogo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

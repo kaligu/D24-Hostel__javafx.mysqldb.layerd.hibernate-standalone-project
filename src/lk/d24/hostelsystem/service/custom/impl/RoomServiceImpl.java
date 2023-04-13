@@ -9,9 +9,7 @@ package lk.d24.hostelsystem.service.custom.impl;
 import lk.d24.hostelsystem.dao.DAOFactory;
 import lk.d24.hostelsystem.dao.DAOTypes;
 import lk.d24.hostelsystem.dao.custom.RoomDAO;
-import lk.d24.hostelsystem.dao.custom.StudentDAO;
 import lk.d24.hostelsystem.dto.RoomDTO;
-import lk.d24.hostelsystem.dto.StudentDTO;
 import lk.d24.hostelsystem.service.custom.RoomService;
 import lk.d24.hostelsystem.service.util.Convertor;
 import lk.d24.hostelsystem.util.HbFactoryConfiguration;
@@ -135,5 +133,35 @@ public class RoomServiceImpl implements RoomService {
         }finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<RoomDTO> getAllRooms() {
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+
+        try{
+            return roomDAO.getAll(session).stream().map(room -> convertor.fromRoom(room)).collect(Collectors.toList());
+        } catch (HibernateException e){
+
+        }
+        return null;
+    }
+
+    @Override
+    public int getAllRoomCount() {
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+
+        try{
+            return roomDAO.getAllRoomCount(session);
+        } catch (HibernateException e){
+            return 0;
+        }
+
     }
 }

@@ -15,4 +15,8 @@ import java.util.List;
 
 public interface RoomDAO extends CrudDAO<Room , String> {
     List<Room> searchRoomByText(String text , Session session);
+
+    List<Room> getAll(Session session);
+
+    int getAllRoomCount(Session session);
 }
