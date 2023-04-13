@@ -6,10 +6,7 @@
 */
 package lk.d24.hostelsystem.dao;
 
-import lk.d24.hostelsystem.dao.custom.impl.QueryDAOImpl;
-import lk.d24.hostelsystem.dao.custom.impl.ReserveDAOImpl;
-import lk.d24.hostelsystem.dao.custom.impl.RoomDAOImpl;
-import lk.d24.hostelsystem.dao.custom.impl.StudentDAOImpl;
+import lk.d24.hostelsystem.dao.custom.impl.*;
 import net.bytebuddy.asm.Advice;
 
 import java.sql.Connection;
@@ -30,6 +27,8 @@ public class DAOFactory {
                 return (T)new ReserveDAOImpl();
             case QUERY:
                 return (T)new QueryDAOImpl();
+            case LOGINDETAIL:
+                return (T)new LoginDetailDAOImpl();
             default:
                 return null;
         }

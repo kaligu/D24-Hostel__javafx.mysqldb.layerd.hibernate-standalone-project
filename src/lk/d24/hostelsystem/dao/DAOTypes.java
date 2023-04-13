@@ -10,5 +10,6 @@ public enum DAOTypes {
     STUDENT,
     ROOM,
     RESERVE,
-    QUERY
+    QUERY,
+    LOGINDETAIL
 }

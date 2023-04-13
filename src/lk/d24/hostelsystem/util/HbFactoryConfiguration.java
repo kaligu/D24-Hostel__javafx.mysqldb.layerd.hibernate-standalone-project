@@ -1,5 +1,6 @@
 package lk.d24.hostelsystem.util;
 
+import lk.d24.hostelsystem.entity.LoginDetail;
 import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
 import lk.d24.hostelsystem.entity.Student;
@@ -29,6 +30,7 @@ public class HbFactoryConfiguration {
         configuration.addAnnotatedClass(Reservation.class);
         configuration.addAnnotatedClass(Student.class);
         configuration.addAnnotatedClass(Room.class);
+        configuration.addAnnotatedClass(LoginDetail.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }

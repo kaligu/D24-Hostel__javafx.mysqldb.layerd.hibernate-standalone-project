@@ -175,7 +175,7 @@ public class PlaceReserve_form_controller {
                         txtfldperiodDate.getValue(),
                         resStudentID.getText(),
                         lblSelectRoomTypeID.getText(),
-                        "Status:"+txtfldKeymoney.getText()+" , Reserved Date:"+localDate
+                        "Status:"+txtfldKeymoney.getText()+" ,Reserved Date:"+localDate
                 );
                 if(reserveService.saveReservation(reserveDTO)){
                 //    clearAllPanetxtflds();

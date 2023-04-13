@@ -42,6 +42,13 @@ public class Navigation {
             case HOME:
                 setUi("../view/forms/Home_form.fxml");
                 break;
+
+        }
+        switch (route){
+            case SETTINGS:
+                setUi("../view/forms/Setting_form.fxml");
+                break;
+
         }
     }
 

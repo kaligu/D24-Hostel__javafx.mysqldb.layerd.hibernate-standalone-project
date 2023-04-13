@@ -11,6 +11,7 @@ import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -27,7 +28,12 @@ public class ReserveDAOImpl implements ReserveDAO {
 
     @Override
     public boolean update(Reservation entity, Session session) {
-        return false;
+        try {
+            session.update(entity);
+            return true;
+        } catch (HibernateException e) {
+            return false;
+        }
     }
 
     @Override
@@ -66,7 +72,7 @@ public class ReserveDAOImpl implements ReserveDAO {
     @Override
     public List<Reservation> viewNotpaidReservations(Session session) {
         List<Reservation> reservations = new ArrayList<>();
-        String hql = "SELECT res FROM Reservation res WHERE res.status NOT LIKE '%Status:not paid%'";
+        String hql = "FROM Reservation res WHERE res.status LIKE '%Status:not%'";
         Query query = session.createQuery(hql);
         reservations = query.list();
         return reservations;

@@ -8,19 +8,25 @@ package lk.d24.hostelsystem.controller;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.service.ServiceFactory;
 import lk.d24.hostelsystem.service.ServiceTypes;
 import lk.d24.hostelsystem.service.custom.ReserveService;
+import lombok.SneakyThrows;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -56,8 +62,17 @@ public class Reservedetail_form_controller {
     public TableColumn colResStatusAndCreatedDatenotpaidedit;
     public JFXDatePicker txtfldperiodDate;
     public JFXTextField txtfldKeymoney;
+    public Circle navCircle1;
+    public Circle navCircle2;
+    public Circle navCircle3;
+    public Circle navCircle4;
+    public AnchorPane paneViewAll;
+    public AnchorPane paneAvailableRooms;
+    public AnchorPane paneNotpaid;
+    public AnchorPane paneeditstatus;
     ReserveService reserveService;
     List<ReserveDTO> reserveDTOSforEdit;
+
     public void initialize(){
         reserveDTOSforEdit = new ArrayList<>();
         reserveService= ServiceFactory.getInstance().getService(ServiceTypes.RESERVE);
@@ -87,29 +102,34 @@ public class Reservedetail_form_controller {
         colReserveExpireDatenotpaidedit.setCellValueFactory(new PropertyValueFactory<>("date"));
         colResStatusAndCreatedDatenotpaidedit.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-    }
-
-    private void searchAllIds() {
-       // List<String> studentIdlist;
-       // ObservableList<String> studentIdsList = FXCollections.observableArrayList();
-
-      //  studentIdlist = reserveService.(searchText);
-
-     //   roomDTOObservableList.addAll(roomDTOList);
-
-      //  tblRoom.setItems(roomDTOObservableList);
+        loadFirstPane();
     }
 
     public void actionMouseClickednavCircle1(MouseEvent mouseEvent) {
+        loadFirstPane();
+    }
+
+    private void loadFirstPane(){
+        clearAllPanes();
+        navCircle1.setStroke(Paint.valueOf("#027a6c"));
+        navCircle1.setFill(Paint.valueOf("#027a6c"));
+        loadEditTbl();
+    }
+
+    private void loadEditTbl(){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 panefullLoading.setVisible(true);
 
+                reserveDTOSforEdit.clear();
+                tvlviewallReservationsnotpaidedit.getItems().clear();
                 ObservableList<ReserveDTO> reserveDTOObservableList = FXCollections.observableArrayList();
                 reserveDTOSforEdit = reserveService.viewActiveReservations();
                 reserveDTOObservableList.setAll(reserveDTOSforEdit);
                 tvlviewallReservationsnotpaidedit.setItems(reserveDTOObservableList);
+
+                paneeditstatus.setVisible(true);
 
                 panefullLoading.setVisible(false);
 
@@ -130,6 +150,10 @@ public class Reservedetail_form_controller {
                 reserveDTOObservableList.setAll(reserveDTOS);
                 tvlviewallReservationsnotpaid.setItems(reserveDTOObservableList);
 
+                clearAllPanes();
+                paneNotpaid.setVisible(true);
+                navCircle2.setStroke(Paint.valueOf("#027a6c"));
+                navCircle2.setFill(Paint.valueOf("#027a6c"));
                 panefullLoading.setVisible(false);
 
             }
@@ -149,35 +173,86 @@ public class Reservedetail_form_controller {
                 reserveDTOObservableList.setAll(reserveDTOS);
                 tvlviewallReservationsactive.setItems(reserveDTOObservableList);
 
+                clearAllPanes();
+                paneAvailableRooms.setVisible(true);
+                navCircle3.setStroke(Paint.valueOf("#027a6c"));
+                navCircle3.setFill(Paint.valueOf("#027a6c"));
+
                 panefullLoading.setVisible(false);
 
             }
         });
         thread.start();
     }
+    private void clearAllPanes(){ //clear all panes
+        paneeditstatus.setVisible(false);
+        paneViewAll.setVisible(false);
+        paneNotpaid.setVisible(false);
+        paneAvailableRooms.setVisible(false);
+        navCircle1.setStroke(Paint.valueOf("#ffffff"));
+        navCircle1.setFill(Paint.valueOf("#ffffff"));
+        navCircle2.setStroke(Paint.valueOf("#ffffff"));
+        navCircle2.setFill(Paint.valueOf("#ffffff"));
+        navCircle3.setStroke(Paint.valueOf("#ffffff"));
+        navCircle3.setFill(Paint.valueOf("#ffffff"));
+        navCircle4.setStroke(Paint.valueOf("#ffffff"));
+        navCircle4.setFill(Paint.valueOf("#ffffff"));
+    }
 
     public void actionMouseEnterednavCircle1(MouseEvent mouseEvent) {
+        if(!paneeditstatus.isVisible()) {
+            navCircle1.setStroke(Paint.valueOf("#6be8d9"));
+            navCircle1.setFill(Paint.valueOf("#6be8d9"));
+        }
     }
 
     public void actionMouseExitednavCircle1(MouseEvent mouseEvent) {
+        if(!paneeditstatus.isVisible()) {
+            navCircle1.setStroke(Paint.valueOf("#ffffff"));
+            navCircle1.setFill(Paint.valueOf("#ffffff"));
+        }
     }
 
     public void actionMouseEnterednavCircle2(MouseEvent mouseEvent) {
+        if(!paneNotpaid.isVisible()) {
+            navCircle2.setStroke(Paint.valueOf("#6be8d9"));
+            navCircle2.setFill(Paint.valueOf("#6be8d9"));
+        }
     }
 
     public void actionMouseExitednavCircle2(MouseEvent mouseEvent) {
+        if(!paneNotpaid.isVisible()) {
+            navCircle2.setStroke(Paint.valueOf("#ffffff"));
+            navCircle2.setFill(Paint.valueOf("#ffffff"));
+        }
     }
 
     public void actionMouseEnterednavCircle3(MouseEvent mouseEvent) {
+        if(!paneAvailableRooms.isVisible()) {
+            navCircle3.setStroke(Paint.valueOf("#6be8d9"));
+            navCircle3.setFill(Paint.valueOf("#6be8d9"));
+        }
     }
 
     public void actionMouseExitednavCircle3(MouseEvent mouseEvent) {
+        if(!paneAvailableRooms.isVisible()) {
+            navCircle3.setStroke(Paint.valueOf("#ffffff"));
+            navCircle3.setFill(Paint.valueOf("#ffffff"));
+        }
     }
 
     public void actionMouseExitednavCircle4(MouseEvent mouseEvent) {
+        if(!paneViewAll.isVisible()) {
+            navCircle4.setStroke(Paint.valueOf("#ffffff"));
+            navCircle4.setFill(Paint.valueOf("#ffffff"));
+        }
     }
 
     public void actionMouseEnterednavCircle4(MouseEvent mouseEvent) {
+        if(!paneViewAll.isVisible()) {
+            navCircle4.setStroke(Paint.valueOf("#6be8d9"));
+            navCircle4.setFill(Paint.valueOf("#6be8d9"));
+        }
     }
 
     public void actionMouseClickednavCircle4(MouseEvent mouseEvent) {
@@ -192,16 +267,18 @@ public class Reservedetail_form_controller {
                 reserveDTOObservableList.setAll(reserveDTOS);
                 tvlviewallReservations.setItems(reserveDTOObservableList);
 
+                clearAllPanes();
+                paneViewAll.setVisible(true);
+                navCircle4.setStroke(Paint.valueOf("#027a6c"));
+                navCircle4.setFill(Paint.valueOf("#027a6c"));
+
                 panefullLoading.setVisible(false);
 
             }
         });
         thread.start();
     }
-
-    public void clickedbtncreateReservation(ActionEvent actionEvent) {
-    }
-
+    
     public void clickedActionEditReservationtbl(MouseEvent mouseEvent) {
         String statusText = reserveDTOSforEdit.get(tvlviewallReservationsnotpaidedit.getSelectionModel().getSelectedIndex()).getStatus();
         String[] strArray = statusText.split(",");
@@ -212,8 +289,63 @@ public class Reservedetail_form_controller {
         String[] strArray12 = strArray[1].split(":");
         //strArray12[1] = "2020-02-02"; //split text to get status
 
-        txtfldperiodDate.setValue(LocalDate.parse(strArray12[1]));
+        txtfldperiodDate.setValue(reserveDTOSforEdit.get(tvlviewallReservationsnotpaidedit.getSelectionModel().getSelectedIndex()).getDate());
         txtfldKeymoney.setText(strArray2[1]);
-       // String finalText = "Status:"+txtfldKeymoney.getText()+" , Reserved Date:"+localDate;
+    }
+
+    public void clickedbtnupdateReservation(ActionEvent actionEvent) {
+        Alert alert1=new Alert(Alert.AlertType.INFORMATION);
+        alert1.setHeaderText("Reservation Updating Information");
+        alert1.setContentText("This reservation updated Ssuccessfully.");
+
+        Alert alert2=new Alert(Alert.AlertType.ERROR);
+        alert2.setHeaderText("Reservation Updating Information");
+        alert2.setContentText("This reservation Updated not successfully!");
+
+        //persist data using thread
+        Thread threadAdd =  new Thread(new Runnable() {
+            @SneakyThrows
+            @Override
+            public void run() {
+                panefullLoading.setVisible(true); //start show loading ui
+                Thread.sleep(500); //make virtual database accessing time length
+
+                ReserveDTO reserveDTO = new ReserveDTO(
+                        reserveDTOSforEdit.get(tvlviewallReservationsnotpaidedit.getSelectionModel().getSelectedIndex()).getRes_id(),
+                        txtfldperiodDate.getValue(),
+                        reserveDTOSforEdit.get(tvlviewallReservationsnotpaidedit.getSelectionModel().getSelectedIndex()).getStudentID(),
+                        reserveDTOSforEdit.get(tvlviewallReservationsnotpaidedit.getSelectionModel().getSelectedIndex()).getRoomID(),
+                        "Status:"+txtfldKeymoney.getText()+" ,Reserved Date:"+txtfldperiodDate.getEditor().getText()
+                );
+                if(reserveService.update(reserveDTO)){
+                    //    clearAllPanetxtflds();
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                    loadEditTbl();
+                    Platform.runLater(() ->
+                            alert1.show()
+                    );
+                }else{
+                    Platform.runLater(() ->
+                            alert2.show()
+                    );
+                    panefullLoading.setVisible(false); //after task completed hide loading pane
+                }
+            }
+        });
+        if(true){
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Reservation Updating Confirmation");
+            alert.setContentText("Are you sure to want you to update this Reservation?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    threadAdd.start();  //start thread
+                }
+            });
+        }else{
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid data entered!");
+            alert.setContentText("You have entered invalid data.Please retype and try again. ");
+            alert.show();
+        }
     }
 }

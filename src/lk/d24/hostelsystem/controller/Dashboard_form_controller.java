@@ -157,4 +157,16 @@ public class Dashboard_form_controller {
             boxHome.setStyle("-fx-background-color:  #41018a; -fx-background-radius: 48");
         }
     }
+
+    public void actionMouseClickednavbox7(MouseEvent mouseEvent) {
+    }
+
+    public void actionMouseEnterednavbox7(MouseEvent mouseEvent) {
+    }
+
+    public void actionMouseExitednavbox7(MouseEvent mouseEvent) {
+    }
+
+    public void clickedToLogout(MouseEvent mouseEvent) {
+    }
 }

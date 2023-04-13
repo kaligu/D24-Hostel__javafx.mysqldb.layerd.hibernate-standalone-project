@@ -51,8 +51,8 @@ public class Reservation implements SuperEntity, Serializable {
         return "Reservation{" +
                 "res_id='" + res_id + '\'' +
                 ", date=" + date +
-                ", student=" + student +
-                ", room=" + room +
+                ", student=" + student.getStudent_id() +
+                ", room=" + room.getRoom_type_id() +
                 ", status='" + status + '\'' +
                 '}';
     }

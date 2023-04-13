@@ -22,4 +22,6 @@ public interface ReserveService {
     List<ReserveDTO> viewActiveReservations();
 
     List<ReserveDTO> viewNotpaidReservations();
+
+    boolean update(ReserveDTO reserveDTO);
 }

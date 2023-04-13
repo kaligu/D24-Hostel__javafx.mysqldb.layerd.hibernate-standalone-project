@@ -10,5 +10,6 @@ public enum ServiceTypes {
     STUDENT,
     ROOM,
     RESERVE,
-    QUERY
+    QUERY,
+    LOGINDETAIL
 }

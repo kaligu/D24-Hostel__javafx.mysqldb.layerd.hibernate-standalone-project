@@ -140,4 +140,36 @@ public class ReserveServiceimpl implements ReserveService {
             session.close();
         }
     }
+
+    @Override
+    public boolean update(ReserveDTO reserveDTO) {
+        session=null;
+        transaction=null;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        Student student= new Student();
+        Room room = new Room();
+        student = studentDAO.findByPk(reserveDTO.getStudentID(), session);
+        room=roomDAO.findByPk(reserveDTO.getRoomID(),session);
+        Reservation reservation  =new Reservation(
+                reserveDTO.getRes_id(),
+                reserveDTO.getDate(),
+                student,
+                room,
+                reserveDTO.getStatus()
+        );
+
+        try{
+            reserveDAO.update(reservation , session);
+            transaction.commit();
+            return true;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return false;
+        }finally {
+            session.close();
+        }
+    }
 }

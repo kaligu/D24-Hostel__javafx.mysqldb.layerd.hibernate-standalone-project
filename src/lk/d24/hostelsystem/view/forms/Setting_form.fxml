@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="paneSettings" prefHeight="744.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Setting_form_controller">
+   <children>
+      <AnchorPane layoutX="24.0" layoutY="29.0" prefHeight="680.0" prefWidth="1260.0" style="-fx-background-color: #cccce6;">
+         <children>
+            <Separator layoutX="377.0" layoutY="37.0" orientation="VERTICAL" prefHeight="609.0" prefWidth="6.0" />
+            <ImageView fitHeight="378.0" fitWidth="422.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/login.gif" />
+               </image>
+            </ImageView>
+            <Text layoutX="102.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN Settings" underline="true">
+               <font>
+                  <Font name="System Italic" size="20.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="396.0" layoutY="37.0" prefHeight="615.0" prefWidth="834.0" style="-fx-background-color: white;">
+               <children>
+                  <Text layoutX="111.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit here ..." underline="true">
+                     <font>
+                        <Font name="System Italic" size="17.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="txtfldUsername" focusColor="BLACK" layoutX="346.0" layoutY="171.0" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
+                  <Text layoutX="216.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Username :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="216.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New  Password :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="btnCreateReservation" layoutX="216.0" layoutY="455.0" onAction="#clickedActionUpdateChanges" prefHeight="48.0" prefWidth="404.0" style="-fx-background-color: #545b7d;" text="Update Changes" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Text layoutX="218.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Old  Password :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#540000" layoutX="216.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Please enter your old password to change your Username and/or Password">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="216.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtUserId" fill="#8d8d8d" layoutX="277.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <JFXPasswordField fx:id="txtfldNewPassword" layoutX="346.0" layoutY="248.0" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
+                  <JFXPasswordField fx:id="txtfldOldPassword" layoutX="346.0" layoutY="388.0" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
+               </children>
+            </AnchorPane>
+            <Text layoutX="109.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtUsernameBack" fill="#5d5d5d" layoutX="175.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="91.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtPasswordBack" fill="#5d5d5d" layoutX="175.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panefullLoading" layoutX="7.0" layoutY="12.0" opacity="0.7" prefHeight="721.0" prefWidth="1297.0" style="-fx-background-color: #e8e9eb;" visible="false">
+         <children>
+            <ProgressIndicator layoutX="312.0" layoutY="153.0" prefHeight="416.0" prefWidth="524.0" />
+            <Text layoutX="517.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Wait...">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="100.0" fitWidth="247.0" layoutX="451.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/d24hotellogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

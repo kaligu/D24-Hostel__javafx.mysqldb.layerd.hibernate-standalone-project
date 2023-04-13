@@ -7,10 +7,7 @@
 package lk.d24.hostelsystem.service;
 
 import lk.d24.hostelsystem.dao.custom.impl.ReserveDAOImpl;
-import lk.d24.hostelsystem.service.custom.impl.QueryServiceImpl;
-import lk.d24.hostelsystem.service.custom.impl.ReserveServiceimpl;
-import lk.d24.hostelsystem.service.custom.impl.RoomServiceImpl;
-import lk.d24.hostelsystem.service.custom.impl.StudentServiceImpl;
+import lk.d24.hostelsystem.service.custom.impl.*;
 
 public class ServiceFactory {
     private static ServiceFactory serviceFactory;
@@ -29,6 +26,8 @@ public class ServiceFactory {
                 return (T)new ReserveServiceimpl();
             case QUERY:
                 return (T)new QueryServiceImpl();
+            case LOGINDETAIL:
+                return (T)new LoginDetailServiceImpl();
             default:
                 return null;
         }
