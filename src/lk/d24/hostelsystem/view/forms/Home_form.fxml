@@ -205,7 +205,7 @@
                </effect>
             </TableView>
          </children></AnchorPane>
-      <AnchorPane fx:id="panelreservedrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="panelreservedrooms" layoutX="41.0" layoutY="296.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms">
                <font>
@@ -213,7 +213,7 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+            <TableView layoutX="14.0" layoutY="71.0" prefHeight="322.0" prefWidth="683.0" visible="false">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
@@ -231,7 +231,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneavailablerooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="paneavailablerooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Rooms">
                <font>
@@ -239,7 +239,7 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="676.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
@@ -257,7 +257,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panenotpaidrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="panenotpaidrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not Paid Rooms">
                <font>
@@ -265,7 +265,7 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="609.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
@@ -283,7 +283,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneroomexpiretoday" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="1011.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="paneroomexpiretoday" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms expiring today">
                <font>
@@ -291,7 +291,7 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="980.0">
+            <TableView layoutX="14.0" layoutY="40.0" prefHeight="353.0" prefWidth="630.0">
                <columns>
                   <TableColumn prefWidth="75.0" text="C1" />
                   <TableColumn prefWidth="75.0" text="C2" />
