@@ -7,10 +7,7 @@
 package lk.d24.hostelsystem.dto;
 
 import lk.d24.hostelsystem.entity.Reservation;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +19,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class RoomDTO {
     private String room_type_id;
 

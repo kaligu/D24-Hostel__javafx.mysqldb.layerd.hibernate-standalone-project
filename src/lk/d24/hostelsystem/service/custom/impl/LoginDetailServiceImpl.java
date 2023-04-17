@@ -23,8 +23,6 @@ import org.hibernate.Transaction;
 public class LoginDetailServiceImpl implements LoginDetailService {
     private final LoginDetailDAO loginDetailDAO;
     private final Convertor convertor;
-    private Session session;
-    private Transaction transaction;
 
     public LoginDetailServiceImpl() {
         this.loginDetailDAO = DAOFactory.getInstance().getDAO(DAOTypes.LOGINDETAIL);
@@ -34,8 +32,8 @@ public class LoginDetailServiceImpl implements LoginDetailService {
     @Override
     public LoginDetailDTO findByPk(String pk) {
         LoginDetailDTO loginDetailDTO = null;
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
@@ -54,8 +52,8 @@ public class LoginDetailServiceImpl implements LoginDetailService {
 
     @Override
     public boolean update(LoginDetailDTO loginDetailDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{

@@ -6,6 +6,7 @@
 */
 package lk.d24.hostelsystem.service.custom;
 
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.entity.Reservation;
@@ -24,4 +25,8 @@ public interface ReserveService {
     List<ReserveDTO> viewNotpaidReservations();
 
     boolean update(ReserveDTO reserveDTO);
+
+    List<ReservationDTO> findAllRoomExpireTodayReservations();
+
+    List<ReservationDTO> viewAllNotpaidReservationsStRoom();
 }

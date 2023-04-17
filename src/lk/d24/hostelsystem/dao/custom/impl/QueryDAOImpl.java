@@ -7,8 +7,10 @@
 package lk.d24.hostelsystem.dao.custom.impl;
 
 import lk.d24.hostelsystem.dao.QueryDAO;
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.dto.qaRoomDTO;
+import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -37,5 +39,6 @@ public class QueryDAOImpl implements QueryDAO {
         }
         return roomList1;
     }
+
 }
 

@@ -34,9 +34,6 @@ public class ReserveServiceimpl implements ReserveService {
     private final RoomDAO roomDAO;
     private final ReserveDAO reserveDAO;
     private final Convertor convertor;
-    private Session session;
-    private Transaction transaction;
-
     public ReserveServiceimpl() {
         this.studentDAO = DAOFactory.getInstance().getDAO(DAOTypes.STUDENT);
         this.roomDAO= DAOFactory.getInstance().getDAO(DAOTypes.ROOM);
@@ -45,8 +42,8 @@ public class ReserveServiceimpl implements ReserveService {
     }
     @Override
     public boolean saveReservation(ReserveDTO reserveDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         Student student= new Student();
@@ -78,8 +75,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewAllReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -100,8 +97,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewActiveReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -122,8 +119,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewNotpaidReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -143,8 +140,8 @@ public class ReserveServiceimpl implements ReserveService {
 
     @Override
     public boolean update(ReserveDTO reserveDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         Student student= new Student();
@@ -158,7 +155,6 @@ public class ReserveServiceimpl implements ReserveService {
                 room,
                 reserveDTO.getStatus()
         );
-
         try{
             reserveDAO.update(reservation , session);
             transaction.commit();
@@ -168,6 +164,49 @@ public class ReserveServiceimpl implements ReserveService {
                 transaction.rollback();
             }
             return false;
+        }finally {
+            session.close();
+        }
+    }
+
+
+    @Override
+    public List<ReservationDTO> findAllRoomExpireTodayReservations() {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        List<ReservationDTO> reservationDTOS=new ArrayList<>();
+        try{
+            reservationDTOS =  reserveDAO.findAllRoomExpireTodayReservations(session).stream().map(reservation -> convertor.fromReservation(reservation)).collect(Collectors.toList());
+            transaction.commit();
+            return reservationDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return reservationDTOS;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<ReservationDTO> viewAllNotpaidReservationsStRoom() {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        List<ReservationDTO> reservationDTOS=new ArrayList<>();
+        try{
+            reservationDTOS =  reserveDAO.viewAllNotpaidReservationsStRoom(session).stream().map(reservation -> convertor.fromReservation(reservation)).collect(Collectors.toList());
+            transaction.commit();
+            return reservationDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return reservationDTOS;
         }finally {
             session.close();
         }

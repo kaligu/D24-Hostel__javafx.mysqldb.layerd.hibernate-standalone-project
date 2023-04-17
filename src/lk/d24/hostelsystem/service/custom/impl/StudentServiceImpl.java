@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 public class StudentServiceImpl implements StudentService {
     private final StudentDAO studentDAO;
     private final Convertor convertor;
-    private Session session;
-    private Transaction transaction;
 
     public StudentServiceImpl() {
         this.studentDAO = DAOFactory.getInstance().getDAO(DAOTypes.STUDENT);
@@ -37,8 +35,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean saveStudent(StudentDTO studentDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
@@ -61,8 +59,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean updateStudent(StudentDTO studentDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
@@ -85,8 +83,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean deleteStudent(StudentDTO studentDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -106,8 +104,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> searchStudentByText(String text) {
         List<StudentDTO> studentDTOList =new ArrayList<>();
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -125,8 +123,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<String> getAllStudentIds() {
         List<String> stringList = new ArrayList<>();
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
@@ -145,8 +143,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO findByPk(String pk) {
         StudentDTO studentDTO = null;
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 

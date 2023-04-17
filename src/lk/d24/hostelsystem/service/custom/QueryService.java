@@ -6,8 +6,10 @@
 */
 package lk.d24.hostelsystem.service.custom;
 
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.dto.qaRoomDTO;
+import lk.d24.hostelsystem.entity.Reservation;
 
 import java.util.List;
 

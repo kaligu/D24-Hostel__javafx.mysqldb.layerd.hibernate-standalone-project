@@ -22,6 +22,4 @@ public interface RoomService {
     RoomDTO findByPk(String pk);
 
     List<RoomDTO> getAllRooms();
-
-    int getAllRoomCount();
 }

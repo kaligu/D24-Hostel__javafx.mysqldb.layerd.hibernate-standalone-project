@@ -16,15 +16,15 @@ import lk.d24.hostelsystem.util.HbFactoryConfiguration;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.Synchronize;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RoomServiceImpl implements RoomService {
     private final RoomDAO roomDAO;
     private final Convertor convertor;
-    private Session session;
-    private Transaction transaction;
 
     public RoomServiceImpl() {
         this.roomDAO = DAOFactory.getInstance().getDAO(DAOTypes.ROOM);
@@ -33,8 +33,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean saveRoom(RoomDTO roomDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
@@ -57,8 +57,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean updateRoom(RoomDTO roomDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
@@ -81,8 +81,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean deleteRoom(RoomDTO roomDTO) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
         try{
@@ -101,8 +101,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomDTO> searchRoomByText(String text) {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
@@ -117,8 +117,8 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomDTO findByPk(String pk) {
         RoomDTO roomDTO = null;
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
 
@@ -137,31 +137,23 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomDTO> getAllRooms() {
-        session=null;
-        transaction=null;
+        Session session;
+        Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
-
+        List<RoomDTO> roomDTOS = new ArrayList<>();
         try{
-            return roomDAO.getAll(session).stream().map(room -> convertor.fromRoom(room)).collect(Collectors.toList());
-        } catch (HibernateException e){
-
+            roomDTOS = roomDAO.getAll(session).stream().map(room -> convertor.fromRoom(room)).collect(Collectors.toList());
+            transaction.commit();
+            return roomDTOS;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return roomDTOS;
+        }finally {
+            session.close();
         }
-        return null;
     }
 
-    @Override
-    public int getAllRoomCount() {
-        session=null;
-        transaction=null;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
-
-        try{
-            return roomDAO.getAllRoomCount(session);
-        } catch (HibernateException e){
-            return 0;
-        }
-
-    }
 }

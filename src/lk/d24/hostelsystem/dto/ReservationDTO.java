@@ -8,10 +8,7 @@ package lk.d24.hostelsystem.dto;
 
 import lk.d24.hostelsystem.entity.Room;
 import lk.d24.hostelsystem.entity.Student;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -19,6 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ReservationDTO {
     private String res_id;
     private LocalDate date;

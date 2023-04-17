@@ -77,4 +77,31 @@ public class ReserveDAOImpl implements ReserveDAO {
         reservations = query.list();
         return reservations;
     }
+
+    @Override
+    public List<Reservation> viewAllReservedReservations(Session session) {
+        List<Reservation> reservations = new ArrayList<>();
+        String hql = "FROM Reservation res WHERE res.status LIKE '%Status:not%'";
+        Query query = session.createQuery(hql);
+        reservations = query.list();
+        return reservations;
+    }
+
+    @Override
+    public List<Reservation> findAllRoomExpireTodayReservations(Session session) {
+        List<Reservation> reservations = new ArrayList<>();
+        String hql = "FROM Reservation res WHERE res.date = CURRENT_DATE";
+        Query query = session.createQuery(hql);
+        reservations = query.list();
+        return reservations;
+    }
+
+    @Override
+    public List<Reservation> viewAllNotpaidReservationsStRoom(Session session) {
+        List<Reservation> reservations = new ArrayList<>();
+        String hql = "FROM Reservation res WHERE res.status LIKE '%Status:not%'";
+        Query query = session.createQuery(hql);
+        reservations = query.list();
+        return reservations;
+    }
 }

@@ -6,10 +6,7 @@
 */
 package lk.d24.hostelsystem.service.util;
 
-import lk.d24.hostelsystem.dto.LoginDetailDTO;
-import lk.d24.hostelsystem.dto.ReserveDTO;
-import lk.d24.hostelsystem.dto.RoomDTO;
-import lk.d24.hostelsystem.dto.StudentDTO;
+import lk.d24.hostelsystem.dto.*;
 import lk.d24.hostelsystem.entity.LoginDetail;
 import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
@@ -38,6 +35,14 @@ public class Convertor {
 
     public LoginDetail toLoginDetail(LoginDetailDTO loginDetailDTO){
         return new LoginDetail(loginDetailDTO.getUserID(), loginDetailDTO.getUsername(), loginDetailDTO.getPassword());
+    }
+
+    public Reservation toReservation(ReservationDTO reservationDTO){
+        return new Reservation(reservationDTO.getRes_id(),reservationDTO.getDate(), reservationDTO.getStudent(), reservationDTO.getRoom(), reservationDTO.getStatus());
+    }
+
+    public ReservationDTO fromReservation(Reservation reservation){
+        return new ReservationDTO(reservation.getRes_id(),reservation.getDate(), reservation.getStudent(), reservation.getRoom(), reservation.getStatus());
     }
 
 }

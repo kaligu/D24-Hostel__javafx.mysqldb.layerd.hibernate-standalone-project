@@ -7,7 +7,9 @@
 package lk.d24.hostelsystem.dao;
 
 import lk.d24.hostelsystem.dao.SuperDAO;
+import lk.d24.hostelsystem.dto.ReservationDTO;
 import lk.d24.hostelsystem.dto.qaRoomDTO;
+import lk.d24.hostelsystem.entity.Reservation;
 import lk.d24.hostelsystem.entity.Room;
 import org.hibernate.Session;
 
