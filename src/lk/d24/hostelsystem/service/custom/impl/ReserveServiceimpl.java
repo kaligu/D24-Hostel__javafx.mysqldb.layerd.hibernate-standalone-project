@@ -211,4 +211,25 @@ public class ReserveServiceimpl implements ReserveService {
             session.close();
         }
     }
+
+    @Override
+    public String getLastOrderID() {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        String id="null";
+        try{
+            id= reserveDAO.getLastOrderID(session);
+            transaction.commit();
+            return id;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return id;
+        }finally {
+            session.close();
+        }
+    }
 }

@@ -90,8 +90,8 @@ public class PlaceReserve_form_controller {
         colTyperoom.setCellValueFactory(new PropertyValueFactory<>("type"));
         colKeyMoneyroom.setCellValueFactory(new PropertyValueFactory<>("key_money"));
         colavailableRoomsqtyroom.setCellValueFactory(new PropertyValueFactory<>("availableRoomsQty"));
-    }
 
+    }
     private void addStudentIdsintoCmbox() {
         Thread thread= new Thread(new Runnable() {
             @Override
@@ -120,11 +120,33 @@ public class PlaceReserve_form_controller {
                     btnCreateReservation.setDisable(false);
                 }
 
-                queryService.findAllAvailableRooms();
+                //load last order ID
+                String oldID=reserveService.getLastOrderID();
+                String newID="RM-0000";
+                if(oldID.equals("null")){
+                    txtfldReserveID.setText(newID);
+                }else{
+                    txtfldReserveID.setText(incrementRM(oldID));
+                }
+
                 panefullLoading.setVisible(false);
             }
         });
         thread.start();
+    }
+
+    private String incrementRM(String input) {   //increment Order ID
+        String prefix = input.substring(0, 3);
+        int num = Integer.parseInt(input.substring(3));
+        String paddedNum;
+        if (num < 9999) {
+            // If the numerical portion is already at the maximum value, return the original input string
+            paddedNum=String.valueOf(num);
+        }else{
+            num++;
+            paddedNum = String.format("%04d", num);
+        }
+        return prefix + paddedNum;
     }
 
 

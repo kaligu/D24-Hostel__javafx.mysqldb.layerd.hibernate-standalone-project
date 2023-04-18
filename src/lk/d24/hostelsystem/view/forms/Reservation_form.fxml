@@ -178,6 +178,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXTextField fx:id="txtfldReserveID" focusColor="BLACK" layoutX="102.0" layoutY="19.0" prefHeight="33.0" prefWidth="91.0" promptText="Type here..." />
+      <JFXTextField fx:id="txtfldReserveID" editable="false" focusColor="#440061" layoutX="102.0" layoutY="19.0" prefHeight="33.0" prefWidth="91.0" promptText="Type here..." unFocusColor="#440061">
+         <font>
+            <Font size="17.0" />
+         </font></JFXTextField>
    </children>
 </AnchorPane>

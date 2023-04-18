@@ -27,4 +27,6 @@ public interface ReserveDAO extends CrudDAO<Reservation, String> {
     List<Reservation> findAllRoomExpireTodayReservations(Session session);
 
     List<Reservation> viewAllNotpaidReservationsStRoom(Session session);
+
+    String getLastOrderID(Session session);
 }

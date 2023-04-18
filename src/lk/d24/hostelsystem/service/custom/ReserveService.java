@@ -29,4 +29,6 @@ public interface ReserveService {
     List<ReservationDTO> findAllRoomExpireTodayReservations();
 
     List<ReservationDTO> viewAllNotpaidReservationsStRoom();
+
+    String getLastOrderID();
 }

@@ -26,7 +26,7 @@
          <content>
             <AnchorPane prefHeight="1205.0" prefWidth="139.0" style="-fx-background-color: #a179b9;">
                <children>
-                  <AnchorPane fx:id="box1" layoutX="20.0" layoutY="133.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box1" layoutX="20.0" layoutY="141.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -55,7 +55,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box2" layoutX="20.0" layoutY="243.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box2" layoutX="20.0" layoutY="251.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -84,7 +84,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box3" layoutX="20.0" layoutY="354.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box3" layoutX="20.0" layoutY="362.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -113,7 +113,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box4" layoutX="20.0" layoutY="464.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box4" layoutX="20.0" layoutY="472.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -142,7 +142,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="box5" layoutX="20.0" layoutY="576.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="box5" layoutX="20.0" layoutY="584.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -171,7 +171,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane fx:id="boxHome" layoutX="20.0" layoutY="24.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
+                  <AnchorPane fx:id="boxHome" layoutX="20.0" layoutY="32.0" onMouseClicked="#actionMouseClickednavHome" onMouseEntered="#actionMouseEnterednavHome" onMouseExited="#actionMouseExitednavHome" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #41018a; -fx-background-radius: 20;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -200,7 +200,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
-                  <AnchorPane layoutX="20.0" layoutY="690.0" onMouseClicked="#clickedToLogout" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #8a0101; -fx-background-radius: 45;">
+                  <AnchorPane layoutX="20.0" layoutY="698.0" onMouseClicked="#clickedToLogout" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #8a0101; -fx-background-radius: 45;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -229,6 +229,7 @@
                         </Bloom>
                      </effect>
                   </AnchorPane>
+                  <Text layoutX="22.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@Built By Kaligu" />
                </children>
                <effect>
                   <Lighting diffuseConstant="1.24" specularConstant="2.0" specularExponent="31.43" surfaceScale="10.0">

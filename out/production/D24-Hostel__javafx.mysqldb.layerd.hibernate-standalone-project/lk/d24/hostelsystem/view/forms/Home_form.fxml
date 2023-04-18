@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +17,7 @@
 
 <AnchorPane prefHeight="744.0" prefWidth="1309.0" style="-fx-background-color: #f9edff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.d24.hostelsystem.controller.Home_form_controller">
    <children>
-      <AnchorPane fx:id="box1" layoutX="44.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box1" layoutX="22.0" layoutY="32.0" onMouseClicked="#actionMouseClickednavbox1" onMouseEntered="#actionMouseEnterednavbox1" onMouseExited="#actionMouseExitednavbox1" prefHeight="214.0" prefWidth="300.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -49,40 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box2" layoutX="298.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox2" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
-         <effect>
-            <Lighting>
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect>
-         <children>
-            <Text fill="WHITE" layoutX="43.0" layoutY="183.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="147.99998408555984">
-               <font>
-                  <Font size="80.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Text>
-            <Text fill="WHITE" layoutX="43.0" layoutY="41.0" onMouseEntered="#actionMouseEnterednavbox2" onMouseExited="#actionMouseExitednavbox2" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms" wrappingWidth="147.99998408555984">
-               <font>
-                  <Font size="25.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Text>
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </AnchorPane>
-      <AnchorPane fx:id="box3" layoutX="550.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box3" layoutX="350.0" layoutY="32.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" prefHeight="214.0" prefWidth="300.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -101,7 +69,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="txtAvailbaleRooms" fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox3" onMouseEntered="#actionMouseEnterednavbox3" onMouseExited="#actionMouseExitednavbox3" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -114,7 +82,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box4" layoutX="802.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box4" layoutX="665.0" layoutY="32.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" prefHeight="214.0" prefWidth="300.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -133,7 +101,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="txtNotPaidrooms" fill="WHITE" layoutX="44.0" layoutY="178.0" onMouseClicked="#actionMouseClickednavbox4" onMouseEntered="#actionMouseEnterednavbox4" onMouseExited="#actionMouseExitednavbox4" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -146,7 +114,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="box5" layoutX="1052.0" layoutY="57.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="214.0" prefWidth="218.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
+      <AnchorPane fx:id="box5" layoutX="988.0" layoutY="32.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" prefHeight="214.0" prefWidth="300.0" style="-fx-background-color: #0b88e0; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -165,7 +133,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Text>
-            <Text fill="WHITE" layoutX="48.0" layoutY="175.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+            <Text fx:id="txtRoomExpireCount" fill="WHITE" layoutX="48.0" layoutY="175.0" onMouseClicked="#actionMouseClickednavbox5" onMouseEntered="#actionMouseEnterednavbox5" onMouseExited="#actionMouseExitednavbox5" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                <font>
                   <Font size="80.0" />
                </font>
@@ -178,7 +146,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane fx:id="paneallroom" layoutX="41.0" layoutY="293.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;">
+      <AnchorPane fx:id="paneallroom" layoutX="26.0" layoutY="275.0" prefHeight="445.0" prefWidth="936.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Rooms">
                <font>
@@ -186,7 +154,7 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView fx:id="tbl1" layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="701.0">
+            <TableView fx:id="tbl1" layoutX="14.0" layoutY="61.0" prefHeight="369.0" prefWidth="908.0">
               <columns>
                 <TableColumn fx:id="colroomid1" prefWidth="143.0" text="Room Type ID" />
                 <TableColumn fx:id="colroomtype1" prefWidth="173.0" text="Room Type" />
@@ -205,33 +173,7 @@
                </effect>
             </TableView>
          </children></AnchorPane>
-      <AnchorPane fx:id="panelreservedrooms" layoutX="41.0" layoutY="296.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
-         <children>
-            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserved Rooms">
-               <font>
-                  <Font name="System Italic" size="19.0" />
-               </font>
-            </Text>
-            <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="71.0" prefHeight="322.0" prefWidth="683.0" visible="false">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-               </columns>
-               <effect>
-                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant color="#dae9ff" />
-                     </light>
-                  </Lighting>
-               </effect>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="paneavailablerooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="paneavailablerooms" layoutX="26.0" layoutY="275.0" prefHeight="445.0" prefWidth="936.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Rooms">
                <font>
@@ -239,10 +181,12 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="676.0">
+            <TableView fx:id="tbl13" layoutX="14.0" layoutY="61.0" prefHeight="375.0" prefWidth="908.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn fx:id="colroomid3" prefWidth="180.0" text="Room Type ID" />
+                  <TableColumn fx:id="colroomtype3" prefWidth="247.0" text="Room Type" />
+                  <TableColumn fx:id="colroomkeymoney3" prefWidth="256.0" text="Room Key Money" />
+                  <TableColumn fx:id="colroomqty3" prefWidth="224.0" text="Room Qty" />
                </columns>
                <effect>
                   <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
@@ -257,7 +201,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="panenotpaidrooms" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="panenotpaidrooms" layoutX="26.0" layoutY="275.0" prefHeight="445.0" prefWidth="936.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not Paid Rooms">
                <font>
@@ -265,25 +209,52 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="61.0" prefHeight="332.0" prefWidth="609.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-               </columns>
-               <effect>
-                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant color="#dae9ff" />
-                     </light>
-                  </Lighting>
-               </effect>
-            </TableView>
+            <ScrollPane layoutX="14.0" layoutY="68.0" prefHeight="369.0" prefWidth="908.0">
+               <content>
+                  <TableView fx:id="tb4" prefHeight="332.0" prefWidth="1014.0">
+                     <columns>
+                        <TableColumn prefWidth="859.0" text="Details">
+                           <columns>
+                              <TableColumn fx:id="colid4" prefWidth="97.0" text="ID" />
+                              <TableColumn fx:id="colexpiredate4" prefWidth="81.0" text="Expire Date" />
+                              <TableColumn fx:id="colstatus4" prefWidth="87.0" text="Status" />
+                              <TableColumn prefWidth="415.0" text="Reserved Student">
+                                 <columns>
+                                    <TableColumn fx:id="colresid4" prefWidth="64.0" text="ID" />
+                                    <TableColumn fx:id="colresname4" prefWidth="76.0" text="Name" />
+                                    <TableColumn fx:id="colresadress4" prefWidth="79.00003051757812" text="Address" />
+                                    <TableColumn fx:id="colrescontact4" prefWidth="79.00003051757812" text="Contact No." />
+                                    <TableColumn fx:id="colresdob4" prefWidth="54.0" text="DOB" />
+                                    <TableColumn fx:id="colresgender4" prefWidth="106.0" text="Gender" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn minWidth="9.0" prefWidth="315.0" text="Reserved Room">
+                                 <columns>
+                                    <TableColumn fx:id="colroomid4" prefWidth="83.0" text="ID" />
+                                    <TableColumn fx:id="colroomtype4" prefWidth="78.0" text="Type" />
+                                    <TableColumn fx:id="colroomkeymoney4" prefWidth="92.0" text="KeyMoney" />
+                                    <TableColumn fx:id="colroomqty4" prefWidth="35.0" text="QTY" />
+                                 </columns>
+                              </TableColumn>
+                           </columns>
+                        </TableColumn>
+                     </columns>
+                     <effect>
+                        <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant color="#dae9ff" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </TableView>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneroomexpiretoday" layoutX="41.0" layoutY="314.0" prefHeight="407.0" prefWidth="729.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
+      <AnchorPane fx:id="paneroomexpiretoday" layoutX="26.0" layoutY="275.0" prefHeight="445.0" prefWidth="936.0" style="-fx-background-color: #aec4e6; -fx-background-radius: 20;" visible="false">
          <children>
             <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms expiring today">
                <font>
@@ -291,25 +262,52 @@
                </font>
             </Text>
             <Separator layoutX="14.0" layoutY="49.0" prefHeight="0.0" prefWidth="148.0" style="-fx-background-color: black;" />
-            <TableView layoutX="14.0" layoutY="40.0" prefHeight="353.0" prefWidth="630.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-               </columns>
-               <effect>
-                  <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant color="#dae9ff" />
-                     </light>
-                  </Lighting>
-               </effect>
-            </TableView>
+            <ScrollPane layoutX="14.0" layoutY="63.0" prefHeight="369.0" prefWidth="908.0">
+               <content>
+                  <TableView fx:id="tb5" prefHeight="332.0" prefWidth="1014.0">
+                     <columns>
+                        <TableColumn prefWidth="859.0" text="Details">
+                           <columns>
+                              <TableColumn fx:id="colid5" prefWidth="97.0" text="ID" />
+                              <TableColumn fx:id="colexpiredate5" prefWidth="81.0" text="Expire Date" />
+                              <TableColumn fx:id="colstatus5" prefWidth="87.0" text="Status" />
+                              <TableColumn prefWidth="415.0" text="Reserved Student">
+                                 <columns>
+                                    <TableColumn fx:id="colresid5" prefWidth="64.0" text="ID" />
+                                    <TableColumn fx:id="colresname5" prefWidth="76.0" text="Name" />
+                                    <TableColumn fx:id="colresadress5" prefWidth="79.00003051757812" text="Address" />
+                                    <TableColumn fx:id="colrescontact5" prefWidth="79.00003051757812" text="Contact No." />
+                                    <TableColumn fx:id="colresdob5" prefWidth="54.0" text="DOB" />
+                                    <TableColumn fx:id="colresgender5" prefWidth="106.0" text="Gender" />
+                                 </columns>
+                              </TableColumn>
+                              <TableColumn minWidth="9.0" prefWidth="315.0" text="Reserved Room">
+                                 <columns>
+                                    <TableColumn fx:id="colroomid5" prefWidth="83.0" text="ID" />
+                                    <TableColumn fx:id="colroomtype5" prefWidth="78.0" text="Type" />
+                                    <TableColumn fx:id="colroomkeymoney5" prefWidth="92.0" text="KeyMoney" />
+                                    <TableColumn fx:id="colroomqty5" prefWidth="35.0" text="QTY" />
+                                 </columns>
+                              </TableColumn>
+                           </columns>
+                        </TableColumn>
+                     </columns>
+                     <effect>
+                        <Lighting diffuseConstant="1.23" specularConstant="0.16" specularExponent="11.9" surfaceScale="1.62">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant color="#dae9ff" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </TableView>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="810.0" layoutY="295.0" prefHeight="407.0" prefWidth="456.0" style="-fx-background-color: #73018a; -fx-background-radius: 48;">
+      <AnchorPane layoutX="988.0" layoutY="278.0" prefHeight="445.0" prefWidth="300.0" style="-fx-background-color: #73018a; -fx-background-radius: 48;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -321,7 +319,7 @@
             </Lighting>
          </effect>
          <children>
-            <Text fx:id="txtDate" fill="WHITE" layoutX="161.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDate" wrappingWidth="241.0927730202675">
+            <Text fx:id="txtDate" fill="WHITE" layoutX="87.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="txtDate" wrappingWidth="192.49418595433235">
                <font>
                   <Font size="48.0" />
                </font>
@@ -329,7 +327,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <Text fx:id="txtDay" fill="WHITE" layoutX="161.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31" wrappingWidth="224.99998408555984">
+            <Text fx:id="txtDay" fill="WHITE" layoutX="49.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="31" wrappingWidth="222.0927730202675">
                <font>
                   <Font size="200.0" />
                </font>
@@ -337,7 +335,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <Text fx:id="txttime" fill="WHITE" layoutX="161.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02:25:25" wrappingWidth="196.4941590130329">
+            <Text fx:id="txttime" fill="WHITE" layoutX="83.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02:25:25" wrappingWidth="201.4941590130329">
                <font>
                   <Font size="36.0" />
                </font>
