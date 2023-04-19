@@ -156,4 +156,25 @@ public class RoomServiceImpl implements RoomService {
         }
     }
 
+    @Override
+    public String getLastRoomID() {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        String id="null";
+        try{
+            id= roomDAO.getLastRoomID(session);
+            transaction.commit();
+            return id;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return id;
+        }finally {
+            session.close();
+        }
+    }
+
 }

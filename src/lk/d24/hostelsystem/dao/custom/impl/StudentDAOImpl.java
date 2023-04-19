@@ -84,4 +84,19 @@ public class StudentDAOImpl implements StudentDAO {
         idList = query.list();
         return idList;
     }
+
+    @Override
+    public String getLastStudentID(Session session) {
+        String id = null;
+        String hql = "SELECT r.student_id FROM Student r ORDER BY r.student_id DESC";
+        Query<String> query = session.createQuery(hql, String.class);
+        query.setMaxResults(1);
+        List<String> result = query.getResultList();
+        if (!result.isEmpty()) {
+            id = result.get(0);
+        }else{
+            id="null";
+        }
+        return id;
+    }
 }

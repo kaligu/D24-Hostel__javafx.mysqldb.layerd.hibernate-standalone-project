@@ -19,4 +19,5 @@ public interface StudentDAO extends CrudDAO<Student,String>{
 
     List<String> getAllStudentIds(Session session);
 
+    String getLastStudentID(Session session);
 }

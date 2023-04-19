@@ -87,4 +87,19 @@ public class RoomDAOImpl implements RoomDAO {
         Long result = (Long) query.uniqueResult();
         return result != null ? result.intValue() : 0;
     }
+
+    @Override
+    public String getLastRoomID(Session session) {
+        String id = null;
+        String hql = "SELECT r.room_type_id FROM Room r ORDER BY r.room_type_id DESC";
+        Query<String> query = session.createQuery(hql, String.class);
+        query.setMaxResults(1);
+        List<String> result = query.getResultList();
+        if (!result.isEmpty()) {
+            id = result.get(0);
+        }else{
+            id="null";
+        }
+        return id;
+    }
 }

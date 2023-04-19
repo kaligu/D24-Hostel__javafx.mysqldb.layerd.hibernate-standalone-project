@@ -6,8 +6,10 @@
 */
 package lk.d24.hostelsystem.view.custom.impl;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import lk.d24.hostelsystem.view.custom.Validatetxtfld;
@@ -178,6 +180,91 @@ public class ValidatetxtfldImpl implements Validatetxtfld {
             textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
             text.setFill(Color.RED);
             text.setText("Type a Valid Room Qty.natural values or decimal values.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateIsSelectedTableRoom(TableView tableView, Text text) {
+        if (tableView.getSelectionModel().getSelectedIndex() >= 0) {
+            text.setText("");
+            tableView.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            tableView.requestFocus();
+            tableView.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Select a Room Using table Row...");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateTxtfldPaidNotPaid(JFXTextField textField, Text text) {
+        if (textField.getText().matches("(?:paid|not paid)$")) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Type a valid describe fee note like, 'paid/not paid'.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateTxtfldTimePeiod(JFXDatePicker textField, Text text) {
+        if (textField.getEditor().getText().length() >= 2) {
+            text.setText("");
+            textField.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            textField.requestFocus();
+            textField.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Select Time Period Using Calander.");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateIsSelectedCombobox(JFXComboBox jfxComboBox, Text text) {
+        if (jfxComboBox.getSelectionModel().getSelectedIndex() >= 0) {
+            text.setText("");
+            jfxComboBox.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            jfxComboBox.requestFocus();
+            jfxComboBox.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Select a Student here...");
+            text.setVisible(true);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean validateIsSelectedTable(TableView tableView, Text text) {
+        if (tableView.getSelectionModel().getSelectedIndex() >= 0) {
+            text.setText("");
+            tableView.setStyle("-fx-focus-color: #000000; -fx-unfocus-color: #000000");
+            text.setVisible(false);
+            return true;
+        } else {
+            tableView.requestFocus();
+            tableView.setStyle("-fx-border-color: #ff0000; -fx-background-color:#fca4a4; -fx-focus-color:#ff0000");
+            text.setFill(Color.RED);
+            text.setText("Select a Room Using table Row...");
             text.setVisible(true);
             return false;
         }

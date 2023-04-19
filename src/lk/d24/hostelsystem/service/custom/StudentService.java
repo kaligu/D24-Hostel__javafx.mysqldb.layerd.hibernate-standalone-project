@@ -26,4 +26,5 @@ public interface StudentService extends SuperService {
 
     StudentDTO findByPk(String pk);
 
+    String getLastStudentID();
 }

@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -37,9 +38,7 @@ public class Room implements SuperEntity, Serializable {
     @Column(name="qty",columnDefinition = "INT")
     private int qty;
 
-    @OneToMany(mappedBy = "room", cascade = {
-            CascadeType.ALL
-    })
+    @OneToMany(mappedBy = "room", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservationList= new ArrayList<>();
 
     public Room(String room_type_id, String type, double key_money, int qty) {

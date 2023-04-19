@@ -161,5 +161,26 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    @Override
+    public String getLastStudentID() {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        String id="null";
+        try{
+            id= studentDAO.getLastStudentID(session);
+            transaction.commit();
+            return id;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            return id;
+        }finally {
+            session.close();
+        }
+    }
+
 
 }

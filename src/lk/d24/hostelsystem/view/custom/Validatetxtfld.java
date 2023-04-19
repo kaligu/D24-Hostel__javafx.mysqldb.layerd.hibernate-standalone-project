@@ -6,8 +6,10 @@
 */
 package lk.d24.hostelsystem.view.custom;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.TableView;
 import javafx.scene.text.Text;
 
 public interface Validatetxtfld {
@@ -22,4 +24,10 @@ public interface Validatetxtfld {
     boolean validateTxtfldRoomType(JFXTextField textField , Text text);   //CheckRegax RoomType
     boolean validateTxtfldRoomQty(JFXTextField textField , Text text);   //CheckRegax RoomQty
     boolean validateTxtfldRoomKeymoney(JFXTextField textField , Text text);   //CheckRegax RoomKeymoney
+    boolean validateIsSelectedTableRoom(TableView tableView, Text text);   //CheckRegax istable selected
+
+    boolean validateTxtfldPaidNotPaid(JFXTextField textField , Text text);   //CheckRegax PaidorNotpaid
+    boolean validateTxtfldTimePeiod(JFXDatePicker textField , Text text);   //CheckRegax TimePeriod
+    boolean validateIsSelectedCombobox(JFXComboBox jfxComboBox, Text text);   //CheckRegax iscombobox selected
+    boolean validateIsSelectedTable(TableView tableView, Text text);   //CheckRegax istable selected
 }

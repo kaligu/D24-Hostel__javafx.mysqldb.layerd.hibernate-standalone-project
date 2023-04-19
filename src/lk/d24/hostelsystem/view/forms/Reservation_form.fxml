@@ -18,13 +18,13 @@
    <children>
       <AnchorPane layoutX="17.0" layoutY="603.0" prefHeight="118.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
          <children>
-            <JFXTextField fx:id="txtfldKeymoney" focusColor="BLACK" layoutX="392.0" layoutY="56.0" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
+            <JFXTextField fx:id="txtfldKeymoney" focusColor="BLACK" layoutX="392.0" layoutY="45.0" onKeyReleased="#typeActiontxtfldPaidNotpaid" prefHeight="43.0" prefWidth="271.0" promptText="Type here..." />
             <Text layoutX="392.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type &quot; paid&quot;  or &quot; not paid&quot;  Keymoney ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-            <JFXDatePicker fx:id="txtfldperiodDate" defaultColor="BLACK" editable="false" layoutX="36.0" layoutY="56.0" prefHeight="43.0" prefWidth="271.0" promptText="Select Date here..." />
+            <JFXDatePicker fx:id="txtfldperiodDate" defaultColor="BLACK" editable="false" layoutX="36.0" layoutY="45.0" onAction="#OnactionAddedPeriodDate" prefHeight="43.0" prefWidth="271.0" promptText="Select Date here..." />
             <Text layoutX="36.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Time Period here ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
@@ -38,16 +38,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Text fx:id="txtpaidnotpaid" fill="RED" layoutX="392.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="483.9814453125" />
+            <Text fx:id="txttimePeriod" fill="RED" layoutX="36.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="336.99999537318945" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="17.0" layoutY="231.0" prefHeight="349.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
+      <AnchorPane layoutX="17.0" layoutY="223.0" prefHeight="368.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
          <children>
             <Text layoutX="7.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Room here ..." underline="true">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
             </Text>
-            <AnchorPane fx:id="paneSearch11" layoutX="10.0" layoutY="302.0" prefHeight="33.0" prefWidth="429.0" style="-fx-background-color: #9B9B9B;">
+            <AnchorPane fx:id="paneSearch11" layoutX="7.0" layoutY="328.0" prefHeight="33.0" prefWidth="429.0" style="-fx-background-color: #9B9B9B;">
                <children>
                   <Text layoutX="20.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type ID:">
                      <font>
@@ -59,7 +61,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="lblSelectRoomTypeID" fill="WHITE" layoutX="125.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+                  <Text fx:id="lblSelectRoomTypeID" fill="WHITE" layoutX="125.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font name="Segoe UI Italic" size="15.0" />
                      </font>
@@ -71,6 +73,7 @@
                   </Text>
                </children>
             </AnchorPane>
+            <Text fx:id="txtRoomTabl" fill="RED" layoutX="7.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="399.999993622303" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="17.0" layoutY="65.0" prefHeight="146.0" prefWidth="1275.0" style="-fx-background-color: #D2D1D1;">
@@ -81,6 +84,7 @@
                   <Font name="System Italic" size="17.0" />
                </font>
             </Text>
+            <Text fx:id="txtselectstudent" fill="RED" layoutX="14.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="225.999993622303" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneSearch1" layoutX="270.0" layoutY="86.0" prefHeight="90.0" prefWidth="1016.0" style="-fx-background-color: #9B9B9B;">
@@ -115,32 +119,32 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentID" fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentID" fill="WHITE" layoutX="105.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentName" fill="WHITE" layoutX="105.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentName" fill="WHITE" layoutX="105.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentAddress" fill="WHITE" layoutX="743.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentAddress" fill="WHITE" layoutX="743.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentContactno" fill="WHITE" layoutX="441.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentContactno" fill="WHITE" layoutX="441.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentDob" fill="WHITE" layoutX="441.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentDob" fill="WHITE" layoutX="441.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="resStudentGender" fill="WHITE" layoutX="743.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="test">
+            <Text fx:id="resStudentGender" fill="WHITE" layoutX="743.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Segoe UI Italic" size="15.0" />
                </font>
@@ -152,7 +156,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <TableView fx:id="tblSelectRoom" layoutX="25.0" layoutY="265.0" onMouseClicked="#clickedActiontblSelectRoom" prefHeight="257.0" prefWidth="1259.0">
+      <TableView fx:id="tblSelectRoom" layoutX="25.0" layoutY="256.0" onMouseClicked="#clickedActiontblSelectRoom" prefHeight="266.0" prefWidth="1259.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -178,7 +182,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXTextField fx:id="txtfldReserveID" editable="false" focusColor="#440061" layoutX="102.0" layoutY="19.0" prefHeight="33.0" prefWidth="91.0" promptText="Type here..." unFocusColor="#440061">
+      <JFXTextField fx:id="txtfldReserveID" editable="false" focusColor="#440061" layoutX="102.0" layoutY="12.0" prefHeight="33.0" prefWidth="91.0" promptText="Type here..." unFocusColor="#440061">
          <font>
             <Font size="17.0" />
          </font></JFXTextField>

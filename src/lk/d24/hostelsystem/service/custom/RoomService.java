@@ -22,4 +22,6 @@ public interface RoomService {
     RoomDTO findByPk(String pk);
 
     List<RoomDTO> getAllRooms();
+
+    String getLastRoomID();
 }

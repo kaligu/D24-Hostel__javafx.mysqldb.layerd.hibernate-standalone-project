@@ -19,4 +19,6 @@ public interface RoomDAO extends CrudDAO<Room , String> {
     List<Room> getAll(Session session);
 
     int getAllRoomCount(Session session);
+
+    String getLastRoomID(Session session);
 }

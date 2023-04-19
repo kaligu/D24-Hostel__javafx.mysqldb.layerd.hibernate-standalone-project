@@ -79,9 +79,11 @@ public class Room_form_controller {
     public Text txtfldRemoveroomkeymoney;
     public JFXTextField txtfldUpdateRoomTypeID;
     public JFXTextField txtfldUpdateroomkeymoney;
+    public Text txthintvalidateroom;
 
     boolean isValidatingOnAdd;
     boolean isValidatingOnUpdate;
+    boolean isValidatingOnRemove;
 
     RoomService roomService;
 
@@ -95,6 +97,8 @@ public class Room_form_controller {
     public void initialize(){
         validatetxtfld = new ValidatetxtfldImpl();
         isValidatingOnAdd = false;
+
+        isValidatingOnRemove=false;
 
         isValidatingOnUpdate = false;
 
@@ -163,10 +167,40 @@ public class Room_form_controller {
     }
 
     public void actionMouseClickednavCircle2(MouseEvent mouseEvent) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                panefullLoading.setVisible(true);
+                //load last order ID
+                String oldID=roomService.getLastRoomID();
+                String newID="RM-0000";
+                if(oldID.equals("null")){
+                    txtfldAddRoomTypeID.setText(newID);
+                }else{
+                    txtfldAddRoomTypeID.setText(incrementRM(oldID));
+                }
+                panefullLoading.setVisible(false);
+            }
+        });
+        thread.start();//load last room id
         clearAllPanes();
         paneAdd.setVisible(true);
         navCircle2.setStroke(Paint.valueOf("#027a6c"));
         navCircle2.setFill(Paint.valueOf("#027a6c"));
+    }
+
+    private String incrementRM(String input) {   //increment Order ID
+        String prefix = input.substring(0, 3);
+        int num = Integer.parseInt(input.substring(3));
+        String paddedNum;
+        if(num > 9999) {
+            // If the numerical portion is already at the maximum value, return the original input string
+            paddedNum=String.valueOf(num);
+        }else{
+            num++;
+            paddedNum = String.format("%04d", num);
+        }
+        return prefix+paddedNum;
     }
 
     public void actionMouseClickednavCircle3(MouseEvent mouseEvent) {
@@ -400,6 +434,9 @@ public class Room_form_controller {
             txtfldUpdateroomkeymoney.setText(String.valueOf(roomDTOList.get(tblRoom.getSelectionModel().getSelectedIndex()).getKey_money()));
         }
         if(paneRemove.isVisible()){
+            if(isValidatingOnRemove){
+                validatetxtfld.validateIsSelectedTableRoom(tblRoom,txthintvalidateroom);
+            }
             txtfldRemoveRoomTypeID.setText(roomDTOList.get(tblRoom.getSelectionModel().getSelectedIndex()).getRoom_type_id());
             txtfldRemoveRoomType.setText(roomDTOList.get(tblRoom.getSelectionModel().getSelectedIndex()).getType());
             txtfldRemoveRoomqty.setText(String.valueOf(roomDTOList.get(tblRoom.getSelectionModel().getSelectedIndex()).getQty()));
@@ -509,13 +546,22 @@ public class Room_form_controller {
                 }
             }
         });
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Room Removing Confirmation");
-        alert.setContentText("Are you sure to want you to Remove this room?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                threadBack.start();  //start thread
-            }
-        });
+        if(validatetxtfld.validateIsSelectedTableRoom(tblRoom,txthintvalidateroom)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Room Removing Confirmation");
+            alert.setContentText("Are you sure to want you to Remove this room?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    threadBack.start();  //start thread
+                    isValidatingOnRemove=false;
+                }
+            });
+        }else{
+        isValidatingOnRemove=true;
+        Alert alert=new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Invalid data entered!");
+        alert.setContentText("You have entered invalid data.Please retype and try again. ");
+        alert.show();
+    }
     }
 }

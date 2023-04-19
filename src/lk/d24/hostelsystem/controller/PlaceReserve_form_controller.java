@@ -19,6 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -33,6 +34,8 @@ import lk.d24.hostelsystem.service.custom.ReserveService;
 import lk.d24.hostelsystem.service.custom.RoomService;
 import lk.d24.hostelsystem.service.custom.StudentService;
 import lk.d24.hostelsystem.service.custom.impl.StudentServiceImpl;
+import lk.d24.hostelsystem.view.custom.Validatetxtfld;
+import lk.d24.hostelsystem.view.custom.impl.ValidatetxtfldImpl;
 import lombok.SneakyThrows;
 
 import java.time.LocalDate;
@@ -58,6 +61,11 @@ public class PlaceReserve_form_controller {
     public JFXDatePicker txtfldperiodDate;
     public JFXTextField txtfldReserveID;
     public JFXButton btnCreateReservation;
+    public Text txtpaidnotpaid;
+    public Text txttimePeriod;
+    public Text txtselectstudent;
+    public Text txttable;
+    public Text txtRoomTabl;
 
     StudentService studentService;
 
@@ -73,7 +81,13 @@ public class PlaceReserve_form_controller {
 
     RoomService roomService;
 
+    Validatetxtfld validatetxtfld;
+
+    boolean isValidatingOnAdd;
+
     public void initialize(){
+        isValidatingOnAdd=false;
+        validatetxtfld = new ValidatetxtfldImpl();
         studentDTO=null;
         qaRoomDTOS = new ArrayList<>();
 
@@ -122,7 +136,7 @@ public class PlaceReserve_form_controller {
 
                 //load last order ID
                 String oldID=reserveService.getLastOrderID();
-                String newID="RM-0000";
+                String newID="RS-0000";
                 if(oldID.equals("null")){
                     txtfldReserveID.setText(newID);
                 }else{
@@ -139,7 +153,7 @@ public class PlaceReserve_form_controller {
         String prefix = input.substring(0, 3);
         int num = Integer.parseInt(input.substring(3));
         String paddedNum;
-        if (num < 9999) {
+        if (num > 9999) {
             // If the numerical portion is already at the maximum value, return the original input string
             paddedNum=String.valueOf(num);
         }else{
@@ -151,6 +165,9 @@ public class PlaceReserve_form_controller {
 
 
     public void actionCmbox(ActionEvent actionEvent) {
+        if(isValidatingOnAdd) {
+            validatetxtfld.validateIsSelectedCombobox(cmbboxStudentIds, txtselectstudent);
+        }
         Thread thread =  new Thread(new Runnable() {
             @Override
             public void run() {
@@ -171,6 +188,9 @@ public class PlaceReserve_form_controller {
     }
 
     public void clickedActiontblSelectRoom(MouseEvent mouseEvent) {
+        if(isValidatingOnAdd){
+            validatetxtfld.validateIsSelectedTable(tblSelectRoom,txtRoomTabl);
+        }
         lblSelectRoomTypeID.setText(String.valueOf(qaRoomDTOS.get(tblSelectRoom.getSelectionModel().getSelectedIndex()).getRoom_type_id()));
     }
 
@@ -213,20 +233,97 @@ public class PlaceReserve_form_controller {
                 }
             }
         });
-        if(true){
+        if(validatetxtfld.validateTxtfldPaidNotPaid(txtfldKeymoney,txtpaidnotpaid)&
+                validatetxtfld.validateTxtfldTimePeiod(txtfldperiodDate,txttimePeriod)&
+                  validatetxtfld.validateIsSelectedCombobox(cmbboxStudentIds,txtselectstudent)&
+                    validatetxtfld.validateIsSelectedTable(tblSelectRoom,txtRoomTabl)){
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Reservation Adding Confirmation");
             alert.setContentText("Are you sure to want you to add this Reserve?");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     threadAdd.start();  //start thread
+                    isValidatingOnAdd=false;
                 }
             });
         }else{
+            isValidatingOnAdd=true;
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Invalid data entered!");
             alert.setContentText("You have entered invalid data.Please retype and try again. ");
             alert.show();
         }
 }
+
+    public void typeActiontxtfldPaidNotpaid(KeyEvent keyEvent) {
+        if(isValidatingOnAdd){
+            validatetxtfld.validateTxtfldPaidNotPaid(txtfldKeymoney,txtpaidnotpaid);
+        }
+    }
+
+    public void OnactionAddedPeriodDate(ActionEvent actionEvent) {
+        if(isValidatingOnAdd){
+            validatetxtfld.validateTxtfldTimePeiod(txtfldperiodDate,txttimePeriod);
+        }
+    }
+
+//    Alert alert1=new Alert(Alert.AlertType.INFORMATION);
+//        alert1.setHeaderText("Room Adding Information");
+//        alert1.setContentText("This Room added successfully.");
+//
+//    Alert alert2=new Alert(Alert.AlertType.ERROR);
+//        alert2.setHeaderText("Room Adding Information");
+//        alert2.setContentText("This Room added not successfully!");
+//
+//    //persist data using thread
+//    Thread threadAdd =  new Thread(new Runnable() {
+//        @SneakyThrows
+//        @Override
+//        public void run() {
+//            panefullLoading.setVisible(true); //start show loading ui
+//            Thread.sleep(500); //make virtual database accessing time length
+//            RoomDTO roomDTO = new RoomDTO(
+//                    txtfldAddRoomTypeID.getText(),
+//                    txtfldAddRoomtype.getText(),
+//                    Double.parseDouble(txtfldAddKeyMoney.getText()),
+//                    Integer.parseInt(txtfldAddRoomqty.getText())
+//            );
+//            if(roomService.saveRoom(roomDTO)){
+//                txtfldRoomTypeIdType.clear();
+//                searchRooms("");
+//                ClearAllPanetxtflds();
+//                panefullLoading.setVisible(false); //after task completed hide loading pane
+//                Platform.runLater(() ->
+//                        alert1.show()
+//                );
+//            }else{
+//                Platform.runLater(() ->
+//                        alert2.show()
+//                );
+//                panefullLoading.setVisible(false); //after task completed hide loading pane
+//            }
+//        }
+//    });
+//
+//        if((validatetxtfld.validateTxtfldRoomTypeId(txtfldAddRoomTypeID , txthinttxtfldAddRoomTypeId))&
+//            (validatetxtfld.validateTxtfldRoomType(txtfldAddRoomtype, txhinttxtfldAddRoomType))&
+//            (validatetxtfld.validateTxtfldRoomQty(txtfldAddRoomqty , txhinttxtfldUpdateRoomqty1))&
+//            (validatetxtfld.validateTxtfldRoomKeymoney(txtfldAddKeyMoney , txhinttxtfldAddKeyMoney)) ){
+//
+//        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setHeaderText("Room Adding Confirmation");
+//        alert.setContentText("Are you sure to want you to add this Room?");
+//        alert.showAndWait().ifPresent(response -> {
+//            if (response == ButtonType.OK) {
+//                threadAdd.start();  //start thread
+//                isValidatingOnAdd=false;
+//            }
+//        });
+//    }else{
+//        isValidatingOnAdd=true;
+//        Alert alert=new Alert(Alert.AlertType.ERROR);
+//        alert.setHeaderText("Invalid data entered!");
+//        alert.setContentText("You have entered invalid data.Please retype and try again. ");
+//        alert.show();
+//    }
 }

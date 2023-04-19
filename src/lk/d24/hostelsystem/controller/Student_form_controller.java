@@ -99,6 +99,7 @@ public class Student_form_controller {
 
     boolean isValidatingOnAdd;
     boolean isValidatingOnUpdate;
+    boolean isValidatingOnRemove;
 
     StudentService studentService;
 
@@ -112,6 +113,8 @@ public class Student_form_controller {
         isValidatingOnAdd = false;
 
         isValidatingOnUpdate = false;
+
+        isValidatingOnRemove = false;
 
         validatetxtfld = new ValidatetxtfldImpl(); //text field validation interface
 

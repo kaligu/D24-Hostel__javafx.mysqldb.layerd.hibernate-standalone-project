@@ -31,13 +31,13 @@ public class Reservation implements SuperEntity, Serializable {
     @Column(name="date",columnDefinition = "DATE")
     private LocalDate date;
 
-    @ManyToOne(targetEntity = Student.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Student.class)
     @JoinColumn(
             name="student_id",referencedColumnName = "student_id"
     )
     private Student student;
 
-    @ManyToOne(targetEntity = Room.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Room.class)
     @JoinColumn(
             name="room_type_id",referencedColumnName = "room_type_id"
     )
