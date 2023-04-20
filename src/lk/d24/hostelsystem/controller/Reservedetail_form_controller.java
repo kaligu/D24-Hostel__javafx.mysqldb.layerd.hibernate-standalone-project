@@ -12,20 +12,20 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.service.ServiceFactory;
 import lk.d24.hostelsystem.service.ServiceTypes;
 import lk.d24.hostelsystem.service.custom.ReserveService;
+import lk.d24.hostelsystem.view.custom.Validatetxtfld;
+import lk.d24.hostelsystem.view.custom.impl.ValidatetxtfldImpl;
 import lombok.SneakyThrows;
 
 import java.time.LocalDate;
@@ -70,10 +70,23 @@ public class Reservedetail_form_controller {
     public AnchorPane paneAvailableRooms;
     public AnchorPane paneNotpaid;
     public AnchorPane paneeditstatus;
+    public Text txtpaidnotpaid;
+    public Text txttimePeriod;
     ReserveService reserveService;
     List<ReserveDTO> reserveDTOSforEdit;
-
+    Validatetxtfld validatetxtfld;
+    
     public void initialize(){
+        //block past days in date picker
+        txtfldperiodDate.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
+        validatetxtfld=new ValidatetxtfldImpl();
         reserveDTOSforEdit = new ArrayList<>();
         reserveService= ServiceFactory.getInstance().getService(ServiceTypes.RESERVE);
        // searchAllIds();
@@ -318,7 +331,7 @@ public class Reservedetail_form_controller {
                         "Status:"+txtfldKeymoney.getText()+" ,Reserved Date:"+txtfldperiodDate.getEditor().getText()
                 );
                 if(reserveService.update(reserveDTO)){
-                    //    clearAllPanetxtflds();
+                    clearAllPanetxtflds();
                     panefullLoading.setVisible(false); //after task completed hide loading pane
                     loadEditTbl();
                     Platform.runLater(() ->
@@ -332,7 +345,8 @@ public class Reservedetail_form_controller {
                 }
             }
         });
-        if(true){
+        if(validatetxtfld.validateTxtfldPaidNotPaid(txtfldKeymoney,txtpaidnotpaid)&
+                validatetxtfld.validateTxtfldTimePeiod(txtfldperiodDate,txttimePeriod)){
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Reservation Updating Confirmation");
             alert.setContentText("Are you sure to want you to update this Reservation?");
@@ -347,5 +361,9 @@ public class Reservedetail_form_controller {
             alert.setContentText("You have entered invalid data.Please retype and try again. ");
             alert.show();
         }
+    }
+    private void clearAllPanetxtflds() {
+        txtfldKeymoney.clear();
+        txtfldperiodDate.getEditor().clear();
     }
 }

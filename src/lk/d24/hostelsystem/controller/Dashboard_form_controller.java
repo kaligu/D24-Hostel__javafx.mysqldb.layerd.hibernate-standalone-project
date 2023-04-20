@@ -4,10 +4,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import lk.d24.hostelsystem.util.Navigation;
 import lk.d24.hostelsystem.util.Route;
@@ -27,6 +31,7 @@ public class Dashboard_form_controller {
     public AnchorPane boxHome;
     public Text txtDateTime;
     public Text txtheader;
+    public AnchorPane mainpane;
 
     String isNameofpane="null";
 
@@ -174,16 +179,23 @@ public class Dashboard_form_controller {
         }
     }
 
-    public void actionMouseClickednavbox7(MouseEvent mouseEvent) {
-    }
-
-    public void actionMouseEnterednavbox7(MouseEvent mouseEvent) {
-    }
-
-    public void actionMouseExitednavbox7(MouseEvent mouseEvent) {
-    }
-
     public void clickedToLogout(MouseEvent mouseEvent) {
         txtheader.setText("Logout");
+        Stage primaryStage = (Stage) mainpane.getScene().getWindow();
+        primaryStage.close(); //close current stage
+
+        Stage primaryStage1 = new Stage();
+        try {
+            primaryStage1.setScene(new Scene(
+                    FXMLLoader.load(
+                            getClass().getResource("../view/forms/Login_form.fxml")
+                    )
+            ));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        primaryStage1.initStyle(StageStyle.UNDECORATED);
+        primaryStage1.centerOnScreen();
+        primaryStage1.show();
     }
 }

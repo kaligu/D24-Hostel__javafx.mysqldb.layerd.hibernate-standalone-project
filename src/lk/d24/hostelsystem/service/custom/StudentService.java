@@ -9,12 +9,13 @@ package lk.d24.hostelsystem.service.custom;
 import lk.d24.hostelsystem.dto.StudentDTO;
 import lk.d24.hostelsystem.entity.Student;
 import lk.d24.hostelsystem.service.SuperService;
+import lk.d24.hostelsystem.service.custom.impl.StudentServiceImpl;
 import org.hibernate.Session;
 
 import java.util.List;
 
 public interface StudentService extends SuperService {
-    boolean saveStudent(StudentDTO studentDTO);
+    boolean saveStudent(StudentDTO studentDTO) ;
 
     boolean updateStudent(StudentDTO studentDTO);
 
@@ -27,4 +28,6 @@ public interface StudentService extends SuperService {
     StudentDTO findByPk(String pk);
 
     String getLastStudentID();
+
+    public boolean existsByPk(String pk);
 }

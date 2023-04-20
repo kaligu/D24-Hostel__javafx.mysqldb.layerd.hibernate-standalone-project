@@ -7,7 +7,6 @@
 package lk.d24.hostelsystem.dao.custom.impl;
 
 import lk.d24.hostelsystem.dao.custom.StudentDAO;
-import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.entity.Student;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -18,26 +17,13 @@ import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
     @Override
-    public boolean save(Student entity, Session session) {
-        try {
-            if (session.save(entity) != null) {
-                return true;
-            } else {
-                return false;
-            }
-        }catch(HibernateException e){
-            return false;
-        }
+    public void save(Student entity, Session session) {
+        session.save(entity);
     }
 
     @Override
-    public boolean update(Student entity, Session session) {
-        try {
-            session.update(entity);
-            return true;
-        } catch (HibernateException e) {
-            return false;
-        }
+    public void update(Student entity, Session session) {
+        session.update(entity);
     }
 
     @Override
@@ -62,14 +48,17 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean existByPk(String pk) {
-        return false;
+    public boolean existByPk(String pk,Session session){
+        if (session.get(Student.class, pk) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public List<Student> searchStudentByText(String text, Session session) {
         List<Student> studentList = new ArrayList<>();
-
         String hql = "FROM Student E WHERE E.id like '%"+text+"%' or E.name like '%"+text+"%'";
         Query query = session.createQuery(hql);
         studentList=query.list();

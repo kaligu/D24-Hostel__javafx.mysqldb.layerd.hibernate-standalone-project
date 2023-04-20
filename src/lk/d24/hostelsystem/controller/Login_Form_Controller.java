@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,8 +14,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import lk.d24.hostelsystem.dto.LoginDetailDTO;
+import lk.d24.hostelsystem.service.ServiceFactory;
+import lk.d24.hostelsystem.service.ServiceTypes;
+import lk.d24.hostelsystem.service.custom.LoginDetailService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Login_Form_Controller {
@@ -31,12 +40,17 @@ public class Login_Form_Controller {
     public JFXTextField txtfldUsername;
     public JFXPasswordField pswrdfldPassword;
     public JFXTextField txtfldPassword;
+    public AnchorPane mainpane;
 
 
     ArrayList<String> wordArrayList;
     ArrayList<String> dotArrayList;
+    LoginDetailService loginDetailService;
+    private final String UserID = "user1"; //this is user row id
 
     public void initialize(){
+
+        loginDetailService = ServiceFactory.getInstance().getService(ServiceTypes.LOGINDETAIL);
         loadCircleGraphic();
         wordArrayList = new ArrayList<String>();
         dotArrayList = new ArrayList<String>();
@@ -61,6 +75,31 @@ public class Login_Form_Controller {
     }
 
     public void loginBtnOnAction(ActionEvent actionEvent) {
+        LoginDetailDTO loginDetailDTO=loginDetailService.findByPk(UserID);
+
+        if(txtfldUsername.getText().equals(loginDetailDTO.getUsername()) & txtfldPassword.getText().equals(loginDetailDTO.getPassword())){
+            Stage primaryStage1 = (Stage) mainpane.getScene().getWindow();
+            primaryStage1.close(); //close current stage
+
+            Stage primaryStage = new Stage();
+            try {
+                primaryStage.setScene(new Scene(
+                        FXMLLoader.load(
+                                getClass().getResource("../view/forms/Dashboard_form.fxml")
+                        )
+                ));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            primaryStage.setTitle("D24 Hostel System");
+            primaryStage.centerOnScreen();
+            primaryStage.show();
+        }else{
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Username or Password mismatched!");
+            alert.setContentText("You have entered invalid username or password.Please retype and try again. ");
+            alert.show();
+        }
     }
 
     public void actionCloseBtnEntered(MouseEvent mouseEvent) {

@@ -12,13 +12,13 @@ import org.hibernate.Session;
 import java.io.Serializable;
 
 public interface CrudDAO <T extends Serializable,ID extends Serializable> extends SuperDAO {
-    boolean save(T entity , Session session);
+    void save(T entity , Session session);
 
-    boolean update(T entity, Session session);
+    void update(T entity, Session session);
 
     boolean delete(T entity, Session session);
 
     T findByPk(ID pk, Session session) ;
 
-    boolean existByPk(ID pk) ;
+    boolean existByPk(ID pk,Session session) ;
 }

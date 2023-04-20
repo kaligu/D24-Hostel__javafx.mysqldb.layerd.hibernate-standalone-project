@@ -16,7 +16,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -31,13 +31,22 @@ public class Reservation implements SuperEntity, Serializable {
     @Column(name="date",columnDefinition = "DATE")
     private LocalDate date;
 
-    @ManyToOne(targetEntity = Student.class)
+    @ManyToOne()
     @JoinColumn(
             name="student_id",referencedColumnName = "student_id"
     )
     private Student student;
 
-    @ManyToOne(targetEntity = Room.class)
+    public Reservation() {
+    }
+
+    public Reservation(String res_id, Student student, Room room) {
+        this.res_id = res_id;
+        this.student = student;
+        this.room = room;
+    }
+
+    @ManyToOne()
     @JoinColumn(
             name="room_type_id",referencedColumnName = "room_type_id"
     )
@@ -45,15 +54,4 @@ public class Reservation implements SuperEntity, Serializable {
 
     @Column(name="status",columnDefinition = "VARCHAR(255)")
     private String status;
-
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "res_id='" + res_id + '\'' +
-                ", date=" + date +
-                ", student=" + student.getStudent_id() +
-                ", room=" + room.getRoom_type_id() +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }

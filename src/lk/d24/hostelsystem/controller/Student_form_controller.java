@@ -96,6 +96,7 @@ public class Student_form_controller {
     public Text txthinttxtfldUpdateStudentaddress1;
     public Text txthinttxtfldUpdateStudentname1;
     public Text txthinttxtfldUpdateStudentid1;
+    public Text txthintvalidateroom;
 
     boolean isValidatingOnAdd;
     boolean isValidatingOnUpdate;
@@ -110,6 +111,7 @@ public class Student_form_controller {
     Validatetxtfld validatetxtfld;
 
     public void initialize(){
+        studentDTOList=null;
         isValidatingOnAdd = false;
 
         isValidatingOnUpdate = false;
@@ -148,8 +150,7 @@ public class Student_form_controller {
                 tblStudent.getItems().clear();
                 studentDTOList.clear();
 
-                ObservableList<StudentDTO> studentDTOObservableList = FXCollections.observableArrayList();
-
+                ObservableList<StudentDTO> studentDTOObservableList=FXCollections.observableArrayList();
                 studentDTOList = studentService.searchStudentByText(searchText);
 
                 studentDTOObservableList.addAll(studentDTOList);
@@ -394,6 +395,9 @@ public class Student_form_controller {
             txtfldUpdateStudentgender.setText(String.valueOf(studentDTOList.get(tblStudent.getSelectionModel().getSelectedIndex()).getGender()));
         }
         if(paneRemove.isVisible()){
+            if(isValidatingOnRemove){
+                validatetxtfld.validateIsSelectedTableRoom(tblStudent,txthintvalidateroom);
+            }
             txtfldRemoveStudentid.setText(studentDTOList.get(tblStudent.getSelectionModel().getSelectedIndex()).getStudent_id());
             txtfldRemoveStudentname.setText(studentDTOList.get(tblStudent.getSelectionModel().getSelectedIndex()).getName());
             txtfldRemoveStudentaddress.setText(studentDTOList.get(tblStudent.getSelectionModel().getSelectedIndex()).getAddress());
@@ -472,14 +476,6 @@ public class Student_form_controller {
     }
 
     public void clickedActionStudentRemove(ActionEvent actionEvent) {
-        StudentDTO studentDTO = new StudentDTO(
-                txtfldRemoveStudentid.getText(),
-                txtfldRemoveStudentname.getText(),
-                txtfldRemoveStudentaddress.getText(),
-                txtfldRemoveStudentcontactno.getText(),
-                LocalDate.parse(txtfldRemoveStudentdob.getText()),
-                txtfldRemoveStudentgender.getText()
-        );
         Alert alert1=new Alert(Alert.AlertType.INFORMATION);
         alert1.setHeaderText("Student Removed");
         alert1.setContentText("This Student removed successfully.");
@@ -494,6 +490,7 @@ public class Student_form_controller {
             public void run() {
                 panefullLoading.setVisible(true);
                 Thread.sleep(500);
+                StudentDTO studentDTO = studentService.findByPk(txtfldRemoveStudentid.getText());
                 if(studentService.deleteStudent(studentDTO)){
                     clearAllPanetxtflds();
                     txtfldStudentIDName.clear();
@@ -510,14 +507,22 @@ public class Student_form_controller {
                 }
             }
         });
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText("Student Removing Confirmation");
-        alert.setContentText("Are you sure to want you to Remove this student?");
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                threadBack.start();  //start thread
-            }
-        });
+        if(validatetxtfld.validateIsSelectedTableRoom(tblStudent,txthintvalidateroom)& !(txtfldRemoveStudentid.getText().isEmpty())) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Student Removing Confirmation");
+            alert.setContentText("Are you sure to want you to Remove this student?");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    threadBack.start();  //start thread
+                }
+            });
+        }else{
+            isValidatingOnRemove=true;
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Invalid data entered!");
+            alert.setContentText("You have entered invalid data.Please retype and try again. ");
+            alert.show();
+        }
     }
 
 

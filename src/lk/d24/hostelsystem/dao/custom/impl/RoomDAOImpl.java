@@ -19,22 +19,13 @@ import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
     @Override
-    public boolean save(Room entity, Session session) {
-        if(session.save(entity)!=null) {
-            return true;
-        }else{
-            return false;
-        }
+    public void save(Room entity, Session session) {
+        session.save(entity);
     }
 
     @Override
-    public boolean update(Room entity, Session session) {
-        try {
-            session.update(entity);
-            return true;
-        } catch (HibernateException e) {
-            return false;
-        }
+    public void update(Room entity, Session session) {
+        session.update(entity);
     }
 
     @Override
@@ -59,7 +50,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public boolean existByPk(String pk) {
+    public boolean existByPk(String pk,Session session) {
         return false;
     }
 

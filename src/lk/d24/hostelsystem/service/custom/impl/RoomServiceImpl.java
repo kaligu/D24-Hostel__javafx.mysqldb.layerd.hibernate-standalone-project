@@ -37,7 +37,7 @@ public class RoomServiceImpl implements RoomService {
         Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
-        if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
+        if( ! roomDAO.existByPk(roomDTO.getRoom_type_id(),session )) {
             try{
                 roomDAO.save(convertor.toRoom(roomDTO) , session);
                 transaction.commit();
@@ -61,7 +61,7 @@ public class RoomServiceImpl implements RoomService {
         Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
-        if( ! roomDAO.existByPk(roomDTO.getRoom_type_id() )) {
+        if( ! roomDAO.existByPk(roomDTO.getRoom_type_id(),session )) {
             try{
                 roomDAO.update(convertor.toRoom(roomDTO) , session);
                 transaction.commit();
@@ -101,17 +101,20 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomDTO> searchRoomByText(String text) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
-
+        List<RoomDTO> roomDTOS=new ArrayList<>();
+        Session session=HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
-            return roomDAO.searchRoomByText(text,session).stream().map(room -> convertor.fromRoom(room)).collect(Collectors.toList());
-        } catch (HibernateException e){
-
+            roomDTOS = roomDAO.searchRoomByText(text,session).stream().map(room -> convertor.fromRoom(room)).collect(Collectors.toList());
+            transaction.commit();
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+        }finally {
+            session.close();
+            return roomDTOS;
         }
-        return null;
     }
 
     @Override

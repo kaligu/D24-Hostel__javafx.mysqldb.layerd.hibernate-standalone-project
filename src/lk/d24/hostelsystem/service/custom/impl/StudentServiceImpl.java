@@ -10,14 +10,13 @@ import lk.d24.hostelsystem.dao.DAOFactory;
 import lk.d24.hostelsystem.dao.DAOTypes;
 import lk.d24.hostelsystem.dao.custom.StudentDAO;
 import lk.d24.hostelsystem.dto.StudentDTO;
-import lk.d24.hostelsystem.entity.Student;
 import lk.d24.hostelsystem.service.custom.StudentService;
+import lk.d24.hostelsystem.service.exception.DuplicateException;
 import lk.d24.hostelsystem.service.util.Convertor;
 import lk.d24.hostelsystem.util.HbFactoryConfiguration;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.omg.CORBA.UserException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,50 +33,52 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public boolean saveStudent(StudentDTO studentDTO) {
+    public boolean saveStudent(StudentDTO studentDTO){
+        boolean bool = false;
         Session session;
         Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
-        if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
-            try{
+
+        try{
+            if( ! studentDAO.existByPk(studentDTO.getStudent_id(),session )) {
                 studentDAO.save(convertor.toStudent(studentDTO) , session);
                 transaction.commit();
-                return true;
-            }catch (HibernateException e){
-                if(session!=null) {
-                    transaction.rollback();
-                }
-                    return false;
-            }finally {
-                session.close();
+                bool=true;
+            }else{
+                bool=false;
+                throw new DuplicateException("This Student already saved.");
             }
-        }else{
-            return false;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            bool=false;
+        }finally {
+            session.close();
+            return bool;
         }
     }
 
     @Override
     public boolean updateStudent(StudentDTO studentDTO) {
+        boolean bool=false;
         Session session;
         Transaction transaction;
         session= HbFactoryConfiguration.getInstance().getSession();
         transaction=session.beginTransaction();
-        if( ! studentDAO.existByPk(studentDTO.getStudent_id() )) {
-            try{
-                studentDAO.update(convertor.toStudent(studentDTO) , session);
-                transaction.commit();
-                return true;
-            }catch (HibernateException e){
-                if(session!=null) {
-                    transaction.rollback();
-                }
-                return false;
-            }finally {
-                session.close();
+        try{
+            studentDAO.update(convertor.toStudent(studentDTO) , session);
+            transaction.commit();
+            bool=true;
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
             }
-        }else{
-            return false;
+            bool=false;
+        }finally {
+            session.close();
+            return bool;
         }
     }
 
@@ -104,10 +105,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> searchStudentByText(String text) {
         List<StudentDTO> studentDTOList =new ArrayList<>();
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             studentDTOList = studentDAO.searchStudentByText(text,session).stream().map(student -> convertor.fromStudent(student)).collect(Collectors.toList());
         }catch (HibernateException e){
@@ -116,8 +115,8 @@ public class StudentServiceImpl implements StudentService {
             }
         }finally {
             session.close();
+            return studentDTOList;
         }
-        return studentDTOList;
     }
 
     @Override
@@ -180,6 +179,30 @@ public class StudentServiceImpl implements StudentService {
         }finally {
             session.close();
         }
+    }
+
+    @Override
+    public boolean existsByPk(String pk) {
+        Session session;
+        Transaction transaction;
+        session= HbFactoryConfiguration.getInstance().getSession();
+        transaction=session.beginTransaction();
+        boolean exists=true;
+
+        try{
+            exists= studentDAO.existByPk(pk,session);
+
+        }catch (HibernateException e){
+            if(session!=null) {
+                transaction.rollback();
+            }
+            throw new DuplicateException("Error checking for existence of primary key: " );
+
+        }finally {
+            session.close();
+        }
+        System.out.println(exists);
+        return exists;
     }
 
 

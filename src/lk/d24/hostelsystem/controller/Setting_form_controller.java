@@ -72,6 +72,7 @@ public class Setting_form_controller {
                         );
                         if(loginDetailService.update(loginDetailDTO1)){
                             loadData();
+                            cleartxtflds();
                             panefullLoading.setVisible(false); //after task completed hide loading pane
                             Platform.runLater(() ->
                                     alert1.show()
@@ -98,6 +99,12 @@ public class Setting_form_controller {
             alert.setContentText("You have entered invalid data.Please retype and try again. ");
             alert.show();
         }
+    }
+
+    private void cleartxtflds() {
+        txtfldUsername.clear();
+        txtfldNewPassword.clear();
+        txtfldOldPassword.clear();
     }
 
     private void loadData() {

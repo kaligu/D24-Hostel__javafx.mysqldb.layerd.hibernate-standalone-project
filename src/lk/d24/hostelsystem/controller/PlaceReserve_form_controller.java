@@ -14,10 +14,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -86,6 +83,15 @@ public class PlaceReserve_form_controller {
     boolean isValidatingOnAdd;
 
     public void initialize(){
+        //block past days in date picker
+        txtfldperiodDate.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
         isValidatingOnAdd=false;
         validatetxtfld = new ValidatetxtfldImpl();
         studentDTO=null;
@@ -135,18 +141,22 @@ public class PlaceReserve_form_controller {
                 }
 
                 //load last order ID
-                String oldID=reserveService.getLastOrderID();
-                String newID="RS-0000";
-                if(oldID.equals("null")){
-                    txtfldReserveID.setText(newID);
-                }else{
-                    txtfldReserveID.setText(incrementRM(oldID));
-                }
+                loadID();
 
                 panefullLoading.setVisible(false);
             }
         });
         thread.start();
+    }
+
+    private void loadID(){
+        String oldID=reserveService.getLastOrderID();
+        String newID="RS-0000";
+        if(oldID.equals("null")){
+            txtfldReserveID.setText(newID);
+        }else{
+            txtfldReserveID.setText(incrementRM(oldID));
+        }
     }
 
     private String incrementRM(String input) {   //increment Order ID
@@ -220,7 +230,8 @@ public class PlaceReserve_form_controller {
                         "Status:"+txtfldKeymoney.getText()+" ,Reserved Date:"+localDate
                 );
                 if(reserveService.saveReservation(reserveDTO)){
-                //    clearAllPanetxtflds();
+                    clearAllPanetxtflds();
+                    loadID();
                     panefullLoading.setVisible(false); //after task completed hide loading pane
                     Platform.runLater(() ->
                             alert1.show()
@@ -255,6 +266,11 @@ public class PlaceReserve_form_controller {
         }
 }
 
+    private void clearAllPanetxtflds() {
+        txtfldKeymoney.clear();
+        txtfldperiodDate.getEditor().clear();
+    }
+
     public void typeActiontxtfldPaidNotpaid(KeyEvent keyEvent) {
         if(isValidatingOnAdd){
             validatetxtfld.validateTxtfldPaidNotPaid(txtfldKeymoney,txtpaidnotpaid);
@@ -266,64 +282,4 @@ public class PlaceReserve_form_controller {
             validatetxtfld.validateTxtfldTimePeiod(txtfldperiodDate,txttimePeriod);
         }
     }
-
-//    Alert alert1=new Alert(Alert.AlertType.INFORMATION);
-//        alert1.setHeaderText("Room Adding Information");
-//        alert1.setContentText("This Room added successfully.");
-//
-//    Alert alert2=new Alert(Alert.AlertType.ERROR);
-//        alert2.setHeaderText("Room Adding Information");
-//        alert2.setContentText("This Room added not successfully!");
-//
-//    //persist data using thread
-//    Thread threadAdd =  new Thread(new Runnable() {
-//        @SneakyThrows
-//        @Override
-//        public void run() {
-//            panefullLoading.setVisible(true); //start show loading ui
-//            Thread.sleep(500); //make virtual database accessing time length
-//            RoomDTO roomDTO = new RoomDTO(
-//                    txtfldAddRoomTypeID.getText(),
-//                    txtfldAddRoomtype.getText(),
-//                    Double.parseDouble(txtfldAddKeyMoney.getText()),
-//                    Integer.parseInt(txtfldAddRoomqty.getText())
-//            );
-//            if(roomService.saveRoom(roomDTO)){
-//                txtfldRoomTypeIdType.clear();
-//                searchRooms("");
-//                ClearAllPanetxtflds();
-//                panefullLoading.setVisible(false); //after task completed hide loading pane
-//                Platform.runLater(() ->
-//                        alert1.show()
-//                );
-//            }else{
-//                Platform.runLater(() ->
-//                        alert2.show()
-//                );
-//                panefullLoading.setVisible(false); //after task completed hide loading pane
-//            }
-//        }
-//    });
-//
-//        if((validatetxtfld.validateTxtfldRoomTypeId(txtfldAddRoomTypeID , txthinttxtfldAddRoomTypeId))&
-//            (validatetxtfld.validateTxtfldRoomType(txtfldAddRoomtype, txhinttxtfldAddRoomType))&
-//            (validatetxtfld.validateTxtfldRoomQty(txtfldAddRoomqty , txhinttxtfldUpdateRoomqty1))&
-//            (validatetxtfld.validateTxtfldRoomKeymoney(txtfldAddKeyMoney , txhinttxtfldAddKeyMoney)) ){
-//
-//        Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setHeaderText("Room Adding Confirmation");
-//        alert.setContentText("Are you sure to want you to add this Room?");
-//        alert.showAndWait().ifPresent(response -> {
-//            if (response == ButtonType.OK) {
-//                threadAdd.start();  //start thread
-//                isValidatingOnAdd=false;
-//            }
-//        });
-//    }else{
-//        isValidatingOnAdd=true;
-//        Alert alert=new Alert(Alert.AlertType.ERROR);
-//        alert.setHeaderText("Invalid data entered!");
-//        alert.setContentText("You have entered invalid data.Please retype and try again. ");
-//        alert.show();
-//    }
 }

@@ -14,10 +14,11 @@ import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -38,8 +39,11 @@ public class Room implements SuperEntity, Serializable {
     @Column(name="qty",columnDefinition = "INT")
     private int qty;
 
-    @OneToMany(mappedBy = "room", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
     private List<Reservation> reservationList= new ArrayList<>();
+
+    public Room() {
+    }
 
     public Room(String room_type_id, String type, double key_money, int qty) {
         this.room_type_id = room_type_id;

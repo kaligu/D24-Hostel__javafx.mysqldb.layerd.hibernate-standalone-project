@@ -240,7 +240,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;" visible="false">
+      <AnchorPane fx:id="paneRemove" layoutX="179.0" layoutY="22.0" prefHeight="188.0" prefWidth="1119.0" style="-fx-background-color: #fccfcf;">
          <children>
             <Text layoutX="19.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>
@@ -310,9 +310,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
+            <Text fx:id="txthintvalidateroom" fill="RED" layoutX="840.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="256.99999809265137">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="232.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;">
+      <AnchorPane fx:id="paneUpdate" layoutX="177.0" layoutY="32.0" prefHeight="232.0" prefWidth="1119.0" style="-fx-background-color: #cff3fc;" visible="false">
          <children>
             <Text layoutX="19.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID :">
                <font>

@@ -172,13 +172,8 @@ public class Room_form_controller {
             public void run() {
                 panefullLoading.setVisible(true);
                 //load last order ID
-                String oldID=roomService.getLastRoomID();
-                String newID="RM-0000";
-                if(oldID.equals("null")){
-                    txtfldAddRoomTypeID.setText(newID);
-                }else{
-                    txtfldAddRoomTypeID.setText(incrementRM(oldID));
-                }
+                loadID();
+
                 panefullLoading.setVisible(false);
             }
         });
@@ -187,6 +182,16 @@ public class Room_form_controller {
         paneAdd.setVisible(true);
         navCircle2.setStroke(Paint.valueOf("#027a6c"));
         navCircle2.setFill(Paint.valueOf("#027a6c"));
+    }
+
+    private void loadID(){
+        String oldID=roomService.getLastRoomID();
+        String newID="RM-0000";
+        if(oldID.equals("null")){
+            txtfldAddRoomTypeID.setText(newID);
+        }else{
+            txtfldAddRoomTypeID.setText(incrementRM(oldID));
+        }
     }
 
     private String incrementRM(String input) {   //increment Order ID
@@ -313,8 +318,10 @@ public class Room_form_controller {
                 );
                 if(roomService.saveRoom(roomDTO)){
                     txtfldRoomTypeIdType.clear();
-                    searchRooms("");
                     ClearAllPanetxtflds();
+                    //load id
+                    loadID();
+                    searchRooms("");
                     panefullLoading.setVisible(false); //after task completed hide loading pane
                     Platform.runLater(() ->
                             alert1.show()
@@ -353,22 +360,22 @@ public class Room_form_controller {
 
     private void ClearAllPanetxtflds() {
         if(paneRemove.isVisible()) {
-            txtfldRemoveRoomTypeID.setText("");
-            txtfldRemoveRoomType.setText("");
-            txtfldRemoveRoomqty.setText("");
-            txtfldRemoveroomkeymoney.setText("");
+            txtfldAddRoomTypeID.clear();
+            txtfldAddRoomtype.clear();
+            txtfldAddRoomqty.clear();
+            txtfldAddKeyMoney.clear();
         }
         if(paneAdd.isVisible()) {
             txtfldAddRoomTypeID.clear();
-            txtfldAddtype.clear();
-            txtfldAddqty.clear();
+            txtfldAddRoomtype.clear();
+            txtfldAddRoomqty.clear();
             txtfldAddKeyMoney.clear();
         }
         if(paneUpdate.isVisible()) {
-            txtfldUpdateRoomTypeID.clear();
-            txtfldUpdateRoomType.clear();
-            txtfldUpdateRoomqty.clear();
-            txtfldUpdateroomkeymoney.clear();
+            txtfldAddRoomTypeID.clear();
+            txtfldAddRoomtype.clear();
+            txtfldAddRoomqty.clear();
+            txtfldAddKeyMoney.clear();
         }
     }
 
@@ -470,8 +477,8 @@ public class Room_form_controller {
 
                 if(roomService.updateRoom(roomDTO)){
                     txtfldRoomTypeIdType.clear();
-                    searchRooms("");
                     ClearAllPanetxtflds();
+                    searchRooms("");
                     panefullLoading.setVisible(false); //after task completed hide loading pane
                     Platform.runLater(() ->
                             alert1.show()
@@ -546,7 +553,7 @@ public class Room_form_controller {
                 }
             }
         });
-        if(validatetxtfld.validateIsSelectedTableRoom(tblRoom,txthintvalidateroom)) {
+        if(validatetxtfld.validateIsSelectedTableRoom(tblRoom,txthintvalidateroom)& !(txtfldRemoveRoomTypeID.getText().isEmpty())) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Room Removing Confirmation");
             alert.setContentText("Are you sure to want you to Remove this room?");

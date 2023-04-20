@@ -2,11 +2,16 @@ package lk.d24.hostelsystem.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class Start_load_form_controller {
     public ProgressBar pbarLoad;
@@ -58,7 +63,19 @@ public class Start_load_form_controller {
         });
         KeyFrame keyFrame9 = new KeyFrame(Duration.millis(6400),actionEvent ->{
             Stage primaryStage = (Stage) mainPane.getScene().getWindow();
-            primaryStage.close();
+            try {
+                primaryStage.setScene(new Scene(
+                        FXMLLoader.load(
+                                getClass().getResource("../view/forms/Login_form.fxml")
+                        )
+                ));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            primaryStage.centerOnScreen();
+            primaryStage.show();
+
+
         });
 
 

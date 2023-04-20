@@ -21,19 +21,13 @@ import java.util.List;
 public class ReserveDAOImpl implements ReserveDAO {
 
     @Override
-    public boolean save(Reservation entity, Session session) {
+    public void save(Reservation entity, Session session) {
         session.save(entity);
-        return true;
     }
 
     @Override
-    public boolean update(Reservation entity, Session session) {
-        try {
-            session.update(entity);
-            return true;
-        } catch (HibernateException e) {
-            return false;
-        }
+    public void update(Reservation entity, Session session) {
+        session.update(entity);
     }
 
     @Override
@@ -47,7 +41,7 @@ public class ReserveDAOImpl implements ReserveDAO {
     }
 
     @Override
-    public boolean existByPk(String pk) {
+    public boolean existByPk(String pk,Session session) {
         return false;
     }
 
