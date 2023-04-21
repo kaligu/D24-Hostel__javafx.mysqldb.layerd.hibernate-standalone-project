@@ -10,6 +10,7 @@ import lk.d24.hostelsystem.dao.custom.RoomDAO;
 import lk.d24.hostelsystem.dto.ReserveDTO;
 import lk.d24.hostelsystem.dto.RoomDTO;
 import lk.d24.hostelsystem.entity.Room;
+import lk.d24.hostelsystem.entity.Student;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -51,7 +52,11 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public boolean existByPk(String pk,Session session) {
-        return false;
+        if (session.get(Room.class, pk) != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

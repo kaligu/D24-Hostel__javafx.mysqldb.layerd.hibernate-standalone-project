@@ -32,12 +32,21 @@ public class ReserveDAOImpl implements ReserveDAO {
 
     @Override
     public boolean delete(Reservation entity, Session session) {
-        return false;
+        try {
+            session.delete(entity);
+            return true;
+        } catch (HibernateException e) {
+            return false;
+        }
     }
 
     @Override
     public Reservation findByPk(String pk, Session session) {
-        return null;
+        try {
+            return session.get(Reservation.class,pk);
+        } catch (HibernateException e) {
+            return  null;
+        }
     }
 
     @Override

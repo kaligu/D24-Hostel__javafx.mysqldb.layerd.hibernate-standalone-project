@@ -35,11 +35,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean saveStudent(StudentDTO studentDTO){
         boolean bool = false;
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
-
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             if( ! studentDAO.existByPk(studentDTO.getStudent_id(),session )) {
                 studentDAO.save(convertor.toStudent(studentDTO) , session);
@@ -63,10 +60,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean updateStudent(StudentDTO studentDTO) {
         boolean bool=false;
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             studentDAO.update(convertor.toStudent(studentDTO) , session);
             transaction.commit();
@@ -84,10 +79,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean deleteStudent(StudentDTO studentDTO) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             studentDAO.delete(convertor.toStudent(studentDTO) , session);
             transaction.commit();
@@ -122,11 +115,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<String> getAllStudentIds() {
         List<String> stringList = new ArrayList<>();
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
-
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             stringList =  studentDAO.getAllStudentIds(session);
         }catch (HibernateException e){
@@ -142,11 +132,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO findByPk(String pk) {
         StudentDTO studentDTO = null;
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
-
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             studentDTO = convertor.fromStudent(studentDAO.findByPk(pk,session));
             return studentDTO;
@@ -162,10 +149,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public String getLastStudentID() {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         String id="null";
         try{
             id= studentDAO.getLastStudentID(session);
@@ -183,12 +168,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean existsByPk(String pk) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         boolean exists=true;
-
         try{
             exists= studentDAO.existByPk(pk,session);
 

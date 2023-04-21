@@ -32,10 +32,8 @@ public class LoginDetailServiceImpl implements LoginDetailService {
     @Override
     public LoginDetailDTO findByPk(String pk) {
         LoginDetailDTO loginDetailDTO = null;
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
 
         try{
             loginDetailDTO = convertor.fromLoginDetail(loginDetailDAO.findByPk(session,pk));
@@ -52,10 +50,8 @@ public class LoginDetailServiceImpl implements LoginDetailService {
 
     @Override
     public boolean update(LoginDetailDTO loginDetailDTO) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             loginDetailDAO.update(session , convertor.toLoginDetail(loginDetailDTO));
             transaction.commit();

@@ -42,10 +42,8 @@ public class ReserveServiceimpl implements ReserveService {
     }
     @Override
     public boolean saveReservation(ReserveDTO reserveDTO) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         Student student= new Student();
         Room room = new Room();
         student = studentDAO.findByPk(reserveDTO.getStudentID(), session);
@@ -75,10 +73,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewAllReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             for(Reservation reservation:reserveDAO.viewAllReservations(session))
             reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
@@ -97,10 +93,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewActiveReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             for(Reservation reservation:reserveDAO.viewActiveReservations(session))
                 reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
@@ -119,10 +113,8 @@ public class ReserveServiceimpl implements ReserveService {
     @Override
     public List<ReserveDTO> viewNotpaidReservations() {
         List<ReserveDTO> reserveDTOS=new ArrayList<>();
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         try{
             for(Reservation reservation:reserveDAO.viewNotpaidReservations(session))
                 reserveDTOS.add(new ReserveDTO(reservation.getRes_id(),reservation.getDate(),reservation.getStudent().getStudent_id(),reservation.getRoom().getRoom_type_id(),reservation.getStatus()));
@@ -140,10 +132,8 @@ public class ReserveServiceimpl implements ReserveService {
 
     @Override
     public boolean update(ReserveDTO reserveDTO) {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         Student student= new Student();
         Room room = new Room();
         student = studentDAO.findByPk(reserveDTO.getStudentID(), session);
@@ -172,10 +162,8 @@ public class ReserveServiceimpl implements ReserveService {
 
     @Override
     public List<ReservationDTO> findAllRoomExpireTodayReservations() {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         List<ReservationDTO> reservationDTOS=new ArrayList<>();
         try{
             reservationDTOS =  reserveDAO.findAllRoomExpireTodayReservations(session).stream().map(reservation -> convertor.fromReservation(reservation)).collect(Collectors.toList());
@@ -193,10 +181,8 @@ public class ReserveServiceimpl implements ReserveService {
 
     @Override
     public List<ReservationDTO> viewAllNotpaidReservationsStRoom() {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         List<ReservationDTO> reservationDTOS=new ArrayList<>();
         try{
             reservationDTOS =  reserveDAO.viewAllNotpaidReservationsStRoom(session).stream().map(reservation -> convertor.fromReservation(reservation)).collect(Collectors.toList());
@@ -214,10 +200,8 @@ public class ReserveServiceimpl implements ReserveService {
 
     @Override
     public String getLastOrderID() {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         String id="null";
         try{
             id= reserveDAO.getLastOrderID(session);

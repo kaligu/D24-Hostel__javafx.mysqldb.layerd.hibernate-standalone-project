@@ -37,10 +37,8 @@ public class QueryServiceImpl implements QueryService {
     }
     @Override
     public List<qaRoomDTO> findAllAvailableRooms() {
-        Session session;
-        Transaction transaction;
-        session= HbFactoryConfiguration.getInstance().getSession();
-        transaction=session.beginTransaction();
+        Session session= HbFactoryConfiguration.getInstance().getSession();
+        Transaction transaction=session.beginTransaction();
         List<qaRoomDTO> roomDTOS = new ArrayList<>();
         try{
             roomDTOS = queryDAO.findAllAvailableRooms(session);
