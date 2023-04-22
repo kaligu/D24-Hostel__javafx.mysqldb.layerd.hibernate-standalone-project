@@ -45,7 +45,7 @@ public class Student implements SuperEntity, Serializable {
     @Column(name="gender",columnDefinition = "VARCHAR(255)")
     private String gender;
 
-    @OneToMany(mappedBy = "student" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student" ,cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
     private List<Reservation> reservationList= new ArrayList<>();
 
     public Student() {

@@ -37,15 +37,6 @@ public class Reservation implements SuperEntity, Serializable {
     )
     private Student student;
 
-    public Reservation() {
-    }
-
-    public Reservation(String res_id, Student student, Room room) {
-        this.res_id = res_id;
-        this.student = student;
-        this.room = room;
-    }
-
     @ManyToOne()
     @JoinColumn(
             name="room_type_id",referencedColumnName = "room_type_id"
@@ -54,4 +45,13 @@ public class Reservation implements SuperEntity, Serializable {
 
     @Column(name="status",columnDefinition = "VARCHAR(255)")
     private String status;
+
+    public Reservation() {
+    }
+
+    public Reservation(String res_id, Student student, Room room) {
+        this.res_id = res_id;
+        this.student = student;
+        this.room = room;
+    }
 }

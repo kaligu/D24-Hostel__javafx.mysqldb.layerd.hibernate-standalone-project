@@ -39,7 +39,7 @@ public class Room implements SuperEntity, Serializable {
     @Column(name="qty",columnDefinition = "INT")
     private int qty;
 
-    @OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room",cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     private List<Reservation> reservationList= new ArrayList<>();
 
     public Room() {
