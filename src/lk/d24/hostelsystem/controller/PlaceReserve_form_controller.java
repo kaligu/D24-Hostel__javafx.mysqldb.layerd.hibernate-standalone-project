@@ -125,20 +125,7 @@ public class PlaceReserve_form_controller {
                 cmbboxStudentIds.setItems(stringObservableList);
 
                 //add data into table
-                qaRoomDTOS=queryService.findAllAvailableRooms();
-                ObservableList<qaRoomDTO> qaRoomDTOObservableList = FXCollections.observableArrayList();
-                qaRoomDTOObservableList.addAll(qaRoomDTOS);
-                tblSelectRoom.setItems(qaRoomDTOObservableList);
-
-                int count =0;
-                for(qaRoomDTO qaRoomDTO : qaRoomDTOS){  //when not any available rooms disable reservation button
-                    count+=qaRoomDTO.getAvailableRoomsQty();
-                }
-                if(count==0){
-                    btnCreateReservation.setDisable(true);
-                }else{
-                    btnCreateReservation.setDisable(false);
-                }
+                loadRoomTable();
 
                 //load last order ID
                 loadID();
@@ -147,6 +134,25 @@ public class PlaceReserve_form_controller {
             }
         });
         thread.start();
+    }
+
+    private void loadRoomTable(){
+        qaRoomDTOS.clear();;
+        tblSelectRoom.getItems().clear();
+        qaRoomDTOS=queryService.findAllAvailableRooms();
+        ObservableList<qaRoomDTO> qaRoomDTOObservableList = FXCollections.observableArrayList();
+        qaRoomDTOObservableList.addAll(qaRoomDTOS);
+        tblSelectRoom.setItems(qaRoomDTOObservableList);
+
+        int count =0;
+        for(qaRoomDTO qaRoomDTO : qaRoomDTOS){  //when not any available rooms disable reservation button
+            count+=qaRoomDTO.getAvailableRoomsQty();
+        }
+        if(count==0){
+            btnCreateReservation.setDisable(true);
+        }else{
+            btnCreateReservation.setDisable(false);
+        }
     }
 
     private void loadID(){
@@ -232,6 +238,7 @@ public class PlaceReserve_form_controller {
                 if(reserveService.saveReservation(reserveDTO)){
                     clearAllPanetxtflds();
                     loadID();
+                    loadRoomTable();
                     panefullLoading.setVisible(false); //after task completed hide loading pane
                     Platform.runLater(() ->
                             alert1.show()
