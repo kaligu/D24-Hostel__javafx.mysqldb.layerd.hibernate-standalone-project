@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -24,6 +25,8 @@ import java.util.List;
 @Setter
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE, region="Student")
 @Table(name="Student")
 public class Student implements SuperEntity, Serializable {
     @Id

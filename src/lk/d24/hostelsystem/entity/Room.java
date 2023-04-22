@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
@@ -24,6 +25,8 @@ import java.util.List;
 @Setter
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE, region="Room")
 @Table(name="Room")
 public class Room implements SuperEntity, Serializable {
     @Id

@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,8 @@ import java.util.Date;
 @Setter
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage= CacheConcurrencyStrategy.READ_WRITE, region="Reservation")
 @Table(name="Reservation")
 public class Reservation implements SuperEntity, Serializable {
     @Id
